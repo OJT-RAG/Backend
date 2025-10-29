@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "I7PCPKq5vPA=",
+  "dgSpecHash": "KfuRHMu3XM0=",
   "success": true,
   "projectFilePath": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\OJT_RAG.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\google.apis.core\\1.72.0\\google.apis.core.1.72.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\google.apis.storage.v1\\1.69.0.3707\\google.apis.storage.v1.1.69.0.3707.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\google.cloud.storage.v1\\4.13.0\\google.cloud.storage.v1.4.13.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\htmlagilitypack\\1.12.4\\htmlagilitypack.1.12.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\magick.net-q8-anycpu\\14.9.0\\magick.net-q8-anycpu.14.9.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\magick.net.core\\14.9.0\\magick.net.core.14.9.0.nupkg.sha512",
@@ -56,6 +57,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\npgsql\\9.0.3\\npgsql.9.0.3.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\9.0.4\\npgsql.entityframeworkcore.postgresql.9.0.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\npoi\\2.6.1\\npoi.2.6.1.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\openxmlpowertools\\4.5.3.2\\openxmlpowertools.4.5.3.2.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\pdfiumviewer\\2.13.0\\pdfiumviewer.2.13.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\pdfiumviewer.native.x86_64.v8-xfa\\2018.4.8.256\\pdfiumviewer.native.x86_64.v8-xfa.2018.4.8.256.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
@@ -106,6 +108,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\system.io.pipelines\\9.0.10\\system.io.pipelines.9.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.linq\\4.3.0\\system.linq.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.management\\7.0.2\\system.management.7.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.management.automation.dll\\10.0.10586\\system.management.automation.dll.10.0.10586.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.net.http\\4.3.4\\system.net.http.4.3.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.net.primitives\\4.3.0\\system.net.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
@@ -145,8 +148,28 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
+      "message": "Package 'OpenXmlPowerTools 4.5.3.2' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "OpenXmlPowerTools",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
       "message": "Package 'PdfiumViewer 2.13.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
       "libraryId": "PdfiumViewer",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Management.Automation.dll 10.0.10586' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net8.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Management.Automation.dll",
       "targetGraphs": [
         "net8.0"
       ]

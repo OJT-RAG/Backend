@@ -19,25 +19,42 @@ namespace OJT_RAG.Services
             _cloudinary = new Cloudinary(new Account(cloudName, apiKey, apiSecret));
         }
 
+        // ✅ Upload bất kỳ file nào (docx, pdf, txt, ...).
+        public async Task<string> UploadFileAsync(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return null;
+
+            var uploadParams = new RawUploadParams
+            {
+                File = new FileDescription(file.FileName, file.OpenReadStream()),
+                Folder = "documents"
+            };
+
+            var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            return uploadResult.SecureUrl.AbsoluteUri;
+        }
+
+        // ✅ Upload PDF và chuyển trang đầu thành ảnh thumbnail (dùng cho CV/preview)
         public async Task<string> UploadPdfAsImageAsync(IFormFile pdfFile)
         {
             if (pdfFile == null || pdfFile.Length == 0)
                 return null;
 
-            // 1. Lưu tạm PDF
+            // 1️⃣ Lưu tạm PDF
             var tempPdfPath = Path.GetTempFileName();
             using (var stream = new FileStream(tempPdfPath, FileMode.Create))
             {
                 await pdfFile.CopyToAsync(stream);
             }
 
-            // 2. Chuyển trang đầu PDF thành ảnh
+            // 2️⃣ Chuyển trang đầu PDF thành ảnh (sử dụng PdfiumViewer)
             byte[] imageBytes = PdfConverter.ConvertPdfPageToImage(tempPdfPath);
 
-            // 3. Xóa PDF tạm
+            // 3️⃣ Xóa file PDF tạm
             File.Delete(tempPdfPath);
 
-            // 4. Upload ảnh lên Cloudinary
+            // 4️⃣ Upload ảnh lên Cloudinary
             using var imgStream = new MemoryStream(imageBytes);
             var uploadParams = new ImageUploadParams
             {

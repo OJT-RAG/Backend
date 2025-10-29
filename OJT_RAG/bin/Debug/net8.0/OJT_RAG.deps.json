@@ -13,10 +13,12 @@
           "FirebaseAdmin": "3.4.0",
           "Google.Apis.Auth": "1.72.0",
           "Google.Cloud.Storage.V1": "4.13.0",
+          "HtmlAgilityPack": "1.12.4",
           "Magick.NET-Q8-AnyCPU": "14.9.0",
           "Microsoft.EntityFrameworkCore.Design": "9.0.10",
           "NPOI": "2.6.1",
           "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
+          "OpenXmlPowerTools": "4.5.3.2",
           "PdfiumViewer": "2.13.0",
           "PdfiumViewer.Native.x86_64.v8-xfa": "2018.4.8.256",
           "Swashbuckle.AspNetCore": "6.4.0",
@@ -172,6 +174,14 @@
           "lib/netstandard2.0/Google.Cloud.Storage.V1.dll": {
             "assemblyVersion": "4.13.0.0",
             "fileVersion": "4.13.0.0"
+          }
+        }
+      },
+      "HtmlAgilityPack/1.12.4": {
+        "runtime": {
+          "lib/net7.0/HtmlAgilityPack.dll": {
+            "assemblyVersion": "1.12.4.0",
+            "fileVersion": "1.12.4.0"
           }
         }
       },
@@ -831,6 +841,18 @@
           }
         }
       },
+      "OpenXmlPowerTools/4.5.3.2": {
+        "dependencies": {
+          "DocumentFormat.OpenXml": "3.3.0",
+          "System.Management.Automation.dll": "10.0.10586"
+        },
+        "runtime": {
+          "lib/net45/OpenXmlPowerTools.dll": {
+            "assemblyVersion": "4.5.3.0",
+            "fileVersion": "4.5.3.0"
+          }
+        }
+      },
       "PdfiumViewer/2.13.0": {
         "runtime": {
           "lib/net20/PdfiumViewer.dll": {
@@ -1185,6 +1207,14 @@
             "assetType": "runtime",
             "assemblyVersion": "7.0.0.2",
             "fileVersion": "7.0.723.27404"
+          }
+        }
+      },
+      "System.Management.Automation.dll/10.0.10586": {
+        "runtime": {
+          "lib/net40/System.Management.Automation.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "10.0.10586.0"
           }
         }
       },
@@ -1635,6 +1665,13 @@
       "path": "google.cloud.storage.v1/4.13.0",
       "hashPath": "google.cloud.storage.v1.4.13.0.nupkg.sha512"
     },
+    "HtmlAgilityPack/1.12.4": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ljqvBabvFwKoLniuoQKO8b5bJfJweKLs4fUNS/V5dsvpo0A8MlJqxxn9XVmP2DaskbUXty6IYaWAi1SArGIMeQ==",
+      "path": "htmlagilitypack/1.12.4",
+      "hashPath": "htmlagilitypack.1.12.4.nupkg.sha512"
+    },
     "Humanizer.Core/2.14.1": {
       "type": "package",
       "serviceable": true,
@@ -1907,6 +1944,13 @@
       "sha512": "sha512-DiqEeV7mXv8qQaoqKkJ6nrP11+vOZ+fQI/zi2nvl9qaraiZxlYqWqn7MMXaoAstRM+VnOFYmm0JzlP6FJ9onMg==",
       "path": "npoi/2.6.1",
       "hashPath": "npoi.2.6.1.nupkg.sha512"
+    },
+    "OpenXmlPowerTools/4.5.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-F0HxQxh5+ZL5lOhkddrIozQj2ml0Zzwp25P5teEDmT8iyj++ZpeXf7c6aYqvHH1A9uULyayKVUUYhLi7+55pFw==",
+      "path": "openxmlpowertools/4.5.3.2",
+      "hashPath": "openxmlpowertools.4.5.3.2.nupkg.sha512"
     },
     "PdfiumViewer/2.13.0": {
       "type": "package",
@@ -2257,6 +2301,13 @@
       "sha512": "sha512-/qEUN91mP/MUQmJnM5y5BdT7ZoPuVrtxnFlbJ8a3kBJGhe2wCzBfnPFtK2wTtEEcf3DMGR9J00GZZfg6HRI6yA==",
       "path": "system.management/7.0.2",
       "hashPath": "system.management.7.0.2.nupkg.sha512"
+    },
+    "System.Management.Automation.dll/10.0.10586": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-eknkOPXmlrZ6gXNfmkkLFrhbopXcU815BCaxTVHiY44UtTpA/zm8EKy4uCyb4HicITf5S8FA/9WiXeLdBXusBA==",
+      "path": "system.management.automation.dll/10.0.10586",
+      "hashPath": "system.management.automation.dll.10.0.10586.nupkg.sha512"
     },
     "System.Net.Http/4.3.4": {
       "type": "package",
