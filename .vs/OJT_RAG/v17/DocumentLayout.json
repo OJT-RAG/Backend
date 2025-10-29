@@ -1,0 +1,190 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\OJT_RAG\\OJT_RAG\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\models\\cv.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\controllers\\cvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\controllers\\cvcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\services\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\services\\cloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\services\\pdfconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\services\\pdfconverter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\services\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\services\\icloudinaryservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\settings\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\settings\\cloudinarysettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|e:\\ojt_rag\\ojt_rag\\ojt_rag\\repositories\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{07B5D00B-49C7-4DE6-8750-414C3F853370}|OJT_RAG\\OJT_RAG.csproj|solutionrelative:ojt_rag\\repositories\\cvrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "PdfConverter.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\PdfConverter.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Services\\PdfConverter.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\PdfConverter.cs",
+              "RelativeToolTip": "OJT_RAG\\Services\\PdfConverter.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T19:14:29.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ICloudinaryService.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\ICloudinaryService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Services\\ICloudinaryService.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\ICloudinaryService.cs",
+              "RelativeToolTip": "OJT_RAG\\Services\\ICloudinaryService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:48:33.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "CloudinarySettings.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Settings\\CloudinarySettings.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Settings\\CloudinarySettings.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Settings\\CloudinarySettings.cs",
+              "RelativeToolTip": "OJT_RAG\\Settings\\CloudinarySettings.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:46:57.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CloudinaryService.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\CloudinaryService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Services\\CloudinaryService.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Services\\CloudinaryService.cs",
+              "RelativeToolTip": "OJT_RAG\\Services\\CloudinaryService.cs",
+              "ViewState": "AQIAABUAAAAAAAAAAAA1wDQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:38:21.006Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\appsettings.json",
+              "RelativeDocumentMoniker": "OJT_RAG\\appsettings.json",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\appsettings.json",
+              "RelativeToolTip": "OJT_RAG\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-10-28T17:06:32.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Program.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Program.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Program.cs",
+              "RelativeToolTip": "OJT_RAG\\Program.cs",
+              "ViewState": "AQIAAAEAAAAAAAAAAAAcwBAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:06:22.17Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CvController.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Controllers\\CvController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Controllers\\CvController.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Controllers\\CvController.cs",
+              "RelativeToolTip": "OJT_RAG\\Controllers\\CvController.cs",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAxwBoAAABbAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:05:28.084Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "CvRepository.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Repositories\\CvRepository.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Repositories\\CvRepository.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Repositories\\CvRepository.cs",
+              "RelativeToolTip": "OJT_RAG\\Repositories\\CvRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:03:47.366Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Cv.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Models\\Cv.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Models\\Cv.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Models\\Cv.cs",
+              "RelativeToolTip": "OJT_RAG\\Models\\Cv.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAgwA8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:01:57.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "OJT_RAG\\Data\\AppDbContext.cs",
+              "ToolTip": "E:\\OJT_RAG\\OJT_RAG\\OJT_RAG\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "OJT_RAG\\Data\\AppDbContext.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAUwAoAAAAGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-28T17:00:55.93Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

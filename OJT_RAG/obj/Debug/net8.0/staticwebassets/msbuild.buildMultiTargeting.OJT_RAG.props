@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\OJT_RAG.props" />
+</Project>
