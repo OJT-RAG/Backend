@@ -181,3 +181,7 @@ E:\OJT_RAG\OJT_RAG\OJT_RAG\obj\Debug\net8.0\refint\OJT_RAG.dll
 E:\OJT_RAG\OJT_RAG\OJT_RAG\obj\Debug\net8.0\OJT_RAG.pdb
 E:\OJT_RAG\OJT_RAG\OJT_RAG\obj\Debug\net8.0\OJT_RAG.genruntimeconfig.cache
 E:\OJT_RAG\OJT_RAG\OJT_RAG\obj\Debug\net8.0\ref\OJT_RAG.dll
+E:\OJT_RAG\OJT_RAG\OJT_RAG\obj\Debug\net8.0\OJT_RAG.sourcelink.json
+E:\OJT_RAG\OJT_RAG\OJT_RAG\bin\Debug\net8.0\OpenXmlPowerTools.dll
+E:\OJT_RAG\OJT_RAG\OJT_RAG\bin\Debug\net8.0\System.Management.Automation.dll
+E:\OJT_RAG\OJT_RAG\OJT_RAG\bin\Debug\net8.0\HtmlAgilityPack.dll
