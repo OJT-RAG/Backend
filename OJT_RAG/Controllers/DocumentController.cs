@@ -9,9 +9,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text.Json.Nodes;
 using DocumentFormat.OpenXml.Packaging;
-using WordDocument = DocumentFormat.OpenXml.Wordprocessing.Document;
-using WordprocessingDocument = DocumentFormat.OpenXml.Packaging.WordprocessingDocument;
-
 using System.Text;
 
 namespace OJT_RAG.Controllers
@@ -29,9 +26,7 @@ namespace OJT_RAG.Controllers
             _cloudinaryService = cloudinaryService;
         }
 
-        /// <summary>
-        /// Upload file Word (.docx), lưu lên Cloudinary và database
-        /// </summary>
+        // 🟢 CREATE - Upload Word
         [HttpPost("upload")]
         public async Task<IActionResult> UploadDocument(
             IFormFile file,
@@ -48,11 +43,9 @@ namespace OJT_RAG.Controllers
             if (ext != ".docx")
                 return BadRequest("Chỉ cho phép upload file .docx (Word 2007 trở lên).");
 
-            // Upload file lên Cloudinary
             string cloudinaryUrl = await _cloudinaryService.UploadFileAsync(file);
-
-            // Đọc nội dung file Word (.docx)
             string extractedText = await ExtractTextFromWord(file);
+
             JsonObject jsonContent = new JsonObject
             {
                 ["ExtractedText"] = extractedText,
@@ -60,7 +53,6 @@ namespace OJT_RAG.Controllers
                 ["FileName"] = file.FileName
             };
 
-            // Tạo đối tượng Document
             var document = new Document
             {
                 Title = title,
@@ -71,8 +63,8 @@ namespace OJT_RAG.Controllers
                 Language = language ?? "Vietnamese",
                 Type = type ?? "Policy",
                 Version = 1,
-               Status = DocumentStatus.Draft,
-                JsonContent = jsonContent?.ToJsonString()
+                Status = DocumentStatus.Draft,
+                JsonContent = jsonContent.ToJsonString()
             };
 
             _context.Documents.Add(document);
@@ -86,9 +78,79 @@ namespace OJT_RAG.Controllers
             });
         }
 
-        /// <summary>
-        /// Đọc text từ file .docx bằng OpenXML (miễn phí, không cần license)
-        /// </summary>
+        // 🟡 READ - Lấy tất cả tài liệu
+        [HttpGet("all")]
+        public IActionResult GetAllDocuments()
+        {
+            var documents = _context.Documents
+                .OrderByDescending(d => d.UploadDate)
+                .ToList();
+            return Ok(documents);
+        }
+
+        // 🟡 READ - Lấy tài liệu theo user
+        [HttpGet("user/{userId}")]
+        public IActionResult GetDocumentsByUser(int userId)
+        {
+            var documents = _context.Documents
+                .Where(d => d.UploadedBy == userId)
+                .OrderByDescending(d => d.UploadDate)
+                .ToList();
+
+            if (!documents.Any())
+                return NotFound("Người dùng này chưa upload tài liệu nào.");
+
+            return Ok(documents);
+        }
+
+        // 🟡 READ - Lấy chi tiết 1 tài liệu theo ID
+        [HttpGet("{id}")]
+        public IActionResult GetDocumentById(int id)
+        {
+            var document = _context.Documents.Find(id);
+            if (document == null)
+                return NotFound($"Không tìm thấy tài liệu với ID = {id}");
+
+            return Ok(document);
+        }
+
+        // 🟠 UPDATE - Cập nhật thông tin tài liệu (title, description, status, type, language)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateDocument(int id, [FromBody] Document updatedDoc)
+        {
+            var document = _context.Documents.Find(id);
+            if (document == null)
+                return NotFound($"Không tìm thấy tài liệu với ID = {id}");
+
+            document.Title = updatedDoc.Title ?? document.Title;
+            document.Description = updatedDoc.Description ?? document.Description;
+            document.Status = updatedDoc.Status;
+            document.Type = updatedDoc.Type ?? document.Type;
+            document.Language = updatedDoc.Language ?? document.Language;
+            document.Version += 1; // tăng version mỗi lần update
+            document.UploadDate = DateTime.UtcNow;
+
+            _context.Documents.Update(document);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cập nhật tài liệu thành công ✅", Document = document });
+        }
+
+        // 🔴 DELETE - Xóa tài liệu
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteDocument(int id)
+        {
+            var document = _context.Documents.Find(id);
+            if (document == null)
+                return NotFound($"Không tìm thấy tài liệu với ID = {id}");
+
+            _context.Documents.Remove(document);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Xóa tài liệu thành công 🗑️", DocumentId = id });
+        }
+
+        // 📄 Hàm đọc text từ Word
         private async Task<string> ExtractTextFromWord(IFormFile file)
         {
             string tempPath = Path.GetTempFileName();
@@ -98,30 +160,13 @@ namespace OJT_RAG.Controllers
             }
 
             StringBuilder sb = new StringBuilder();
-
-            // Dùng WordprocessingDocument (đúng chuẩn OpenXML)
-            using (WordprocessingDocument wordDoc = WordprocessingDocument.Open(tempPath, false))
+            using (var wordDoc = WordprocessingDocument.Open(tempPath, false))
             {
                 var body = wordDoc.MainDocumentPart.Document.Body;
                 sb.Append(body.InnerText);
             }
 
             return sb.ToString();
-        }
-
-
-        /// <summary>
-        /// Lấy danh sách tài liệu theo người upload
-        /// </summary>
-        [HttpGet("user/{userId}")]
-        public IActionResult GetDocumentsByUser(int userId)
-        {
-            var documents = _context.Documents
-                .Where(d => d.UploadedBy == userId)
-                .OrderByDescending(d => d.UploadDate)
-                .ToList();
-
-            return Ok(documents);
         }
     }
 }
