@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace OJT_RAG.Controllers
 {
@@ -23,6 +24,7 @@ namespace OJT_RAG.Controllers
             _cloudinaryService = cloudinaryService;
         }
 
+        // 🟢 CREATE - Upload CV
         [HttpPost("upload")]
         public async Task<IActionResult> UploadCV(IFormFile file, int userId, string title)
         {
@@ -32,10 +34,9 @@ namespace OJT_RAG.Controllers
             if (Path.GetExtension(file.FileName).ToLower() != ".pdf")
                 return BadRequest("Chỉ cho phép upload file PDF.");
 
-            // Upload PDF → ảnh → Cloudinary
+            // Upload PDF lên Cloudinary
             string cloudinaryUrl = await _cloudinaryService.UploadPdfAsImageAsync(file);
 
-            // Lưu CV vào DB
             var cv = new Cv
             {
                 UserId = userId,
@@ -51,17 +52,76 @@ namespace OJT_RAG.Controllers
 
             return Ok(new
             {
-                Message = "Tải lên thành công ✅",
-                CloudinaryUrl = cloudinaryUrl,
-                CvId = cv.CvId
+                Message = "Tải lên CV thành công ✅",
+                CvId = cv.CvId,
+                Url = cloudinaryUrl
             });
         }
 
-        [HttpGet("user/{userId}")]
-        public IActionResult GetCvsByUser(int userId)
+        // 🟡 READ - Lấy tất cả CV
+        [HttpGet("all")]
+        public async Task<IActionResult> GetAllCvs()
         {
-            var cvs = _context.Cvs.Where(c => c.UserId == userId).ToList();
+            var cvs = await _context.Cvs.OrderByDescending(c => c.UploadDate).ToListAsync();
             return Ok(cvs);
+        }
+
+        // 🟡 READ - Lấy CV theo người dùng
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetCvsByUser(int userId)
+        {
+            var cvs = await _context.Cvs
+                .Where(c => c.UserId == userId)
+                .OrderByDescending(c => c.UploadDate)
+                .ToListAsync();
+
+            if (!cvs.Any())
+                return NotFound("Không tìm thấy CV nào cho người dùng này.");
+
+            return Ok(cvs);
+        }
+
+        // 🟡 READ - Lấy chi tiết 1 CV
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCvById(int id)
+        {
+            var cv = await _context.Cvs.FindAsync(id);
+            if (cv == null)
+                return NotFound($"Không tìm thấy CV có ID = {id}");
+
+            return Ok(cv);
+        }
+
+        // 🟠 UPDATE - Cập nhật thông tin CV (title, status)
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateCv(int id, [FromBody] Cv updatedCv)
+        {
+            var cv = await _context.Cvs.FindAsync(id);
+            if (cv == null)
+                return NotFound($"Không tìm thấy CV có ID = {id}");
+
+            cv.Title = updatedCv.Title ?? cv.Title;
+            cv.Status = updatedCv.Status ?? cv.Status;
+            cv.UploadDate = DateTime.UtcNow;
+
+            _context.Cvs.Update(cv);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Cập nhật CV thành công ✅", Cv = cv });
+        }
+
+        // 🔴 DELETE - Xóa CV
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteCv(int id)
+        {
+            var cv = await _context.Cvs.FindAsync(id);
+            if (cv == null)
+                return NotFound($"Không tìm thấy CV có ID = {id}");
+
+            _context.Cvs.Remove(cv);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { Message = "Xóa CV thành công 🗑️", CvId = id });
         }
     }
 }
