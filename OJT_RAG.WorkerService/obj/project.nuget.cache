@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "DR+Nt5MvCFk=",
+  "dgSpecHash": "G7D/Miq9Zec=",
   "success": true,
-  "projectFilePath": "F:\\OJT_RAG\\OJT_RAG\\OJT_RAG.WorkerService\\OJT_RAG.WorkerService.csproj",
+  "projectFilePath": "F:\\OJT_RAG\\Backend\\OJT_RAG.WorkerService\\OJT_RAG.WorkerService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore\\9.0.10\\microsoft.entityframeworkcore.9.0.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.10\\microsoft.entityframeworkcore.abstractions.9.0.10.nupkg.sha512",
