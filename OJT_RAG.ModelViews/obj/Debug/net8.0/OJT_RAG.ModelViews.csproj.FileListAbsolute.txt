@@ -1,0 +1,11 @@
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.deps.json
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.dll
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.pdb
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.GeneratedMSBuildEditorConfig.editorconfig
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.AssemblyInfoInputs.cache
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.AssemblyInfo.cs
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.csproj.CoreCompileInputs.cache
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.dll
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\refint\OJT_RAG.ModelViews.dll
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.pdb
+F:\OJT_RAG\OJT_RAG\OJT_RAG.ModelViews\obj\Debug\net8.0\ref\OJT_RAG.ModelViews.dll

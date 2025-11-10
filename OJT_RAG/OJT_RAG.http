@@ -1,6 +1,0 @@
-@OJT_RAG_HostAddress = http://localhost:5130
-
-GET {{OJT_RAG_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###

@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\OJT_RAG.Core\OJT_RAG.Core.csproj" />
+    <ProjectReference Include="..\OJT_RAG.Repositories\OJT_RAG.Repositories.csproj" />
+  </ItemGroup>
+
+</Project>

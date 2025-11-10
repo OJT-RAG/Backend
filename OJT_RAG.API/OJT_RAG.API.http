@@ -1,0 +1,6 @@
+@OJT_RAG.API_HostAddress = http://localhost:5220
+
+GET {{OJT_RAG.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
