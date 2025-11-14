@@ -9,6 +9,7 @@
       "OJT_RAG.Services/1.0.0": {
         "dependencies": {
           "OJT_RAG.Core": "1.0.0",
+          "OJT_RAG.ModelViews": "1.0.0",
           "OJT_RAG.Repositories": "1.0.0"
         },
         "runtime": {
@@ -190,6 +191,11 @@
           "OJT_RAG.Core.dll": {}
         }
       },
+      "OJT_RAG.ModelViews/1.0.0": {
+        "runtime": {
+          "OJT_RAG.ModelViews.dll": {}
+        }
+      },
       "OJT_RAG.Repositories/1.0.0": {
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.10",
@@ -321,6 +327,11 @@
       "hashPath": "system.diagnostics.diagnosticsource.9.0.10.nupkg.sha512"
     },
     "OJT_RAG.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OJT_RAG.ModelViews/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

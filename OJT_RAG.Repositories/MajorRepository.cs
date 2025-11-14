@@ -1,9 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
-using OJT_RAG.Repositories.Context;
 
-namespace OJT_RAG.Repositories
+namespace OJT_RAG.Repositories.Repositories
 {
     public class MajorRepository : IMajorRepository
     {
@@ -14,38 +14,38 @@ namespace OJT_RAG.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Major>> GetAllAsync()
-        {
-            return await _context.Majors.ToListAsync();
-        }
+        public async Task<IEnumerable<Major>> GetAll()
+            => await _context.Majors.ToListAsync();
 
-        public async Task<Major?> GetByIdAsync(long id)
-        {
-            return await _context.Majors.FindAsync(id);
-        }
+        public async Task<Major?> GetById(long id)
+            => await _context.Majors.FindAsync(id);
 
-        public async Task<Major> AddAsync(Major major)
+        public async Task Add(Major entity)
         {
-            _context.Majors.Add(major);
+            await _context.Majors.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return major;
         }
 
-        public async Task<Major> UpdateAsync(Major major)
+        public async Task Update(Major entity)
         {
-            _context.Majors.Update(major);
+            _context.Majors.Update(entity);
             await _context.SaveChangesAsync();
-            return major;
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task Delete(long id)
         {
-            var major = await _context.Majors.FindAsync(id);
-            if (major == null) return false;
+            var item = await _context.Majors.FindAsync(id);
+            if (item != null)
+            {
+                _context.Majors.Remove(item);
+                await _context.SaveChangesAsync();
+            }
+        }
 
-            _context.Majors.Remove(major);
-            await _context.SaveChangesAsync();
-            return true;
+        public async Task<long> GetNextId()
+        {
+            var max = await _context.Majors.MaxAsync(x => (long?)x.MajorId) ?? 0;
+            return max + 1;
         }
     }
 }

@@ -719,6 +719,7 @@
       "OJT_RAG.Services/1.0.0": {
         "dependencies": {
           "OJT_RAG.Core": "1.0.0",
+          "OJT_RAG.ModelViews": "1.0.0",
           "OJT_RAG.Repositories": "1.0.0"
         },
         "runtime": {

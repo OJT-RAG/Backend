@@ -35,6 +35,10 @@ builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IJobDescriptionRepository, JobDescriptionRepository>();
 builder.Services.AddScoped<IJobDescriptionService, JobDescriptionService>();
 
+builder.Services.AddScoped<IJobTitleOverviewRepository, JobTitleOverviewRepository>();
+builder.Services.AddScoped<IJobTitleOverviewService, JobTitleOverviewService>();
+
+
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())

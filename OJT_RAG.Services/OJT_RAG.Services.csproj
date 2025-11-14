@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\OJT_RAG.Core\OJT_RAG.Core.csproj" />
+    <ProjectReference Include="..\OJT_RAG.ModelViews\OJT_RAG.ModelViews.csproj" />
     <ProjectReference Include="..\OJT_RAG.Repositories\OJT_RAG.Repositories.csproj" />
   </ItemGroup>
 

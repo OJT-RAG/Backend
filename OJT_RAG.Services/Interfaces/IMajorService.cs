@@ -1,13 +1,14 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.ModelViews.Major;
+using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Services.Interfaces
 {
     public interface IMajorService
     {
-        Task<IEnumerable<Major>> GetAllMajors();
-        Task<Major?> GetMajor(long id);
-        Task<Major> CreateMajor(Major major);
-        Task<Major?> UpdateMajor(long id, Major major);
-        Task<bool> DeleteMajor(long id);
+        Task<IEnumerable<Major>> GetAllAsync();
+        Task<Major?> GetByIdAsync(long id);
+        Task<Major> CreateAsync(MajorCreateModel dto);
+        Task<Major?> UpdateAsync(MajorUpdateModel dto);
+        Task<bool> DeleteAsync(long id);
     }
 }
