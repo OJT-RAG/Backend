@@ -4,10 +4,11 @@ namespace OJT_RAG.Repositories.Interfaces
 {
     public interface IMajorRepository
     {
-        Task<IEnumerable<Major>> GetAllAsync();
-        Task<Major?> GetByIdAsync(long id);
-        Task<Major> AddAsync(Major major);
-        Task<Major> UpdateAsync(Major major);
-        Task<bool> DeleteAsync(long id);
+        Task<IEnumerable<Major>> GetAll();
+        Task<Major?> GetById(long id);
+        Task Add(Major entity);
+        Task Update(Major entity);
+        Task Delete(long id);
+        Task<long> GetNextId();
     }
 }

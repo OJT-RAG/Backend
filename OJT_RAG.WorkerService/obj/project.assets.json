@@ -809,6 +809,16 @@
           "bin/placeholder/OJT_RAG.Core.dll": {}
         }
       },
+      "OJT_RAG.ModelViews/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/OJT_RAG.ModelViews.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OJT_RAG.ModelViews.dll": {}
+        }
+      },
       "OJT_RAG.Repositories/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -829,6 +839,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "OJT_RAG.Core": "1.0.0",
+          "OJT_RAG.ModelViews": "1.0.0",
           "OJT_RAG.Repositories": "1.0.0"
         },
         "compile": {
@@ -2043,6 +2054,11 @@
       "type": "project",
       "path": "../OJT_RAG.Core/OJT_RAG.Core.csproj",
       "msbuildProject": "../OJT_RAG.Core/OJT_RAG.Core.csproj"
+    },
+    "OJT_RAG.ModelViews/1.0.0": {
+      "type": "project",
+      "path": "../OJT_RAG.ModelViews/OJT_RAG.ModelViews.csproj",
+      "msbuildProject": "../OJT_RAG.ModelViews/OJT_RAG.ModelViews.csproj"
     },
     "OJT_RAG.Repositories/1.0.0": {
       "type": "project",

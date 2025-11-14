@@ -20,7 +20,7 @@ namespace OJT_RAG.Repositories
             return await _context.JobDescriptions.ToListAsync();
         }
 
-        public async Task<JobDescription?> GetById(int id)
+        public async Task<JobDescription?> GetById(long id)
         {
             return await _context.JobDescriptions.FindAsync(id);
         }
