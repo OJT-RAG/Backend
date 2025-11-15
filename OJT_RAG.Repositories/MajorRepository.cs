@@ -34,18 +34,17 @@ namespace OJT_RAG.Repositories.Repositories
 
         public async Task Delete(long id)
         {
-            var item = await _context.Majors.FindAsync(id);
-            if (item != null)
+            var existing = await _context.Majors.FindAsync(id);
+            if (existing != null)
             {
-                _context.Majors.Remove(item);
+                _context.Majors.Remove(existing);
                 await _context.SaveChangesAsync();
             }
         }
 
         public async Task<long> GetNextId()
         {
-            var max = await _context.Majors.MaxAsync(x => (long?)x.MajorId) ?? 0;
-            return max + 1;
+            return await _context.Majors.MaxAsync(m => (long?)m.MajorId) + 1 ?? 1;
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.SemesterDTO;
+using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
 
@@ -13,30 +14,50 @@ namespace OJT_RAG.Services
             _repo = repo;
         }
 
-        public Task<IEnumerable<Semester>> GetAllAsync() => _repo.GetAllAsync();
+        public async Task<IEnumerable<Semester>> GetAllAsync()
+            => await _repo.GetAll();
 
-        public Task<Semester?> GetByIdAsync(long id) => _repo.GetByIdAsync(id);
+        public async Task<Semester?> GetByIdAsync(long id)
+            => await _repo.GetById(id);
 
-        public async Task<Semester> CreateAsync(Semester request)
+        public async Task<Semester> CreateAsync(SemesterCreateDTO dto)
         {
-           
-            return await _repo.AddAsync(request);
+            var newId = await _repo.GetNextId();
+
+            var entity = new Semester
+            {
+                SemesterId = newId,
+                Name = dto.Name,
+                StartDate = dto.StartDate,
+                EndDate = dto.EndDate,
+                IsActive = dto.IsActive ?? true,
+            };
+
+            await _repo.Add(entity);
+            return entity;
         }
 
-        public async Task<Semester?> UpdateAsync(long id, Semester request)
+        public async Task<Semester?> UpdateAsync(long id, SemesterUpdateDTO dto)
         {
-            var existing = await _repo.GetByIdAsync(id);
+            var existing = await _repo.GetById(id);
             if (existing == null) return null;
 
-            existing.Name = request.Name;
-            existing.StartDate = request.StartDate;
-            existing.EndDate = request.EndDate;
-            existing.IsActive = request.IsActive;
-            
+            existing.Name = dto.Name ?? existing.Name;
+            existing.StartDate = dto.StartDate ?? existing.StartDate;
+            existing.EndDate = dto.EndDate ?? existing.EndDate;
+            existing.IsActive = dto.IsActive ?? existing.IsActive;
 
-            return await _repo.UpdateAsync(existing);
+            await _repo.Update(existing);
+            return existing;
         }
 
-        public Task<bool> DeleteAsync(long id) => _repo.DeleteAsync(id);
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var entity = await _repo.GetById(id);
+            if (entity == null) return false;
+
+            await _repo.Delete(id);
+            return true;
+        }
     }
 }

@@ -1,14 +1,14 @@
-﻿
-using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Services.DTOs.JobDescription;
 
 namespace OJT_RAG.Services.Interfaces
 {
     public interface IJobDescriptionService
     {
-        Task<IEnumerable<JobDescription>> GetAll();
-        Task<JobDescription?> GetById(int id);
-        Task<JobDescription> Create(JobDescription model);
-        Task<JobDescription> Update(JobDescription model);
-        Task<bool> Delete(int id);
+        Task<IEnumerable<JobDescription>> GetAllAsync();
+        Task<JobDescription?> GetByIdAsync(long id);
+        Task<JobDescription> CreateAsync(CreateJobDescriptionDTO dto);
+        Task<JobDescription?> UpdateAsync(UpdateJobDescriptionDTO dto);
+        Task<bool> DeleteAsync(long id);
     }
 }

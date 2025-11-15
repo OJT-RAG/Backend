@@ -1,14 +1,14 @@
-﻿
-using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.JobTitleOverviewDTO;
+using OJT_RAG.ModelView.JobTitleOverviewModelView;
 
 namespace OJT_RAG.Services.Interfaces
 {
     public interface IJobTitleOverviewService
     {
-        Task<IEnumerable<JobTitleOverview>> GetAll();
-        Task<JobTitleOverview?> GetById(int id);
-        Task<JobTitleOverview> Create(JobTitleOverview model);
-        Task<JobTitleOverview> Update(JobTitleOverview model);
-        Task<bool> Delete(int id);
+        Task<IEnumerable<JobTitleOverviewModelView>> GetAll();
+        Task<JobTitleOverviewModelView?> GetById(long id);
+        Task<bool> Create(CreateJobTitleOverviewDTO dto);
+        Task<bool> Update(UpdateJobTitleOverviewDTO dto);
+        Task<bool> Delete(long id);
     }
 }

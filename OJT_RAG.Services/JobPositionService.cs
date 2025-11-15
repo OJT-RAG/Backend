@@ -1,4 +1,5 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.JobPositionDTO;
+using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
 
@@ -13,35 +14,61 @@ namespace OJT_RAG.Services
             _repo = repo;
         }
 
-        public Task<IEnumerable<JobPosition>> GetAllAsync() => _repo.GetAllAsync();
+        public async Task<IEnumerable<JobPosition>> GetAllAsync()
+            => await _repo.GetAll();
 
-        public Task<JobPosition?> GetByIdAsync(long id) => _repo.GetByIdAsync(id);
+        public async Task<JobPosition?> GetByIdAsync(long id)
+            => await _repo.GetById(id);
 
-        public async Task<JobPosition> CreateAsync(JobPosition request)
+        public async Task<JobPosition> CreateAsync(JobPositionCreateDTO dto)
         {
-            request.CreateAt = DateTime.UtcNow;
-            return await _repo.AddAsync(request);
+            var newId = await _repo.GetNextId();
+
+            var entity = new JobPosition
+            {
+                JobPositionId = newId,
+                MajorId = dto.MajorId,
+                SemesterId = dto.SemesterId,
+                JobTitle = dto.JobTitle,
+                Requirements = dto.Requirements,
+                Benefit = dto.Benefit,
+                Location = dto.Location,
+                SalaryRange = dto.SalaryRange,
+                IsActive = true,
+                CreateAt = DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = DateTime.UtcNow.ToLocalTime()
+            };
+
+            await _repo.Add(entity);
+            return entity;
         }
 
-        public async Task<JobPosition?> UpdateAsync(long id, JobPosition request)
+        public async Task<JobPosition?> UpdateAsync(long id, JobPositionUpdateDTO dto)
         {
-            var existing = await _repo.GetByIdAsync(id);
+            var existing = await _repo.GetById(id);
             if (existing == null) return null;
 
-            // Cập nhật các trường thông dụng (thay đổi theo entity thực tế của bạn)
-            existing.JobTitle = request.JobTitle;
-            existing.Requirements = request.Requirements;
-            existing.Benefit = request.Benefit;
-            existing.Location = request.Location;
-            existing.SalaryRange = request.SalaryRange;
-            existing.IsActive = request.IsActive;
-            existing.MajorId = request.MajorId;
-            existing.SemesterId = request.SemesterId;
-            existing.UpdateAt = DateTime.UtcNow;
+            existing.MajorId = dto.MajorId ?? existing.MajorId;
+            existing.SemesterId = dto.SemesterId ?? existing.SemesterId;
+            existing.JobTitle = dto.JobTitle ?? existing.JobTitle;
+            existing.Requirements = dto.Requirements ?? existing.Requirements;
+            existing.Benefit = dto.Benefit ?? existing.Benefit;
+            existing.Location = dto.Location ?? existing.Location;
+            existing.SalaryRange = dto.SalaryRange ?? existing.SalaryRange;
+            existing.IsActive = dto.IsActive ?? existing.IsActive;
+            existing.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
-            return await _repo.UpdateAsync(existing);
+            await _repo.Update(existing);
+            return existing;
         }
 
-        public Task<bool> DeleteAsync(long id) => _repo.DeleteAsync(id);
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var existing = await _repo.GetById(id);
+            if (existing == null) return false;
+
+            await _repo.Delete(id);
+            return true;
+        }
     }
 }

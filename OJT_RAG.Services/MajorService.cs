@@ -1,6 +1,6 @@
-﻿using OJT_RAG.ModelViews.Major;
-using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
+using OJT_RAG.Services.DTOs.Major;
 using OJT_RAG.Services.Interfaces;
 
 namespace OJT_RAG.Services
@@ -14,20 +14,21 @@ namespace OJT_RAG.Services
             _repo = repo;
         }
 
-        public async Task<IEnumerable<Major>> GetAllAsync()
-            => await _repo.GetAll();
+        public Task<IEnumerable<Major>> GetAllAsync()
+            => _repo.GetAll();
 
-        public async Task<Major?> GetByIdAsync(long id)
-            => await _repo.GetById(id);
+        public Task<Major?> GetByIdAsync(long id)
+            => _repo.GetById(id);
 
-        public async Task<Major> CreateAsync(MajorCreateModel dto)
+        public async Task<Major> CreateAsync(CreateMajorDTO dto)
         {
             var newId = await _repo.GetNextId();
 
             var major = new Major
             {
                 MajorId = newId,
-                MajorTitle = dto.Major_Name,
+                MajorTitle = dto.MajorTitle,
+                MajorCode = dto.MajorCode,
                 Description = dto.Description,
                 CreateAt = DateTime.UtcNow.ToLocalTime(),
                 UpdateAt = DateTime.UtcNow.ToLocalTime()
@@ -37,13 +38,13 @@ namespace OJT_RAG.Services
             return major;
         }
 
-        public async Task<Major?> UpdateAsync(MajorUpdateModel dto)
+        public async Task<Major?> UpdateAsync(UpdateMajorDTO dto)
         {
-            var existing = await _repo.GetById(dto.Major_ID);
-            if (existing == null)
-                return null;
+            var existing = await _repo.GetById(dto.MajorId);
+            if (existing == null) return null;
 
-            existing.MajorTitle = dto.Major_Name ?? existing.MajorTitle;
+            existing.MajorTitle = dto.MajorTitle ?? existing.MajorTitle;
+            existing.MajorCode = dto.MajorCode ?? existing.MajorCode;
             existing.Description = dto.Description ?? existing.Description;
             existing.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
@@ -54,8 +55,7 @@ namespace OJT_RAG.Services
         public async Task<bool> DeleteAsync(long id)
         {
             var existing = await _repo.GetById(id);
-            if (existing == null)
-                return false;
+            if (existing == null) return false;
 
             await _repo.Delete(id);
             return true;

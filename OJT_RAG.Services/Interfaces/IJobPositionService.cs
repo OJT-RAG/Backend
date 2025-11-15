@@ -1,4 +1,5 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.JobPositionDTO;
+using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Services.Interfaces
 {
@@ -6,8 +7,8 @@ namespace OJT_RAG.Services.Interfaces
     {
         Task<IEnumerable<JobPosition>> GetAllAsync();
         Task<JobPosition?> GetByIdAsync(long id);
-        Task<JobPosition> CreateAsync(JobPosition request);
-        Task<JobPosition?> UpdateAsync(long id, JobPosition request);
+        Task<JobPosition> CreateAsync(JobPositionCreateDTO dto);
+        Task<JobPosition?> UpdateAsync(long id, JobPositionUpdateDTO dto);
         Task<bool> DeleteAsync(long id);
     }
 }

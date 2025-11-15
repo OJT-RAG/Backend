@@ -1,5 +1,5 @@
-﻿using OJT_RAG.ModelViews.Major;
-using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Services.DTOs.Major;
 
 namespace OJT_RAG.Services.Interfaces
 {
@@ -7,8 +7,8 @@ namespace OJT_RAG.Services.Interfaces
     {
         Task<IEnumerable<Major>> GetAllAsync();
         Task<Major?> GetByIdAsync(long id);
-        Task<Major> CreateAsync(MajorCreateModel dto);
-        Task<Major?> UpdateAsync(MajorUpdateModel dto);
+        Task<Major> CreateAsync(CreateMajorDTO dto);
+        Task<Major?> UpdateAsync(UpdateMajorDTO dto);
         Task<bool> DeleteAsync(long id);
     }
 }
