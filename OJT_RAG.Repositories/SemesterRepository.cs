@@ -2,6 +2,7 @@
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
+using System;
 
 namespace OJT_RAG.Repositories
 {
@@ -14,33 +15,38 @@ namespace OJT_RAG.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Semester>> GetAllAsync()
+        public async Task<IEnumerable<Semester>> GetAll()
             => await _context.Semesters.ToListAsync();
 
-        public async Task<Semester?> GetByIdAsync(long id)
+        public async Task<Semester?> GetById(long id)
             => await _context.Semesters.FindAsync(id);
 
-        public async Task<Semester> AddAsync(Semester entity)
+        public async Task<long> GetNextId()
         {
-            await _context.Semesters.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            var maxId = await _context.Semesters.MaxAsync(s => (long?)s.SemesterId) ?? 0;
+            return maxId + 1;
         }
 
-        public async Task<Semester> UpdateAsync(Semester entity)
+        public async Task Add(Semester entity)
+        {
+            _context.Semesters.Add(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(Semester entity)
         {
             _context.Semesters.Update(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task Delete(long id)
         {
-            var item = await _context.Semesters.FindAsync(id);
-            if (item == null) return false;
-            _context.Semesters.Remove(item);
-            await _context.SaveChangesAsync();
-            return true;
+            var entity = await GetById(id);
+            if (entity != null)
+            {
+                _context.Semesters.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

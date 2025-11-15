@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
+
+using System;
+using OJT_RAG.Repositories.Context;
 
 namespace OJT_RAG.Repositories
 {
@@ -14,33 +16,38 @@ namespace OJT_RAG.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<JobPosition>> GetAllAsync()
+        public async Task<IEnumerable<JobPosition>> GetAll()
             => await _context.JobPositions.ToListAsync();
 
-        public async Task<JobPosition?> GetByIdAsync(long id)
+        public async Task<JobPosition?> GetById(long id)
             => await _context.JobPositions.FindAsync(id);
 
-        public async Task<JobPosition> AddAsync(JobPosition entity)
+        public async Task<long> GetNextId()
         {
-            await _context.JobPositions.AddAsync(entity);
-            await _context.SaveChangesAsync();
-            return entity;
+            var maxId = await _context.JobPositions.MaxAsync(p => (long?)p.JobPositionId) ?? 0;
+            return maxId + 1;
         }
 
-        public async Task<JobPosition> UpdateAsync(JobPosition entity)
+        public async Task Add(JobPosition entity)
+        {
+            _context.JobPositions.Add(entity);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task Update(JobPosition entity)
         {
             _context.JobPositions.Update(entity);
             await _context.SaveChangesAsync();
-            return entity;
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task Delete(long id)
         {
-            var item = await _context.JobPositions.FindAsync(id);
-            if (item == null) return false;
-            _context.JobPositions.Remove(item);
-            await _context.SaveChangesAsync();
-            return true;
+            var entity = await GetById(id);
+            if (entity != null)
+            {
+                _context.JobPositions.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }

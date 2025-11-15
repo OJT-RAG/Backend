@@ -1,8 +1,10 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.UserDTO;
+using OJT_RAG.ModelView.UserModelView;
+using OJT_RAG.Repositories;
+using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
-
-namespace OJT_RAG.Services
+namespace OJT_RAG.Services.UserService
 {
     public class UserService : IUserService
     {
@@ -13,36 +15,96 @@ namespace OJT_RAG.Services
             _repo = repo;
         }
 
-        public Task<IEnumerable<User>> GetAllAsync() => _repo.GetAllAsync();
-
-        public Task<User?> GetByIdAsync(long id) => _repo.GetByIdAsync(id);
-
-        public async Task<User> CreateAsync(User request)
+        public async Task<List<UserModelView>> GetAll()
         {
-            // TODO: production => hash password, validate email unique, set defaults
-            request.CreateAt = DateTime.UtcNow;
-            return await _repo.AddAsync(request);
+            var data = await _repo.GetAllAsync();
+
+            return data.Select(u => new UserModelView
+            {
+                UserId = u.UserId,
+                MajorId = u.MajorId,
+                CompanyId = u.CompanyId,
+                Email = u.Email,
+                Fullname = u.Fullname,
+                StudentCode = u.StudentCode,
+                Dob = u.Dob,
+                Phone = u.Phone,
+                AvatarUrl = u.AvatarUrl,
+                CvUrl = u.CvUrl,
+                CreateAt = u.CreateAt
+            }).ToList();
         }
 
-        public async Task<User?> UpdateAsync(long id, User request)
+        public async Task<UserModelView?> GetById(long id)
         {
-            var existing = await _repo.GetByIdAsync(id);
-            if (existing == null) return null;
+            var u = await _repo.GetByIdAsync(id);
+            if (u == null) return null;
 
-            // Update các field an toàn (không update password trực tiếp ở đây nếu không hash)
-            existing.Fullname = request.Fullname;
-            existing.Email = request.Email;
-            existing.Phone = request.Phone;
-            existing.MajorId = request.MajorId;
-            existing.CompanyId = request.CompanyId;
-            existing.Dob = request.Dob;
-            existing.AvatarUrl = request.AvatarUrl;
-            existing.CvUrl = request.CvUrl;
-            existing.UpdateAt = DateTime.UtcNow;
-
-            return await _repo.UpdateAsync(existing);
+            return new UserModelView
+            {
+                UserId = u.UserId,
+                MajorId = u.MajorId,
+                CompanyId = u.CompanyId,
+                Email = u.Email,
+                Fullname = u.Fullname,
+                StudentCode = u.StudentCode,
+                Dob = u.Dob,
+                Phone = u.Phone,
+                AvatarUrl = u.AvatarUrl,
+                CvUrl = u.CvUrl,
+                CreateAt = u.CreateAt
+            };
         }
 
-        public Task<bool> DeleteAsync(long id) => _repo.DeleteAsync(id);
+        public async Task<bool> Create(CreateUserDTO dto)
+        {
+            var user = new User
+            {
+                MajorId = dto.MajorId,
+                CompanyId = dto.CompanyId,
+                Email = dto.Email,
+                Password = dto.Password,
+                Fullname = dto.Fullname,
+                StudentCode = dto.StudentCode,
+                Dob = dto.Dob,
+                Phone = dto.Phone,
+                AvatarUrl = dto.AvatarUrl,
+                CvUrl = dto.CvUrl,
+                CreateAt = DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = DateTime.UtcNow.ToLocalTime()
+            };
+
+            await _repo.AddAsync(user);
+            return true;
+        }
+
+        public async Task<bool> Update(UpdateUserDTO dto)
+        {
+            var u = await _repo.GetByIdAsync(dto.UserId);
+            if (u == null) return false;
+
+            u.MajorId = dto.MajorId;
+            u.CompanyId = dto.CompanyId;
+            u.Fullname = dto.Fullname;
+            u.StudentCode = dto.StudentCode;
+            u.Dob = dto.Dob;
+            u.Phone = dto.Phone;
+            u.AvatarUrl = dto.AvatarUrl;
+            u.CvUrl = dto.CvUrl;
+
+            if (!string.IsNullOrEmpty(dto.Password))
+                u.Password = dto.Password;
+
+            u.UpdateAt = DateTime.UtcNow.ToLocalTime();
+
+            await _repo.UpdateAsync(u);
+            return true;
+        }
+
+        public async Task<bool> Delete(long id)
+        {
+            await _repo.DeleteAsync(id);
+            return true;
+        }
     }
 }

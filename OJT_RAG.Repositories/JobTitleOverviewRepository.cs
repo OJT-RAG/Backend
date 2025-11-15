@@ -2,49 +2,50 @@
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
+using System;
 
 namespace OJT_RAG.Repositories
 {
     public class JobTitleOverviewRepository : IJobTitleOverviewRepository
     {
-        private readonly OJTRAGContext _context;
+        private readonly OJTRAGContext _db;
 
-        public JobTitleOverviewRepository(OJTRAGContext context)
+        public JobTitleOverviewRepository(OJTRAGContext db)
         {
-            _context = context;
+            _db = db;
         }
 
-        public async Task<IEnumerable<JobTitleOverview>> GetAll()
+        public async Task<IEnumerable<JobTitleOverview>> GetAllAsync()
         {
-            return await _context.JobTitleOverviews.ToListAsync();
+            return await _db.JobTitleOverviews.ToListAsync();
         }
 
-        public async Task<JobTitleOverview?> GetById(long id)
+        public async Task<JobTitleOverview?> GetByIdAsync(long id)
         {
-            return await _context.JobTitleOverviews.FindAsync(id);
+            return await _db.JobTitleOverviews.FirstOrDefaultAsync(x => x.JobTitleId == id);
         }
 
-        public async Task<JobTitleOverview> Add(JobTitleOverview model)
+        public async Task<JobTitleOverview> AddAsync(JobTitleOverview entity)
         {
-            _context.JobTitleOverviews.Add(model);
-            await _context.SaveChangesAsync();
-            return model;
+            await _db.JobTitleOverviews.AddAsync(entity);
+            await _db.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task<JobTitleOverview> Update(JobTitleOverview model)
+        public async Task<JobTitleOverview> UpdateAsync(JobTitleOverview entity)
         {
-            _context.JobTitleOverviews.Update(model);
-            await _context.SaveChangesAsync();
-            return model;
+            _db.JobTitleOverviews.Update(entity);
+            await _db.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task<bool> Delete(int id)
+        public async Task<bool> DeleteAsync(long id)
         {
-            var data = await _context.JobTitleOverviews.FindAsync(id);
-            if (data == null) return false;
+            var model = await GetByIdAsync(id);
+            if (model == null) return false;
 
-            _context.JobTitleOverviews.Remove(data);
-            await _context.SaveChangesAsync();
+            _db.JobTitleOverviews.Remove(model);
+            await _db.SaveChangesAsync();
             return true;
         }
     }

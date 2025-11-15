@@ -1,4 +1,5 @@
-﻿using OJT_RAG.Repositories.Entities;
+﻿using OJT_RAG.DTOs.SemesterDTO;
+using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Services.Interfaces
 {
@@ -6,8 +7,8 @@ namespace OJT_RAG.Services.Interfaces
     {
         Task<IEnumerable<Semester>> GetAllAsync();
         Task<Semester?> GetByIdAsync(long id);
-        Task<Semester> CreateAsync(Semester request);
-        Task<Semester?> UpdateAsync(long id, Semester request);
+        Task<Semester> CreateAsync(SemesterCreateDTO dto);
+        Task<Semester?> UpdateAsync(long id, SemesterUpdateDTO dto);
         Task<bool> DeleteAsync(long id);
     }
 }
