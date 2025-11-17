@@ -71,6 +71,19 @@ builder.Services.AddScoped<IJobDescriptionService, JobDescriptionService>();
 builder.Services.AddScoped<IJobTitleOverviewRepository, JobTitleOverviewRepository>();
 builder.Services.AddScoped<IJobTitleOverviewService, JobTitleOverviewService>();
 
+builder.Services.AddScoped<IJobBookmarkRepository, JobBookmarkRepository>();
+builder.Services.AddScoped<IJobBookmarkService, JobBookmarkService>();
+
+builder.Services.AddScoped<IFinalreportRepository, FinalreportRepository>();
+builder.Services.AddScoped<IFinalreportService, FinalreportService>();
+
+builder.Services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
+builder.Services.AddScoped<IChatRoomService, ChatRoomService>();
+
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IMessageService, MessageService>();
+
+
 var app = builder.Build();
 
 // Middleware
