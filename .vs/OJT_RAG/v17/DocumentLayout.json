@@ -3,56 +3,48 @@
   "WorkspaceRootPath": "F:\\OJT_RAG\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\jobtitleoverviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\jobtitleoverviewcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\jobtitleoverviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\jobtitleoverviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\messagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\interfaces\\ijobtitleoverviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\interfaces\\ijobtitleoverviewservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\jobtitleoverviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\jobtitleoverviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\interfaces\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\interfaces\\imessageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\interfaces\\ijobtitleoverviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\interfaces\\ijobtitleoverviewrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\messagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\messagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\jobtitleoverview\\jobtitleoverviewmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\jobtitleoverview\\jobtitleoverviewmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\interfaces\\imessagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\interfaces\\imessagerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\jobtitleoverview\\updatejobtitleoverviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\jobtitleoverview\\updatejobtitleoverviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\message\\messagemodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\message\\messagemodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\jobtitleoverview\\createjobtitleoverviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\jobtitleoverview\\createjobtitleoverviewdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\message\\updatemessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\message\\updatemessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\jobtitleoverview\\updatejobtitleoverviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\jobtitleoverview\\updatejobtitleoverviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\message\\createmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\message\\createmessagedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\jobtitleoverview\\createjobtitleoverviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\jobtitleoverview\\createjobtitleoverviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\message\\updatemessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\message\\updatemessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\entities\\jobtitleoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\entities\\jobtitleoverview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\interfaces\\imajorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\interfaces\\imajorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\company\\companyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\company\\companyviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\message\\createmessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\message\\createmessagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -67,170 +59,144 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "JobTitleOverviewController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\JobTitleOverviewController.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\JobTitleOverviewController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\JobTitleOverviewController.cs",
-              "RelativeToolTip": "OJT_RAG.API\\Controllers\\JobTitleOverviewController.cs",
-              "ViewState": "AQIAAFQAAAAAAAAAAAAIwGYAAAAAAAAA",
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Program.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Program.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Program.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Program.cs",
+              "ViewState": "AQIAAD8AAAAAAAAAAAAAAFQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:30:20.904Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "JobTitleOverview.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\JobTitleOverview.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Entities\\JobTitleOverview.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\JobTitleOverview.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Entities\\JobTitleOverview.cs",
-              "ViewState": "AQIAAAUAAAAAAAAAAAAswBYAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:27:52.378Z",
+              "WhenOpened": "2025-11-17T02:49:29.71Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "JobTitleOverviewService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\JobTitleOverviewService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\JobTitleOverviewService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\JobTitleOverviewService.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\JobTitleOverviewService.cs",
-              "ViewState": "AQIAAAgAAAAAAAAAAAA7wEYAAAAAAAAA",
+              "Title": "MessageController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\MessageController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\MessageController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\MessageController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\MessageController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAHYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:27:08.079Z",
+              "WhenOpened": "2025-11-17T02:49:10.409Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "IJobTitleOverviewService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IJobTitleOverviewService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\Interfaces\\IJobTitleOverviewService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IJobTitleOverviewService.cs*",
-              "RelativeToolTip": "OJT_RAG.Services\\Interfaces\\IJobTitleOverviewService.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAtAAAA",
+              "Title": "MessageService.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\MessageService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\MessageService.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\MessageService.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\MessageService.cs",
+              "ViewState": "AQIAADkAAAAAAAAAAAAAAFQAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:26:56.708Z",
+              "WhenOpened": "2025-11-17T02:48:47.859Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "JobTitleOverviewRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\JobTitleOverviewRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\JobTitleOverviewRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\JobTitleOverviewRepository.cs*",
-              "RelativeToolTip": "OJT_RAG.Repositories\\JobTitleOverviewRepository.cs*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAJAAAA",
+              "Title": "IMessageService.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IMessageService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\Interfaces\\IMessageService.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IMessageService.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\Interfaces\\IMessageService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:26:41.578Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "IMajorRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IMajorRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Interfaces\\IMajorRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IMajorRepository.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Interfaces\\IMajorRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:26:27.015Z",
+              "WhenOpened": "2025-11-17T02:48:35.979Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IJobTitleOverviewRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IJobTitleOverviewRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Interfaces\\IJobTitleOverviewRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IJobTitleOverviewRepository.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Interfaces\\IJobTitleOverviewRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "Title": "MessageRepository.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\MessageRepository.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\MessageRepository.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\MessageRepository.cs",
+              "RelativeToolTip": "OJT_RAG.Repositories\\MessageRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAyAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:26:20.054Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UpdateJobTitleOverviewModel.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\UpdateJobTitleOverviewModel.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\JobTitleOverview\\UpdateJobTitleOverviewModel.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\UpdateJobTitleOverviewModel.cs",
-              "RelativeToolTip": "OJT_RAG.ModelViews\\JobTitleOverview\\UpdateJobTitleOverviewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:25:18.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "CreateJobTitleOverviewModel.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\CreateJobTitleOverviewModel.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\JobTitleOverview\\CreateJobTitleOverviewModel.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\CreateJobTitleOverviewModel.cs",
-              "RelativeToolTip": "OJT_RAG.ModelViews\\JobTitleOverview\\CreateJobTitleOverviewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:24:58.231Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "CompanyViewModel.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Company\\CompanyViewModel.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\Company\\CompanyViewModel.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Company\\CompanyViewModel.cs",
-              "RelativeToolTip": "OJT_RAG.ModelViews\\Company\\CompanyViewModel.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:23:45.295Z",
+              "WhenOpened": "2025-11-17T02:48:10.894Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "JobTitleOverviewModelView.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\JobTitleOverviewModelView.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\JobTitleOverview\\JobTitleOverviewModelView.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\JobTitleOverview\\JobTitleOverviewModelView.cs",
-              "RelativeToolTip": "OJT_RAG.ModelViews\\JobTitleOverview\\JobTitleOverviewModelView.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Title": "IMessageRepository.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IMessageRepository.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Interfaces\\IMessageRepository.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IMessageRepository.cs",
+              "RelativeToolTip": "OJT_RAG.Repositories\\Interfaces\\IMessageRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:23:31.55Z",
+              "WhenOpened": "2025-11-17T02:47:55.629Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "UpdateJobTitleOverviewDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\JobTitleOverview\\UpdateJobTitleOverviewDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\JobTitleOverview\\UpdateJobTitleOverviewDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\JobTitleOverview\\UpdateJobTitleOverviewDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\JobTitleOverview\\UpdateJobTitleOverviewDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Title": "MessageModelView.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\MessageModelView.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\Message\\MessageModelView.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\MessageModelView.cs",
+              "RelativeToolTip": "OJT_RAG.ModelViews\\Message\\MessageModelView.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:22:01.047Z",
+              "WhenOpened": "2025-11-17T02:47:44.751Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "CreateJobTitleOverviewDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\JobTitleOverview\\CreateJobTitleOverviewDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\JobTitleOverview\\CreateJobTitleOverviewDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\JobTitleOverview\\CreateJobTitleOverviewDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\JobTitleOverview\\CreateJobTitleOverviewDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Title": "UpdateMessageDTO.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\Message\\UpdateMessageDTO.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\Message\\UpdateMessageDTO.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\Message\\UpdateMessageDTO.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\Message\\UpdateMessageDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-15T19:21:50.018Z",
+              "WhenOpened": "2025-11-17T02:47:27.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CreateMessageDTO.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\Message\\CreateMessageDTO.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\Message\\CreateMessageDTO.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\Message\\CreateMessageDTO.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\Message\\CreateMessageDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T02:47:16.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "UpdateMessageModel.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\UpdateMessageModel.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\Message\\UpdateMessageModel.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\UpdateMessageModel.cs",
+              "RelativeToolTip": "OJT_RAG.ModelViews\\Message\\UpdateMessageModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T02:46:29.101Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CreateMessageModel.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\CreateMessageModel.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\Message\\CreateMessageModel.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\Message\\CreateMessageModel.cs",
+              "RelativeToolTip": "OJT_RAG.ModelViews\\Message\\CreateMessageModel.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-17T02:46:18.534Z",
               "EditorCaption": ""
             }
           ]

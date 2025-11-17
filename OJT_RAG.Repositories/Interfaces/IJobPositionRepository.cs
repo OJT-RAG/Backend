@@ -4,11 +4,10 @@ namespace OJT_RAG.Repositories.Interfaces
 {
     public interface IJobPositionRepository
     {
-        Task<IEnumerable<JobPosition>> GetAll();
-        Task<JobPosition?> GetById(long id);
-        Task<long> GetNextId();
-        Task Add(JobPosition entity);
-        Task Update(JobPosition entity);
-        Task Delete(long id);
+        Task<IEnumerable<JobPosition>> GetAllAsync();
+        Task<JobPosition?> GetByIdAsync(long id);
+        Task<JobPosition> AddAsync(JobPosition entity);
+        Task<JobPosition> UpdateAsync(JobPosition entity);
+        Task<bool> DeleteAsync(long id);
     }
 }
