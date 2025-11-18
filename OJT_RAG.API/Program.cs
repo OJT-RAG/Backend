@@ -83,6 +83,9 @@ builder.Services.AddScoped<IChatRoomService, ChatRoomService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 
+builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
+builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
+builder.Services.AddSingleton<GoogleDriveService>();
 
 var app = builder.Build();
 
