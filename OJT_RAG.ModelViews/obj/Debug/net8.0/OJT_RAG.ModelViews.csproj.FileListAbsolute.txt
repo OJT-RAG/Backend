@@ -21,3 +21,4 @@ F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\refint\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.pdb
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\ref\OJT_RAG.ModelViews.dll
+F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.csproj.AssemblyReference.cache

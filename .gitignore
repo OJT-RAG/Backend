@@ -10,3 +10,7 @@ obj/
 *.suo
 *.userosscache
 *.sln.docstates
+
+
+"OJT_RAG.API/credentials.json" 
+"OJT_RAG.API/client_secret.json" 

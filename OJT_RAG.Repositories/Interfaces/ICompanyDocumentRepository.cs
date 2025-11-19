@@ -6,9 +6,9 @@ namespace OJT_RAG.Repositories.Interfaces
     {
         Task<IEnumerable<Companydocument>> GetAllAsync();
         Task<Companydocument?> GetByIdAsync(long id);
-        Task<IEnumerable<Companydocument>> GetBySemesterCompanyIdAsync(long semId);
-        Task<Companydocument> AddAsync(Companydocument doc);
-        Task<Companydocument> UpdateAsync(Companydocument doc);
+        Task<IEnumerable<Companydocument>> GetBySemesterCompanyIdAsync(long semCompanyId);
+        Task AddAsync(Companydocument entity);
+        Task UpdateAsync(Companydocument entity);
         Task<bool> DeleteAsync(long id);
     }
 }

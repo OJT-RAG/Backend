@@ -1,5 +1,5 @@
-﻿using OJT_RAG.DTOs.CompanyDocumentDTO;
-using OJT_RAG.ModelView.CompanyDocumentModelView;
+﻿using OJT_RAG.ModelViews.CompanyDocument;
+using OJT_RAG.DTOs.CompanyDocumentDTO;
 
 namespace OJT_RAG.Services.Interfaces
 {
@@ -7,7 +7,7 @@ namespace OJT_RAG.Services.Interfaces
     {
         Task<IEnumerable<CompanyDocumentModelView>> GetAll();
         Task<CompanyDocumentModelView?> GetById(long id);
-        Task<IEnumerable<CompanyDocumentModelView>> GetBySemester(long semId);
+        Task<IEnumerable<CompanyDocumentModelView>> GetBySemester(long semesterCompanyId);
         Task<bool> Create(CreateCompanyDocumentDTO dto);
         Task<bool> Update(UpdateCompanyDocumentDTO dto);
         Task<bool> Delete(long id);
