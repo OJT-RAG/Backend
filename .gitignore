@@ -11,6 +11,6 @@ obj/
 *.userosscache
 *.sln.docstates
 
-
-"OJT_RAG.API/credentials.json" 
-"OJT_RAG.API/client_secret.json" 
+# Secrets (KHÔNG BAO GIỜ ĐƯỢC PUSH)
+OJT_RAG.API/client_secret.json
+OJT_RAG.API/refresh_token.txt
