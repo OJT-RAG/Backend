@@ -34,7 +34,7 @@ public class GoogleDriveService
         });
     }
 
-    // ---- NEW VERSION: Get or create folder with parent ----
+
     public async Task<string> GetOrCreateFolderAsync(string folderName, string? parentId = null)
     {
         var drive = await GetDriveServiceAsync();
