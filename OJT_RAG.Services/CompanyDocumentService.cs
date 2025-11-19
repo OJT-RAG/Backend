@@ -1,5 +1,5 @@
 ﻿using OJT_RAG.DTOs.CompanyDocumentDTO;
-using OJT_RAG.ModelView.CompanyDocumentModelView;
+using OJT_RAG.ModelViews.CompanyDocument;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
@@ -31,30 +31,29 @@ namespace OJT_RAG.Services
         }
 
         public async Task<IEnumerable<CompanyDocumentModelView>> GetAll()
-        {
-            return (await _repo.GetAllAsync()).Select(Map);
-        }
+            => (await _repo.GetAllAsync()).Select(Map);
 
         public async Task<CompanyDocumentModelView?> GetById(long id)
-        {
-            var x = await _repo.GetByIdAsync(id);
-            return x == null ? null : Map(x);
-        }
+            => (await _repo.GetByIdAsync(id)) is Companydocument x ? Map(x) : null;
 
         public async Task<IEnumerable<CompanyDocumentModelView>> GetBySemester(long semId)
-        {
-            return (await _repo.GetBySemesterCompanyIdAsync(semId)).Select(Map);
-        }
+            => (await _repo.GetBySemesterCompanyIdAsync(semId)).Select(Map);
 
         public async Task<bool> Create(CreateCompanyDocumentDTO dto)
         {
+            // 1. Folder cha OJT_RAG
+            var rootFolderId = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+
+            // 2. Folder con theo SemesterCompanyId
+            var folderName = $"semester_company_{dto.SemesterCompanyId}";
+            var childFolderId = await _drive.GetOrCreateFolderAsync(folderName, rootFolderId);
+
+            // 3. Upload file vào folder con
             string? fileUrl = null;
-
             if (dto.File != null)
-            {
-                fileUrl = await _drive.UploadFileAsync(dto.File);
-            }
+                fileUrl = await _drive.UploadFileAsync(dto.File, childFolderId);
 
+            // 4. Save DB
             var entity = new Companydocument
             {
                 SemesterCompanyId = dto.SemesterCompanyId,
@@ -68,6 +67,7 @@ namespace OJT_RAG.Services
             return true;
         }
 
+
         public async Task<bool> Update(UpdateCompanyDocumentDTO dto)
         {
             var entity = await _repo.GetByIdAsync(dto.CompanyDocumentId);
@@ -80,7 +80,17 @@ namespace OJT_RAG.Services
 
             if (dto.File != null)
             {
-                entity.FileUrl = await _drive.UploadFileAsync(dto.File);
+                if (!string.IsNullOrEmpty(entity.FileUrl))
+                {
+                    var oldId = _drive.ExtractFileIdFromUrl(entity.FileUrl);
+                    if (!string.IsNullOrEmpty(oldId))
+                        await _drive.DeleteFileByIdAsync(oldId);
+                }
+
+                var folderName = $"semester_company_{dto.SemesterCompanyId}";
+                var folderId = await _drive.GetOrCreateFolderAsync(folderName);
+
+                entity.FileUrl = await _drive.UploadFileAsync(dto.File, folderId);
             }
 
             await _repo.UpdateAsync(entity);
@@ -89,6 +99,16 @@ namespace OJT_RAG.Services
 
         public async Task<bool> Delete(long id)
         {
+            var entity = await _repo.GetByIdAsync(id);
+            if (entity == null) return false;
+
+            if (!string.IsNullOrEmpty(entity.FileUrl))
+            {
+                var fileId = _drive.ExtractFileIdFromUrl(entity.FileUrl);
+                if (!string.IsNullOrEmpty(fileId))
+                    await _drive.DeleteFileByIdAsync(fileId);
+            }
+
             return await _repo.DeleteAsync(id);
         }
     }

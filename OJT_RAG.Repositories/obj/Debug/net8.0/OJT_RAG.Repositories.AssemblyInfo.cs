@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.Repositories")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf750497c56394d209936013fd622423bf550255")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22ca37a78950f1e2fafc7b9a0fe3e8fab1f6c045")]
 [assembly: System.Reflection.AssemblyProductAttribute("OJT_RAG.Repositories")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OJT_RAG.Repositories")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

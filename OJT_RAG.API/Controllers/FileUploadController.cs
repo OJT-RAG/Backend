@@ -12,9 +12,31 @@ public class FileUploadController : ControllerBase
     }
 
     [HttpPost("upload")]
-    public async Task<IActionResult> Upload(IFormFile file)
+    public async Task<IActionResult> Upload([FromForm] IFormFile file)
     {
-        var fileId = await _driveService.UploadFileAsync(file);
-        return Ok(fileId);
+        try
+        {
+            // Kiểm tra file hợp lệ
+            if (file == null)
+                return BadRequest("File is required.");
+
+            if (file.Length == 0)
+                return BadRequest("Uploaded file is empty.");
+
+            // Thực hiện upload
+            var fileId = await _driveService.UploadFileAsync(file);
+
+            // Trả về JSON chuẩn
+            return Ok(new { fileId = fileId });
+        }
+        catch (Exception ex)
+        {
+            // Trả lỗi rõ ràng
+            return StatusCode(500, new
+            {
+                message = "Upload to Google Drive failed.",
+                error = ex.Message
+            });
+        }
     }
 }

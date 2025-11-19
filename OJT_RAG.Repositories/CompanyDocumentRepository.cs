@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
-using OJT_RAG.Repositories.Context;
 using System;
 
 namespace OJT_RAG.Repositories
@@ -26,33 +26,31 @@ namespace OJT_RAG.Repositories
                 .FirstOrDefaultAsync(x => x.CompanydocumentId == id);
         }
 
-        public async Task<IEnumerable<Companydocument>> GetBySemesterCompanyIdAsync(long semId)
+        public async Task<IEnumerable<Companydocument>> GetBySemesterCompanyIdAsync(long semCompanyId)
         {
             return await _db.Companydocuments
-                .Where(x => x.SemesterCompanyId == semId)
+                .Where(x => x.SemesterCompanyId == semCompanyId)
                 .ToListAsync();
         }
 
-        public async Task<Companydocument> AddAsync(Companydocument doc)
+        public async Task AddAsync(Companydocument entity)
         {
-            await _db.Companydocuments.AddAsync(doc);
+            _db.Companydocuments.Add(entity);
             await _db.SaveChangesAsync();
-            return doc;
         }
 
-        public async Task<Companydocument> UpdateAsync(Companydocument doc)
+        public async Task UpdateAsync(Companydocument entity)
         {
-            _db.Companydocuments.Update(doc);
+            _db.Companydocuments.Update(entity);
             await _db.SaveChangesAsync();
-            return doc;
         }
 
         public async Task<bool> DeleteAsync(long id)
         {
-            var doc = await GetByIdAsync(id);
-            if (doc == null) return false;
+            var entity = await GetByIdAsync(id);
+            if (entity == null) return false;
 
-            _db.Companydocuments.Remove(doc);
+            _db.Companydocuments.Remove(entity);
             await _db.SaveChangesAsync();
             return true;
         }
