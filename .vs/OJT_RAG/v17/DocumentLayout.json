@@ -3,48 +3,36 @@
   "WorkspaceRootPath": "F:\\OJT_RAG\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\companydocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\companydocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\interfaces\\icompanydocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\interfaces\\icompanydocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\companycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\ojtdocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\ojtdocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\companydocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\companydocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\entities\\companydocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\entities\\companydocument.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\ojtdocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\ojtdocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\interfaces\\icompanydocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\interfaces\\icompanydocumentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\companydocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\companydocumentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\googledriveservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\googleauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\googleauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\companydocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\companydocumentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|f:\\ojt_rag\\backend\\ojt_rag.modelviews\\companydocument\\companydocumentmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{574BC2A8-2BCB-49DA-8FFE-8D1A17F3F926}|OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj|solutionrelative:ojt_rag.modelviews\\companydocument\\companydocumentmodelview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\companydocument\\updatecompanydocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\companydocument\\updatecompanydocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\companydocument\\createcompanydocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\companydocument\\createcompanydocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\ojtdocument\\updateojtdocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\ojtdocument\\updateojtdocumentdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,143 +42,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CompanyController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyController.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\CompanyController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyController.cs",
-              "RelativeToolTip": "OJT_RAG.API\\Controllers\\CompanyController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAGQAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "OjtDocumentController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\OjtDocumentController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\OjtDocumentController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\OjtDocumentController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\OjtDocumentController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAIMAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:37:40.74Z",
+              "WhenOpened": "2025-11-20T09:56:42.389Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CompanyDocumentController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
-              "RelativeToolTip": "OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:32:19.259Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Companydocument.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\Companydocument.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Entities\\Companydocument.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\Companydocument.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Entities\\Companydocument.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAAACwAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:29:31.837Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "CompanyDocumentService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\CompanyDocumentService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\CompanyDocumentService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\CompanyDocumentService.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\CompanyDocumentService.cs",
-              "ViewState": "AQIAACYAAAAAAAAAAAAUwDwAAAAsAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:26:16.596Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ICompanyDocumentService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\ICompanyDocumentService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\Interfaces\\ICompanyDocumentService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\ICompanyDocumentService.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\Interfaces\\ICompanyDocumentService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:26:10.092Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "GoogleDriveService.cs",
               "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\GoogleDriveService.cs",
               "RelativeDocumentMoniker": "OJT_RAG.Services\\GoogleDriveService.cs",
               "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\GoogleDriveService.cs",
               "RelativeToolTip": "OJT_RAG.Services\\GoogleDriveService.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAowEQAAAAAAAAA",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:25:25.4Z",
+              "WhenOpened": "2025-11-20T09:52:32.343Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
+              "Title": "GoogleAuthController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\GoogleAuthController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\GoogleAuthController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\GoogleAuthController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\GoogleAuthController.cs",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA4AAAApAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T09:51:48.445Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "CompanyDocumentRepository.cs",
               "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\CompanyDocumentRepository.cs",
               "RelativeDocumentMoniker": "OJT_RAG.Repositories\\CompanyDocumentRepository.cs",
               "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\CompanyDocumentRepository.cs",
               "RelativeToolTip": "OJT_RAG.Repositories\\CompanyDocumentRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAkAAAA",
+              "ViewState": "AQIAACQAAAAAAAAAAAAowDQAAAAgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:24:12.675Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "ICompanyDocumentRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\ICompanyDocumentRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Interfaces\\ICompanyDocumentRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\ICompanyDocumentRepository.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Interfaces\\ICompanyDocumentRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:24:04.168Z",
+              "WhenOpened": "2025-11-20T09:47:17.577Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "CompanyDocumentModelView.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\CompanyDocument\\CompanyDocumentModelView.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.ModelViews\\CompanyDocument\\CompanyDocumentModelView.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\CompanyDocument\\CompanyDocumentModelView.cs",
-              "RelativeToolTip": "OJT_RAG.ModelViews\\CompanyDocument\\CompanyDocumentModelView.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "UpdateOjtDocumentDTO.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocument\\UpdateOjtDocumentDTO.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\OjtDocument\\UpdateOjtDocumentDTO.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocument\\UpdateOjtDocumentDTO.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\OjtDocument\\UpdateOjtDocumentDTO.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:23:55.332Z"
+              "WhenOpened": "2025-11-20T09:38:59.87Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "UpdateCompanyDocumentDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\CompanyDocument\\UpdateCompanyDocumentDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\CompanyDocument\\UpdateCompanyDocumentDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\CompanyDocument\\UpdateCompanyDocumentDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\CompanyDocument\\UpdateCompanyDocumentDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAIwA8AAAAAAAAA",
+              "DocumentIndex": 3,
+              "Title": "CompanyDocumentController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\CompanyDocumentController.cs",
+              "ViewState": "AQIAAH4AAAAAAAAAAAAuwJkAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:23:42.208Z"
+              "WhenOpened": "2025-11-20T09:34:55.211Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "CreateCompanyDocumentDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\CompanyDocument\\CreateCompanyDocumentDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\CompanyDocument\\CreateCompanyDocumentDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\CompanyDocument\\CreateCompanyDocumentDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\CompanyDocument\\CreateCompanyDocumentDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
+              "DocumentIndex": 1,
+              "Title": "CompanyDocumentService.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\CompanyDocumentService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\CompanyDocumentService.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\CompanyDocumentService.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\CompanyDocumentService.cs",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAswGMAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-19T08:23:39.216Z"
+              "WhenOpened": "2025-11-20T09:34:25.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OjtDocumentService.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\OjtDocumentService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\OjtDocumentService.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\OjtDocumentService.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\OjtDocumentService.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAAwGQAAAA5AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-20T09:34:22.707Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -45,7 +45,7 @@ namespace OJT_RAG.Services
             var rootFolderId = await _drive.GetOrCreateFolderAsync("OJT_RAG");
 
             // 2. Folder con theo SemesterCompanyId
-            var folderName = $"semester_company_{dto.SemesterCompanyId}";
+            var folderName = $"Company_Document_Semester_{dto.SemesterCompanyId}";
             var childFolderId = await _drive.GetOrCreateFolderAsync(folderName, rootFolderId);
 
             // 3. Upload file vào folder con
@@ -84,10 +84,20 @@ namespace OJT_RAG.Services
                 {
                     var oldId = _drive.ExtractFileIdFromUrl(entity.FileUrl);
                     if (!string.IsNullOrEmpty(oldId))
-                        await _drive.DeleteFileByIdAsync(oldId);
+                    {
+                        try
+                        {
+                            await _drive.DeleteFileByIdAsync(oldId);
+                        }
+                        catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            // File đã không còn trên Drive → bỏ qua
+                            Console.WriteLine($"File {oldId} không tồn tại, bỏ qua xóa.");
+                        }
+                    }
                 }
 
-                var folderName = $"semester_company_{dto.SemesterCompanyId}";
+                var folderName = $"Company_Document_Semester_{dto.SemesterCompanyId}";
                 var folderId = await _drive.GetOrCreateFolderAsync(folderName);
 
                 entity.FileUrl = await _drive.UploadFileAsync(dto.File, folderId);
@@ -106,10 +116,21 @@ namespace OJT_RAG.Services
             {
                 var fileId = _drive.ExtractFileIdFromUrl(entity.FileUrl);
                 if (!string.IsNullOrEmpty(fileId))
-                    await _drive.DeleteFileByIdAsync(fileId);
+                {
+                    try
+                    {
+                        await _drive.DeleteFileByIdAsync(fileId);
+                    }
+                    catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        // File đã không còn trên Drive → bỏ qua
+                        Console.WriteLine($"File {fileId} không tồn tại, bỏ qua xóa.");
+                    }
+                }
             }
 
             return await _repo.DeleteAsync(id);
         }
+
     }
 }
