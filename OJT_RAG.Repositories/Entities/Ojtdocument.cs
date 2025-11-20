@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
 namespace OJT_RAG.Repositories.Entities;
 
@@ -34,14 +33,10 @@ public partial class Ojtdocument
     public DateTime? UploadedAt { get; set; }
 
     [ForeignKey("SemesterId")]
-    [InverseProperty("Ojtdocuments")]
     public virtual Semester? Semester { get; set; }
 
     [ForeignKey("UploadedBy")]
-    [InverseProperty("Ojtdocuments")]
     public virtual User? UploadedByNavigation { get; set; }
 
-    [ForeignKey("OjtdocumentId")]
-    [InverseProperty("Ojtdocuments")]
     public virtual ICollection<Documenttag> Documenttags { get; set; } = new List<Documenttag>();
 }

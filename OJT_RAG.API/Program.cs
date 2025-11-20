@@ -86,6 +86,12 @@ builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<ISemesterCompanyRepository, SemesterCompanyRepository>();
 builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
 
+builder.Services.AddScoped<IDocumentTagRepository, DocumentTagRepository>();
+builder.Services.AddScoped<IDocumentTagService, DocumentTagService>();
+
+builder.Services.AddScoped<IOjtDocumentRepository, OjtDocumentRepository>();
+builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
+
 
 builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
