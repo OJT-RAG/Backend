@@ -41,4 +41,8 @@ public partial class Companydocument
     [ForeignKey("CompanydocumentId")]
     [InverseProperty("Companydocuments")]
     public virtual ICollection<Documenttag> Documenttags { get; set; } = new List<Documenttag>();
+
+    [InverseProperty("Companydocument")]
+    public virtual ICollection<Companydocumenttag> CompanyDocumentTags { get; set; } = new List<Companydocumenttag>();
+
 }

@@ -43,6 +43,9 @@ public partial class OJTRAGContext : DbContext
     public virtual DbSet<Semester> Semesters { get; set; }
 
     public virtual DbSet<SemesterCompany> SemesterCompanies { get; set; }
+    public virtual DbSet<Companydocumenttag> Companydocumenttags { get; set; }
+
+    public virtual DbSet<Ojtdocumenttag> Ojtdocumenttags { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
 

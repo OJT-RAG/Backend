@@ -24,4 +24,8 @@ public partial class Documenttag
     [ForeignKey("DocumenttagId")]
     [InverseProperty("Documenttags")]
     public virtual ICollection<Ojtdocument> Ojtdocuments { get; set; } = new List<Ojtdocument>();
+
+    [InverseProperty("Documenttag")]
+    public virtual ICollection<Companydocumenttag> CompanyDocumentTags { get; set; } = new List<Companydocumenttag>();
+
 }
