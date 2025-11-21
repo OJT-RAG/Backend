@@ -72,6 +72,19 @@ public class GoogleDriveService
         if (file == null || file.Length == 0)
             throw new ArgumentException("File is empty");
 
+        // ===== 1) Giới hạn dung lượng file (50MB) =====
+        const long MAX_SIZE = 50 * 1024 * 1024; // 50MB
+        if (file.Length > MAX_SIZE)
+            throw new ArgumentException("File exceeds maximum allowed size (50MB).");
+
+        // ===== 2) Giới hạn loại file =====
+        var allowedExtensions = new[] { ".pdf", ".doc", ".docx", ".png", ".jpg", ".jpeg" };
+        var extension = Path.GetExtension(file.FileName).ToLower();
+
+        if (!allowedExtensions.Contains(extension))
+            throw new ArgumentException("Invalid file type. Allowed: .pdf, .doc, .docx, .png, .jpg, .jpeg");
+
+        // ===== 3) Upload như cũ =====
         var drive = await GetDriveServiceAsync();
 
         var metadata = new Google.Apis.Drive.v3.Data.File
@@ -87,10 +100,12 @@ public class GoogleDriveService
         await request.UploadAsync();
 
         var fileId = request.ResponseBody?.Id;
-        if (fileId == null) throw new Exception("Upload failed");
+        if (fileId == null)
+            throw new Exception("Upload failed");
 
         return $"https://drive.google.com/file/d/{fileId}/view";
     }
+
 
     public async Task DeleteFileByIdAsync(string fileId)
     {

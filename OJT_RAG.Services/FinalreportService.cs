@@ -9,12 +9,15 @@ namespace OJT_RAG.Services
     public class FinalreportService : IFinalreportService
     {
         private readonly IFinalreportRepository _repo;
+        private readonly GoogleDriveService _drive;
 
-        public FinalreportService(IFinalreportRepository repo)
+        public FinalreportService(IFinalreportRepository repo, GoogleDriveService drive)
         {
             _repo = repo;
+            _drive = drive;
         }
 
+        // Map Finalreport -> ModelView
         private FinalreportModelView Map(Finalreport x)
         {
             return new FinalreportModelView
@@ -33,40 +36,52 @@ namespace OJT_RAG.Services
             };
         }
 
+        // GET ALL
         public async Task<IEnumerable<FinalreportModelView>> GetAll()
-        {
-            return (await _repo.GetAllAsync()).Select(Map);
-        }
+            => (await _repo.GetAllAsync()).Select(Map);
 
+        // GET BY ID
         public async Task<FinalreportModelView?> GetById(long id)
-        {
-            var data = await _repo.GetByIdAsync(id);
-            return data == null ? null : Map(data);
-        }
+            => (await _repo.GetByIdAsync(id)) is Finalreport x ? Map(x) : null;
 
+        // GET BY USER
         public async Task<IEnumerable<FinalreportModelView>> GetByUser(long userId)
-        {
-            return (await _repo.GetByUserIdAsync(userId)).Select(Map);
-        }
+            => (await _repo.GetByUserIdAsync(userId)).Select(Map);
 
+        // GET BY SEMESTER
         public async Task<IEnumerable<FinalreportModelView>> GetBySemester(long semesterId)
-        {
-            return (await _repo.GetBySemesterIdAsync(semesterId)).Select(Map);
-        }
+            => (await _repo.GetBySemesterIdAsync(semesterId)).Select(Map);
 
+        // GET BY JOB POSITION
         public async Task<IEnumerable<FinalreportModelView>> GetByJob(long jobPositionId)
-        {
-            return (await _repo.GetByJobPositionIdAsync(jobPositionId)).Select(Map);
-        }
+            => (await _repo.GetByJobPositionIdAsync(jobPositionId)).Select(Map);
 
+        // CREATE FINAL REPORT
         public async Task<bool> Create(CreateFinalreportDTO dto)
         {
+            string? fileUrl = null;
+
+            if (dto.File != null)
+            {
+                // Root folder: OJT_RAG
+                var mainRootFolder = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+
+                // Sub folder: OJT_FinalReports
+                var finalReportRoot = await _drive.GetOrCreateFolderAsync("OJT_FinalReports", mainRootFolder);
+
+                // Sub folder: user_{id}
+                var userFolder = await _drive.GetOrCreateFolderAsync($"user_{dto.UserId}", finalReportRoot);
+
+                // Upload file
+                fileUrl = await _drive.UploadFileAsync(dto.File, userFolder);
+            }
+
             var entity = new Finalreport
             {
                 UserId = dto.UserId,
                 JobPositionId = dto.JobPositionId,
                 SemesterId = dto.SemesterId,
-                StudentReportFile = dto.StudentReportFile,
+                StudentReportFile = fileUrl,
                 StudentReportText = dto.StudentReportText,
                 CompanyFeedback = dto.CompanyFeedback,
                 CompanyRating = dto.CompanyRating,
@@ -78,6 +93,7 @@ namespace OJT_RAG.Services
             return true;
         }
 
+        // UPDATE FINAL REPORT
         public async Task<bool> Update(UpdateFinalreportDTO dto)
         {
             var entity = await _repo.GetByIdAsync(dto.FinalreportId);
@@ -86,11 +102,47 @@ namespace OJT_RAG.Services
             entity.UserId = dto.UserId;
             entity.JobPositionId = dto.JobPositionId;
             entity.SemesterId = dto.SemesterId;
-            entity.StudentReportFile = dto.StudentReportFile;
             entity.StudentReportText = dto.StudentReportText;
             entity.CompanyFeedback = dto.CompanyFeedback;
             entity.CompanyRating = dto.CompanyRating;
             entity.CompanyEvaluator = dto.CompanyEvaluator;
+
+            // Nếu có upload file mới → Xóa file cũ + Upload file mới
+            if (dto.File != null)
+            {
+                // Xóa file cũ
+                if (!string.IsNullOrEmpty(entity.StudentReportFile))
+                {
+                    var oldFileId = _drive.ExtractFileIdFromUrl(entity.StudentReportFile);
+                    if (!string.IsNullOrEmpty(oldFileId))
+                    {
+                        try
+                        {
+                            await _drive.DeleteFileByIdAsync(oldFileId);
+                        }
+                        catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+                        {
+                            Console.WriteLine($"File {oldFileId} không tồn tại trên Drive, bỏ qua.");
+                        }
+                        catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
+                        {
+                            Console.WriteLine($"Không có quyền xóa file {oldFileId} trên Drive.");
+                        }
+                    }
+                }
+
+                // Lấy folder gốc OJT_RAG
+                var mainRootFolder = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+
+                // Folder OJT_FinalReports
+                var finalReportRoot = await _drive.GetOrCreateFolderAsync("OJT_FinalReports", mainRootFolder);
+
+                // Folder user
+                var userFolder = await _drive.GetOrCreateFolderAsync($"user_{dto.UserId}", finalReportRoot);
+
+                // Upload file mới
+                entity.StudentReportFile = await _drive.UploadFileAsync(dto.File, userFolder);
+            }
 
             entity.EvaluatedAt = DateTime.UtcNow.ToLocalTime();
 
@@ -98,9 +150,35 @@ namespace OJT_RAG.Services
             return true;
         }
 
+
+        // DELETE FINAL REPORT
         public async Task<bool> Delete(long id)
         {
+            var entity = await _repo.GetByIdAsync(id);
+            if (entity == null) return false;
+
+            if (!string.IsNullOrEmpty(entity.StudentReportFile))
+            {
+                var fileId = _drive.ExtractFileIdFromUrl(entity.StudentReportFile);
+                if (!string.IsNullOrEmpty(fileId))
+                {
+                    try
+                    {
+                        await _drive.DeleteFileByIdAsync(fileId);
+                    }
+                    catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.NotFound)
+                    {
+                        Console.WriteLine($"File {fileId} không tồn tại trên Drive.");
+                    }
+                    catch (Google.GoogleApiException ex) when (ex.HttpStatusCode == System.Net.HttpStatusCode.Forbidden)
+                    {
+                        Console.WriteLine($"Không có quyền xóa file {fileId} trên Drive.");
+                    }
+                }
+            }
+
             return await _repo.DeleteAsync(id);
         }
+
     }
 }

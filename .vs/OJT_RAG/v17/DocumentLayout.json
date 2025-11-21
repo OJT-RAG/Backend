@@ -3,36 +3,12 @@
   "WorkspaceRootPath": "F:\\OJT_RAG\\Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\ojtdocumenttagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\ojtdocumenttagcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\ojtdocumenttagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\ojtdocumenttagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\interfaces\\iojtdocumenttagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\interfaces\\iojtdocumenttagservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\ojtdocumenttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\ojtdocumenttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\interfaces\\iojtdocumenttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\interfaces\\iojtdocumenttagrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\ojtdocumenttag\\updateojtdocumenttagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\ojtdocumenttag\\updateojtdocumenttagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|f:\\ojt_rag\\backend\\ojt_rag.services\\dtos\\ojtdocumenttag\\createojtdocumenttagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\dtos\\ojtdocumenttag\\createojtdocumenttagdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|f:\\ojt_rag\\backend\\ojt_rag.repositories\\entities\\ojtdocumenttag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\entities\\ojtdocumenttag.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\finalreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\finalreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,105 +23,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "OjtDocumentTagController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\OjtDocumentTagController.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\OjtDocumentTagController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\OjtDocumentTagController.cs",
-              "RelativeToolTip": "OJT_RAG.API\\Controllers\\OjtDocumentTagController.cs",
-              "ViewState": "AQIAAGMAAAAAAAAAAAAuwH4AAAAAAAAA",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\UserController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\UserController.cs",
+              "ViewState": "AQIAACwAAAAAAAAAAAAgwD4AAAAWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:17:50.576Z",
+              "WhenOpened": "2025-11-21T19:03:08.989Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "OjtDocumentTagService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\OjtDocumentTagService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\OjtDocumentTagService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\OjtDocumentTagService.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\OjtDocumentTagService.cs",
-              "ViewState": "AQIAABcAAAAAAAAAAAAAADIAAAAAAAAA",
+              "Title": "FinalreportController.cs",
+              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\FinalreportController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\FinalreportController.cs",
+              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\FinalreportController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\FinalreportController.cs",
+              "ViewState": "AQIAAEsAAAAAAAAAAAAowFYAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:17:36.168Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IOjtDocumentTagService.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IOjtDocumentTagService.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\Interfaces\\IOjtDocumentTagService.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\Interfaces\\IOjtDocumentTagService.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\Interfaces\\IOjtDocumentTagService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:17:22.057Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OjtDocumentTagRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\OjtDocumentTagRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\OjtDocumentTagRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\OjtDocumentTagRepository.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\OjtDocumentTagRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAADUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:17:06.111Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IOjtDocumentTagRepository.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IOjtDocumentTagRepository.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Interfaces\\IOjtDocumentTagRepository.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Interfaces\\IOjtDocumentTagRepository.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Interfaces\\IOjtDocumentTagRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:16:52.789Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UpdateOjtDocumentTagDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocumentTag\\UpdateOjtDocumentTagDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\OjtDocumentTag\\UpdateOjtDocumentTagDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocumentTag\\UpdateOjtDocumentTagDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\OjtDocumentTag\\UpdateOjtDocumentTagDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:16:36.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "CreateOjtDocumentTagDTO.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocumentTag\\CreateOjtDocumentTagDTO.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Services\\DTOs\\OjtDocumentTag\\CreateOjtDocumentTagDTO.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Services\\DTOs\\OjtDocumentTag\\CreateOjtDocumentTagDTO.cs",
-              "RelativeToolTip": "OJT_RAG.Services\\DTOs\\OjtDocumentTag\\CreateOjtDocumentTagDTO.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:16:27.891Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Ojtdocumenttag.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\Ojtdocumenttag.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\Entities\\Ojtdocumenttag.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\Entities\\Ojtdocumenttag.cs",
-              "RelativeToolTip": "OJT_RAG.Repositories\\Entities\\Ojtdocumenttag.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T08:15:40.648Z",
+              "WhenOpened": "2025-11-21T19:03:06.568Z",
               "EditorCaption": ""
             }
           ]
