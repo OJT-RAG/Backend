@@ -106,6 +106,10 @@ builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 
+builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
+builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
+
+
 builder.Services.AddSingleton<GoogleDriveService>();
 
 
