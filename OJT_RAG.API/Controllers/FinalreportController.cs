@@ -84,11 +84,13 @@ namespace OJT_RAG.API.Controllers
             catch (Exception ex)
             {
                 return StatusCode(500, new { message = $"Đã xảy ra lỗi khi lấy final report của job position Id = {jobPositionId}.", error = ex.Message });
+
             }
         }
 
+        // 🔥 FIX HERE: Dùng FromForm để hỗ trợ upload file
         [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] CreateFinalreportDTO dto)
+        public async Task<IActionResult> Create([FromForm] CreateFinalreportDTO dto)
         {
             try
             {
@@ -97,17 +99,14 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate"))
-                {
-                    return BadRequest(new { message = "Final report đã tồn tại (trùng dữ liệu unique)." });
-                }
-
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi tạo final report.", error = ex.Message });
+                Console.WriteLine("ERROR: " + ex.ToString());
+                throw;
             }
         }
 
+        // 🔥 FIX HERE: Dùng FromForm hỗ trợ upload file khi update
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] UpdateFinalreportDTO dto)
+        public async Task<IActionResult> Update([FromForm] UpdateFinalreportDTO dto)
         {
             try
             {
@@ -118,11 +117,6 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate"))
-                {
-                    return BadRequest(new { message = "Cập nhật thất bại: giá trị bị trùng với final report khác." });
-                }
-
                 return StatusCode(500, new { message = "Đã xảy ra lỗi khi cập nhật final report.", error = ex.Message });
             }
         }
