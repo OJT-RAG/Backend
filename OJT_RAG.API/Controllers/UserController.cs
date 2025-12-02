@@ -15,6 +15,31 @@ namespace OJT_RAG.API.Controllers
             _service = service;
         }
 
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequestDTO dto)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.Password))
+                {
+                    return BadRequest(new { message = "Email và mật khẩu là bắt buộc." });
+                }
+
+                var user = await _service.Login(dto.Email, dto.Password);
+                if (user == null)
+                {
+                    return Unauthorized(new { message = "Email hoặc mật khẩu không đúng." });
+                }
+
+                return Ok(new { message = "Đăng nhập thành công.", data = user });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Đã xảy ra lỗi khi đăng nhập.", error = ex.Message });
+            }
+        }
+
         [HttpGet("getAll")]
         public async Task<IActionResult> GetAll()
         {

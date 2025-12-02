@@ -25,6 +25,11 @@ namespace OJT_RAG.Repositories
             return await _db.Users.FirstOrDefaultAsync(x => x.UserId == id);
         }
 
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            return await _db.Users.FirstOrDefaultAsync(x => x.Email == email);
+        }
+
         public async Task<User> AddAsync(User entity)
         {
             await _db.Users.AddAsync(entity);

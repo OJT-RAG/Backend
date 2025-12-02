@@ -1,14 +1,34 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "F:\\OJT_RAG\\Backend\\",
+  "WorkspaceRootPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|f:\\ojt_rag\\backend\\ojt_rag.api\\controllers\\finalreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\finalreportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.repositories\\majorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\majorrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.repositories\\chatroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8AD158C2-86EE-404A-A737-9995ED61AA3D}|OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj|solutionrelative:ojt_rag.repositories\\chatroomrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.api\\controllers\\chatroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{577E9E08-E576-4D41-8B11-3DA320B33824}|OJT_RAG.API\\OJT_RAG.API.csproj|solutionrelative:ojt_rag.api\\controllers\\chatroomcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.services\\chatroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{625894CF-B6E5-49A0-B06C-A96C0345A6ED}|OJT_RAG.Services\\OJT_RAG.Services.csproj|solutionrelative:ojt_rag.services\\chatroomservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}|OJT_RAG.Engine\\OJT_RAG.Engine.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.engine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}|OJT_RAG.Engine\\OJT_RAG.Engine.csproj|solutionrelative:ojt_rag.engine\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}|OJT_RAG.Engine\\OJT_RAG.Engine.csproj|d:\\project\\capstone\\ojt_rag_csharp\\ojt_rag.engine\\ojt_rag.engine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}|OJT_RAG.Engine\\OJT_RAG.Engine.csproj|solutionrelative:ojt_rag.engine\\ojt_rag.engine.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,33 +38,103 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "UserController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\UserController.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\UserController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\UserController.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.API\\Controllers\\UserController.cs",
               "RelativeToolTip": "OJT_RAG.API\\Controllers\\UserController.cs",
-              "ViewState": "AQIAACwAAAAAAAAAAAAgwD4AAAAWAAAA",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAjwA4AAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T19:03:08.989Z",
+              "WhenOpened": "2025-12-02T16:19:56.006Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FinalreportController.cs",
-              "DocumentMoniker": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\FinalreportController.cs",
-              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\FinalreportController.cs",
-              "ToolTip": "F:\\OJT_RAG\\Backend\\OJT_RAG.API\\Controllers\\FinalreportController.cs",
-              "RelativeToolTip": "OJT_RAG.API\\Controllers\\FinalreportController.cs",
-              "ViewState": "AQIAAEsAAAAAAAAAAAAowFYAAAAAAAAA",
+              "Title": "MajorRepository.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\MajorRepository.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\MajorRepository.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\MajorRepository.cs",
+              "RelativeToolTip": "OJT_RAG.Repositories\\MajorRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-21T19:03:06.568Z",
+              "WhenOpened": "2025-12-02T16:09:57.381Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ChatRoomRepository.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\ChatRoomRepository.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Repositories\\ChatRoomRepository.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\ChatRoomRepository.cs",
+              "RelativeToolTip": "OJT_RAG.Repositories\\ChatRoomRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T16:09:47.298Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ChatRoomController.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.API\\Controllers\\ChatRoomController.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.API\\Controllers\\ChatRoomController.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.API\\Controllers\\ChatRoomController.cs",
+              "RelativeToolTip": "OJT_RAG.API\\Controllers\\ChatRoomController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T13:25:01.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ChatRoomService.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Services\\ChatRoomService.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Services\\ChatRoomService.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Services\\ChatRoomService.cs",
+              "RelativeToolTip": "OJT_RAG.Services\\ChatRoomService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-02T11:17:47.87Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OJT_RAG.Engine.csproj",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+              "RelativeDocumentMoniker": "OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+              "RelativeToolTip": "OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-16T04:29:14.297Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\Program.cs",
+              "RelativeDocumentMoniker": "OJT_RAG.Engine\\Program.cs",
+              "ToolTip": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\Program.cs",
+              "RelativeToolTip": "OJT_RAG.Engine\\Program.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAwwBIAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T04:19:08.523Z"
             }
           ]
         }
