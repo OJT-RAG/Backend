@@ -21,3 +21,15 @@ F:\OJT_RAG\Backend\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.Core\obj\Debug\net8.0\refint\OJT_RAG.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Core\obj\Debug\net8.0\ref\OJT_RAG.Core.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\bin\Debug\net8.0\OJT_RAG.Core.deps.json
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\bin\Debug\net8.0\OJT_RAG.Core.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\bin\Debug\net8.0\OJT_RAG.Core.pdb
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.AssemblyInfoInputs.cache
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.AssemblyInfo.cs
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.csproj.CoreCompileInputs.cache
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.sourcelink.json
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\refint\OJT_RAG.Core.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\OJT_RAG.Core.pdb
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Core\obj\Debug\net8.0\ref\OJT_RAG.Core.dll

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OJT_RAG.Services", "OJT_RAG
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OJT_RAG.WorkerService", "OJT_RAG.WorkerService\OJT_RAG.WorkerService.csproj", "{BE009C1C-8CC6-4551-AEE2-1DFA5695EE6A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OJT_RAG.Engine", "OJT_RAG.Engine\OJT_RAG.Engine.csproj", "{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{BE009C1C-8CC6-4551-AEE2-1DFA5695EE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BE009C1C-8CC6-4551-AEE2-1DFA5695EE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BE009C1C-8CC6-4551-AEE2-1DFA5695EE6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8C02642-8CC5-4225-AD4C-8435BEF45FCF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

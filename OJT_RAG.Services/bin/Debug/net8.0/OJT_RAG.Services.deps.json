@@ -188,12 +188,18 @@
       },
       "OJT_RAG.Core/1.0.0": {
         "runtime": {
-          "OJT_RAG.Core.dll": {}
+          "OJT_RAG.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "OJT_RAG.ModelViews/1.0.0": {
         "runtime": {
-          "OJT_RAG.ModelViews.dll": {}
+          "OJT_RAG.ModelViews.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "OJT_RAG.Repositories/1.0.0": {
@@ -203,7 +209,10 @@
           "OJT_RAG.Core": "1.0.0"
         },
         "runtime": {
-          "OJT_RAG.Repositories.dll": {}
+          "OJT_RAG.Repositories.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
