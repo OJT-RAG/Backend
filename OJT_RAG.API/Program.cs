@@ -14,7 +14,20 @@ using OJT_RAG.Services.UserService;
 var builder = WebApplication.CreateBuilder(args);
 
 
-// 👇 Thêm DateOnly Converter
+// ⭐ ENABLE CORS FOR REACT
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", policy =>
+    {
+        policy.WithOrigins("http://localhost:3000")   // React port
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // allow cookies / tokens
+    });
+});
+
+
+// ⭐ JSON CONVERTERS
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -22,17 +35,16 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
     });
 
-//  Đăng ký PostgreSQL DbContext
+
+// ⭐ DATABASE
 builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-// Swagger
-
+// ⭐ SWAGGER
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    // Ép Swagger hiểu DateOnly là string "yyyy-MM-dd"
     c.MapType<DateOnly>(() => new OpenApiSchema
     {
         Type = "string",
@@ -48,7 +60,7 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 
-// Services
+// ⭐ DEPENDENCY INJECTION
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 
@@ -57,7 +69,6 @@ builder.Services.AddScoped<IJobPositionService, JobPositionService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
-
 
 builder.Services.AddScoped<ISemesterRepository, SemesterRepository>();
 builder.Services.AddScoped<ISemesterService, SemesterService>();
@@ -71,21 +82,59 @@ builder.Services.AddScoped<IJobDescriptionService, JobDescriptionService>();
 builder.Services.AddScoped<IJobTitleOverviewRepository, JobTitleOverviewRepository>();
 builder.Services.AddScoped<IJobTitleOverviewService, JobTitleOverviewService>();
 
+builder.Services.AddScoped<IJobBookmarkRepository, JobBookmarkRepository>();
+builder.Services.AddScoped<IJobBookmarkService, JobBookmarkService>();
+
+builder.Services.AddScoped<IFinalreportRepository, FinalreportRepository>();
+builder.Services.AddScoped<IFinalreportService, FinalreportService>();
+
+builder.Services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
+builder.Services.AddScoped<IChatRoomService, ChatRoomService>();
+
+builder.Services.AddScoped<IMessageRepository, MessageRepository>();
+builder.Services.AddScoped<IMessageService, MessageService>();
+
+builder.Services.AddScoped<ISemesterCompanyRepository, SemesterCompanyRepository>();
+builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
+
+builder.Services.AddScoped<IDocumentTagRepository, DocumentTagRepository>();
+builder.Services.AddScoped<IDocumentTagService, DocumentTagService>();
+
+builder.Services.AddScoped<IOjtDocumentRepository, OjtDocumentRepository>();
+builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
+
+builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
+builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
+
+builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
+builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
+
+
+builder.Services.AddSingleton<GoogleDriveService>();
+
+
 var app = builder.Build();
 
-// Middleware
+
+// ⭐ SWAGGER UI
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
+
+// ⭐ ACTIVATE CORS BEFORE AUTHORIZATION
+app.UseCors("AllowReactApp");
+
 app.UseAuthorization();
+
 app.MapControllers();
+
 app.Run();
 
 
-// 👇 DateOnly Converters
+// ---------------------- JSON CONVERTERS ----------------------
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";

@@ -59,7 +59,8 @@ namespace OJT_RAG.API.Controllers
                 {
                     return BadRequest(new { message = "Người dùng đã tồn tại (Id hoặc trường unique bị trùng)." });
                 }
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi tạo người dùng.", error = ex.Message });
+                Console.WriteLine("ERROR: " + ex.ToString());
+                throw;
             }
         }
 

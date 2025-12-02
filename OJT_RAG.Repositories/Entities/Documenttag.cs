@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using Microsoft.EntityFrameworkCore;
 
-namespace OJT_RAG.Repositories.Entities;
-
-[Table("documenttag")]
-public partial class Documenttag
+namespace OJT_RAG.Repositories.Entities
 {
-    [Key]
-    [Column("documenttag_id")]
-    public long DocumenttagId { get; set; }
+    [Table("documenttag")]
+    public partial class Documenttag
+    {
+        [Key]
+        [Column("documenttag_id")]
+        public long DocumenttagId { get; set; }
 
-    [Column("name")]
-    [StringLength(255)]
-    public string? Name { get; set; }
+        [Column("name")]
+        [StringLength(255)]
+        public string? Name { get; set; }
 
-    [ForeignKey("DocumenttagId")]
-    [InverseProperty("Documenttags")]
-    public virtual ICollection<Companydocument> Companydocuments { get; set; } = new List<Companydocument>();
+        // Companydocumenttag (N-N qua trung gian)
+        [InverseProperty("DocumentTag")]
+        public virtual ICollection<Companydocumenttag> CompanyDocumentTags { get; set; }
+            = new List<Companydocumenttag>();
 
-    [ForeignKey("DocumenttagId")]
-    [InverseProperty("Documenttags")]
-    public virtual ICollection<Ojtdocument> Ojtdocuments { get; set; } = new List<Ojtdocument>();
+        // Ojtdocumenttag (N-N qua trung gian)
+        [InverseProperty("DocumentTag")]
+        public virtual ICollection<Ojtdocumenttag> OjtDocumentTags { get; set; }
+            = new List<Ojtdocumenttag>();
+    }
 }

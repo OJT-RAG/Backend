@@ -1,7 +1,8 @@
 ﻿namespace OJT_RAG.DTOs.JobPositionDTO
 {
-    public class JobPositionUpdateDTO
+    public class UpdateJobPositionDTO
     {
+        public long JobPositionId { get; set; }
         public long? MajorId { get; set; }
         public long? SemesterId { get; set; }
         public string? JobTitle { get; set; }

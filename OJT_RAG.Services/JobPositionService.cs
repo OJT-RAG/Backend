@@ -1,4 +1,5 @@
 ﻿using OJT_RAG.DTOs.JobPositionDTO;
+using OJT_RAG.ModelView.JobPositionModelView;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
@@ -14,19 +15,49 @@ namespace OJT_RAG.Services
             _repo = repo;
         }
 
-        public async Task<IEnumerable<JobPosition>> GetAllAsync()
-            => await _repo.GetAll();
-
-        public async Task<JobPosition?> GetByIdAsync(long id)
-            => await _repo.GetById(id);
-
-        public async Task<JobPosition> CreateAsync(JobPositionCreateDTO dto)
+        public async Task<IEnumerable<JobPositionModelView>> GetAll()
         {
-            var newId = await _repo.GetNextId();
+            return (await _repo.GetAllAsync()).Select(x => new JobPositionModelView
+            {
+                JobPositionId = x.JobPositionId,
+                MajorId = x.MajorId,
+                SemesterId = x.SemesterId,
+                JobTitle = x.JobTitle,
+                Requirements = x.Requirements,
+                Benefit = x.Benefit,
+                Location = x.Location,
+                SalaryRange = x.SalaryRange,
+                IsActive = x.IsActive,
+                CreateAt = x.CreateAt,
+                UpdateAt = x.UpdateAt
+            });
+        }
 
+        public async Task<JobPositionModelView?> GetById(long id)
+        {
+            var x = await _repo.GetByIdAsync(id);
+            if (x == null) return null;
+
+            return new JobPositionModelView
+            {
+                JobPositionId = x.JobPositionId,
+                MajorId = x.MajorId,
+                SemesterId = x.SemesterId,
+                JobTitle = x.JobTitle,
+                Requirements = x.Requirements,
+                Benefit = x.Benefit,
+                Location = x.Location,
+                SalaryRange = x.SalaryRange,
+                IsActive = x.IsActive,
+                CreateAt = x.CreateAt,
+                UpdateAt = x.UpdateAt
+            };
+        }
+
+        public async Task<bool> Create(CreateJobPositionDTO dto)
+        {
             var entity = new JobPosition
             {
-                JobPositionId = newId,
                 MajorId = dto.MajorId,
                 SemesterId = dto.SemesterId,
                 JobTitle = dto.JobTitle,
@@ -34,41 +65,37 @@ namespace OJT_RAG.Services
                 Benefit = dto.Benefit,
                 Location = dto.Location,
                 SalaryRange = dto.SalaryRange,
-                IsActive = true,
+                IsActive = dto.IsActive,
                 CreateAt = DateTime.UtcNow.ToLocalTime(),
                 UpdateAt = DateTime.UtcNow.ToLocalTime()
             };
 
-            await _repo.Add(entity);
-            return entity;
-        }
-
-        public async Task<JobPosition?> UpdateAsync(long id, JobPositionUpdateDTO dto)
-        {
-            var existing = await _repo.GetById(id);
-            if (existing == null) return null;
-
-            existing.MajorId = dto.MajorId ?? existing.MajorId;
-            existing.SemesterId = dto.SemesterId ?? existing.SemesterId;
-            existing.JobTitle = dto.JobTitle ?? existing.JobTitle;
-            existing.Requirements = dto.Requirements ?? existing.Requirements;
-            existing.Benefit = dto.Benefit ?? existing.Benefit;
-            existing.Location = dto.Location ?? existing.Location;
-            existing.SalaryRange = dto.SalaryRange ?? existing.SalaryRange;
-            existing.IsActive = dto.IsActive ?? existing.IsActive;
-            existing.UpdateAt = DateTime.UtcNow.ToLocalTime();
-
-            await _repo.Update(existing);
-            return existing;
-        }
-
-        public async Task<bool> DeleteAsync(long id)
-        {
-            var existing = await _repo.GetById(id);
-            if (existing == null) return false;
-
-            await _repo.Delete(id);
+            await _repo.AddAsync(entity);
             return true;
+        }
+
+        public async Task<bool> Update(UpdateJobPositionDTO dto)
+        {
+            var entity = await _repo.GetByIdAsync(dto.JobPositionId);
+            if (entity == null) return false;
+
+            entity.MajorId = dto.MajorId;
+            entity.SemesterId = dto.SemesterId;
+            entity.JobTitle = dto.JobTitle;
+            entity.Requirements = dto.Requirements;
+            entity.Benefit = dto.Benefit;
+            entity.Location = dto.Location;
+            entity.SalaryRange = dto.SalaryRange;
+            entity.IsActive = dto.IsActive;
+            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
+
+            await _repo.UpdateAsync(entity);
+            return true;
+        }
+
+        public async Task<bool> Delete(long id)
+        {
+            return await _repo.DeleteAsync(id);
         }
     }
 }

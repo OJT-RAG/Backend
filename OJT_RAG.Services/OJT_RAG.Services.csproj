@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Google.Apis.Auth" Version="1.72.0" />
+    <PackageReference Include="Google.Apis.Drive.v3" Version="1.72.0.3944" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\OJT_RAG.Core\OJT_RAG.Core.csproj" />
     <ProjectReference Include="..\OJT_RAG.ModelViews\OJT_RAG.ModelViews.csproj" />
     <ProjectReference Include="..\OJT_RAG.Repositories\OJT_RAG.Repositories.csproj" />

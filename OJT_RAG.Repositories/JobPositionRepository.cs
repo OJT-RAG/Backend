@@ -1,53 +1,52 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
-
-using System;
 using OJT_RAG.Repositories.Context;
+using System;
 
 namespace OJT_RAG.Repositories
 {
     public class JobPositionRepository : IJobPositionRepository
     {
-        private readonly OJTRAGContext _context;
+        private readonly OJTRAGContext _db;
 
-        public JobPositionRepository(OJTRAGContext context)
+        public JobPositionRepository(OJTRAGContext db)
         {
-            _context = context;
+            _db = db;
         }
 
-        public async Task<IEnumerable<JobPosition>> GetAll()
-            => await _context.JobPositions.ToListAsync();
-
-        public async Task<JobPosition?> GetById(long id)
-            => await _context.JobPositions.FindAsync(id);
-
-        public async Task<long> GetNextId()
+        public async Task<IEnumerable<JobPosition>> GetAllAsync()
         {
-            var maxId = await _context.JobPositions.MaxAsync(p => (long?)p.JobPositionId) ?? 0;
-            return maxId + 1;
+            return await _db.JobPositions.ToListAsync();
         }
 
-        public async Task Add(JobPosition entity)
+        public async Task<JobPosition?> GetByIdAsync(long id)
         {
-            _context.JobPositions.Add(entity);
-            await _context.SaveChangesAsync();
+            return await _db.JobPositions.FirstOrDefaultAsync(x => x.JobPositionId == id);
         }
 
-        public async Task Update(JobPosition entity)
+        public async Task<JobPosition> AddAsync(JobPosition entity)
         {
-            _context.JobPositions.Update(entity);
-            await _context.SaveChangesAsync();
+            await _db.JobPositions.AddAsync(entity);
+            await _db.SaveChangesAsync();
+            return entity;
         }
 
-        public async Task Delete(long id)
+        public async Task<JobPosition> UpdateAsync(JobPosition entity)
         {
-            var entity = await GetById(id);
-            if (entity != null)
-            {
-                _context.JobPositions.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            _db.JobPositions.Update(entity);
+            await _db.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task<bool> DeleteAsync(long id)
+        {
+            var model = await GetByIdAsync(id);
+            if (model == null) return false;
+
+            _db.JobPositions.Remove(model);
+            await _db.SaveChangesAsync();
+            return true;
         }
     }
 }
