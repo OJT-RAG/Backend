@@ -964,6 +964,16 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
+      },
+      "OJT_RAG.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/OJT_RAG.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/OJT_RAG.Core.dll": {}
+        }
       }
     }
   },
@@ -2911,6 +2921,11 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
+    },
+    "OJT_RAG.Core/1.0.0": {
+      "type": "project",
+      "path": "../OJT_RAG.Core/OJT_RAG.Core.csproj",
+      "msbuildProject": "../OJT_RAG.Core/OJT_RAG.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2918,23 +2933,29 @@
       "Microsoft.EntityFrameworkCore >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.10",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
+      "OJT_RAG.Core >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "C:\\Users\\nguye\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj",
+      "projectUniqueName": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj",
       "projectName": "OJT_RAG.Repositories",
-      "projectPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.Repositories\\obj\\",
+      "projectPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\OJT_RAG.Repositories.csproj",
+      "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+      "outputPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Repositories\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2948,7 +2969,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Core\\OJT_RAG.Core.csproj": {
+              "projectPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Core\\OJT_RAG.Core.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -2960,7 +2985,8 @@
         "enableAudit": "true",
         "auditLevel": "low",
         "auditMode": "direct"
-      }
+      },
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net8.0": {
@@ -3003,7 +3029,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

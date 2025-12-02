@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj": {}
+    "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj": {}
   },
   "projects": {
-    "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj": {
+    "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj",
+        "projectUniqueName": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj",
         "projectName": "OJT_RAG.ModelViews",
-        "projectPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.ModelViews\\obj\\",
+        "projectPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.ModelViews\\OJT_RAG.ModelViews.csproj",
+        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.ModelViews\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,7 +44,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -71,7 +76,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
