@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8c51cdbe29d0274f60bc959d7cff7827036377a8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22af74a06c68eb55ae16d61e1419fcdaa7b5c0ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

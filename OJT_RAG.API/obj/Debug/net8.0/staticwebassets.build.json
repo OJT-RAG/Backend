@@ -1,1 +1,11 @@
-{"Version":1,"Hash":"kYMS/aOJANlszAp0TZa673UZI0CZd47qBVo+yhGojFA=","Source":"OJT_RAG.API","BasePath":"_content/OJT_RAG.API","Mode":"Default","ManifestType":"Build","ReferencedProjectsConfiguration":[],"DiscoveryPatterns":[],"Assets":[],"Endpoints":[]}
+{
+  "Version": 1,
+  "Hash": "aU1SI2wwZ4twhqLkeOjBKTuyqtgi+xrhQZdbmNHrRI8=",
+  "Source": "OJT_RAG.API",
+  "BasePath": "_content/OJT_RAG.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

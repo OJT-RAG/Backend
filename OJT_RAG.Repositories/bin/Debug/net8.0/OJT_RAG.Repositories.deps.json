@@ -657,10 +657,7 @@
       "System.Threading.Channels/7.0.0": {},
       "OJT_RAG.Core/1.0.0": {
         "runtime": {
-          "OJT_RAG.Core.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "OJT_RAG.Core.dll": {}
         }
       }
     }

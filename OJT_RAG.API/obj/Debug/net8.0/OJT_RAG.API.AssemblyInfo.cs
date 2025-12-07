@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("b2c672fe-fcf7-4922-b30d-dc20bf4c50e1")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+bea22c2c1679dc847dd4748c95648e7962e372d5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+22af74a06c68eb55ae16d61e1419fcdaa7b5c0ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("OJT_RAG.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OJT_RAG.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

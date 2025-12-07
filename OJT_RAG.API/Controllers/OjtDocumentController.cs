@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.OjtDocumentDTO;
 using OJT_RAG.Services.Interfaces;
 
@@ -52,7 +53,7 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
-
+        [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CreateOjtDocumentDTO dto)
         {
@@ -81,7 +82,7 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
-
+        [Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromForm] UpdateOjtDocumentDTO dto)
         {
@@ -107,7 +108,7 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
-
+        [Authorize]
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
