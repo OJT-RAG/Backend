@@ -106,5 +106,30 @@ namespace OJT_RAG.Services.UserService
             await _repo.DeleteAsync(id);
             return true;
         }
+
+        public async Task<UserModelView?> Login(string email, string password)
+        {
+            var user = await _repo.GetByEmailAsync(email);
+            if (user == null) return null;
+
+            // NOTE: Currently comparing plain text passwords.
+            // For production, replace this with proper password hashing & verification.
+            if (user.Password != password) return null;
+
+            return new UserModelView
+            {
+                UserId = user.UserId,
+                MajorId = user.MajorId,
+                CompanyId = user.CompanyId,
+                Email = user.Email,
+                Fullname = user.Fullname,
+                StudentCode = user.StudentCode,
+                Dob = user.Dob,
+                Phone = user.Phone,
+                AvatarUrl = user.AvatarUrl,
+                CvUrl = user.CvUrl,
+                CreateAt = user.CreateAt
+            };
+        }
     }
 }

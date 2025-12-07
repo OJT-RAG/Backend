@@ -505,7 +505,18 @@
       },
       "OJT_RAG.Core/1.0.0": {
         "runtime": {
-          "OJT_RAG.Core.dll": {}
+          "OJT_RAG.Core.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "OJT_RAG.ModelViews/1.0.0": {
+        "runtime": {
+          "OJT_RAG.ModelViews.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "OJT_RAG.Repositories/1.0.0": {
@@ -515,16 +526,23 @@
           "OJT_RAG.Core": "1.0.0"
         },
         "runtime": {
-          "OJT_RAG.Repositories.dll": {}
+          "OJT_RAG.Repositories.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       },
       "OJT_RAG.Services/1.0.0": {
         "dependencies": {
           "OJT_RAG.Core": "1.0.0",
+          "OJT_RAG.ModelViews": "1.0.0",
           "OJT_RAG.Repositories": "1.0.0"
         },
         "runtime": {
-          "OJT_RAG.Services.dll": {}
+          "OJT_RAG.Services.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -809,6 +827,11 @@
       "hashPath": "system.text.json.8.0.0.nupkg.sha512"
     },
     "OJT_RAG.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "OJT_RAG.ModelViews/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

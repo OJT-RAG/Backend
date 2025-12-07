@@ -10,5 +10,6 @@ namespace OJT_RAG.Services.Interfaces
         Task<bool> Create(CreateUserDTO dto);
         Task<bool> Update(UpdateUserDTO dto);
         Task<bool> Delete(long id);
+        Task<UserModelView?> Login(string email, string password);
     }
 }
