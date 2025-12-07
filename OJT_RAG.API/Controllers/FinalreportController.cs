@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.FinalreportDTO;
 using OJT_RAG.Services.Interfaces;
-
+using Microsoft.AspNetCore.Authorization;
 namespace OJT_RAG.API.Controllers
 {
     [ApiController]
@@ -89,6 +89,7 @@ namespace OJT_RAG.API.Controllers
         }
 
         // 🔥 FIX HERE: Dùng FromForm để hỗ trợ upload file
+        [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CreateFinalreportDTO dto)
         {
@@ -105,6 +106,7 @@ namespace OJT_RAG.API.Controllers
         }
 
         // 🔥 FIX HERE: Dùng FromForm hỗ trợ upload file khi update
+        [Authorize]
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromForm] UpdateFinalreportDTO dto)
         {
@@ -120,7 +122,7 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { message = "Đã xảy ra lỗi khi cập nhật final report.", error = ex.Message });
             }
         }
-
+        [Authorize]
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {

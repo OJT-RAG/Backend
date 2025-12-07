@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.UserDTO;
+using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Interfaces;
 
 namespace OJT_RAG.API.Controllers
@@ -9,38 +11,40 @@ namespace OJT_RAG.API.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
+        private readonly JwtService _jwt;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service, JwtService jwt)
         {
             _service = service;
+            _jwt = jwt;
         }
 
-
+        // ------------------------- LOGIN ----------------------------
         [HttpPost("login")]
+        [AllowAnonymous] // không cần token
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO dto)
         {
-            try
+            var user = await _service.Login(dto.Email, dto.Password);
+            if (user == null)
             {
-                if (string.IsNullOrWhiteSpace(dto.Email) || string.IsNullOrWhiteSpace(dto.Password))
-                {
-                    return BadRequest(new { message = "Email và mật khẩu là bắt buộc." });
-                }
-
-                var user = await _service.Login(dto.Email, dto.Password);
-                if (user == null)
-                {
-                    return Unauthorized(new { message = "Email hoặc mật khẩu không đúng." });
-                }
-
-                return Ok(new { message = "Đăng nhập thành công.", data = user });
+                return Unauthorized(new { message = "Email hoặc mật khẩu không đúng." });
             }
-            catch (Exception ex)
+
+            // 🎯 tạo JWT bằng JwtService inject từ DI
+            var token = _jwt.GenerateToken(user.UserId, user.Email/*, user.Role*/);
+
+            return Ok(new
             {
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi đăng nhập.", error = ex.Message });
-            }
+                message = "Đăng nhập thành công.",
+                token = token,
+                data = user
+            });
         }
 
+
+        // ------------------------- GET ALL ----------------------------
         [HttpGet("getAll")]
+       
         public async Task<IActionResult> GetAll()
         {
             try
@@ -50,11 +54,18 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi lấy danh sách người dùng.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    message = "Đã xảy ra lỗi khi lấy danh sách người dùng.",
+                    error = ex.Message
+                });
             }
         }
 
+
+        // ------------------------- GET BY ID ----------------------------
         [HttpGet("get/{id}")]
+   
         public async Task<IActionResult> Get(long id)
         {
             try
@@ -66,10 +77,16 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = $"Đã xảy ra lỗi khi lấy người dùng với Id = {id}.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    message = $"Đã xảy ra lỗi khi lấy người dùng với Id = {id}.",
+                    error = ex.Message
+                });
             }
         }
 
+
+        // ------------------------- CREATE ----------------------------
         [HttpPost("create")]
         public async Task<IActionResult> Create(CreateUserDTO dto)
         {
@@ -82,13 +99,19 @@ namespace OJT_RAG.API.Controllers
             {
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate key"))
                 {
-                    return BadRequest(new { message = "Người dùng đã tồn tại (Id hoặc trường unique bị trùng)." });
+                    return BadRequest(new
+                    {
+                        message = "Người dùng đã tồn tại (Id hoặc trường unique bị trùng)."
+                    });
                 }
+
                 Console.WriteLine("ERROR: " + ex.ToString());
                 throw;
             }
         }
 
+
+        // ------------------------- UPDATE ----------------------------
         [HttpPut("update")]
         public async Task<IActionResult> Update(UpdateUserDTO dto)
         {
@@ -103,12 +126,22 @@ namespace OJT_RAG.API.Controllers
             {
                 if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate key"))
                 {
-                    return BadRequest(new { message = "Cập nhật thất bại: giá trị trùng với người dùng khác." });
+                    return BadRequest(new
+                    {
+                        message = "Cập nhật thất bại: giá trị trùng với người dùng khác."
+                    });
                 }
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi cập nhật người dùng.", error = ex.Message });
+
+                return StatusCode(500, new
+                {
+                    message = "Đã xảy ra lỗi khi cập nhật người dùng.",
+                    error = ex.Message
+                });
             }
         }
 
+
+        // ------------------------- DELETE ----------------------------
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
@@ -121,7 +154,11 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = $"Đã xảy ra lỗi khi xóa người dùng với Id = {id}.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    message = $"Đã xảy ra lỗi khi xóa người dùng với Id = {id}.",
+                    error = ex.Message
+                });
             }
         }
     }

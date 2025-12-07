@@ -1,33 +1,42 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using OJT_RAG.Repositories;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Interfaces;
-using OJT_RAG.Services.Interfaces;
-using OJT_RAG.Services;
 using OJT_RAG.Repositories.Repositories;
+using OJT_RAG.Services;
+using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
+using OJT_RAG.Services.Interfaces;
+using OJT_RAG.Services.UserService;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Microsoft.OpenApi.Models;
-using OJT_RAG.Services.UserService;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-// ⭐ ENABLE CORS FOR REACT
+// ---------------------- JWT CONFIG ----------------------
+var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+var jwtAudience = builder.Configuration["Jwt:Audience"];
+var jwtKey = builder.Configuration["Jwt:Key"];
+
+// ---------------------- CORS ----------------------
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")   // React port
+        policy.WithOrigins("http://localhost:3000")
               .AllowAnyHeader()
               .AllowAnyMethod()
-              .AllowCredentials(); // allow cookies / tokens
+              .AllowCredentials();
     });
 });
 
-
-// ⭐ JSON CONVERTERS
+// ---------------------- JSON OPTIONS ----------------------
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -35,13 +44,11 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
     });
 
-
-// ⭐ DATABASE
+// ---------------------- DATABASE ----------------------
 builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-
-// ⭐ SWAGGER
+// ---------------------- SWAGGER ----------------------
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -50,25 +57,102 @@ builder.Services.AddSwaggerGen(c =>
         Type = "string",
         Format = "date"
     });
-
     c.MapType<DateOnly?>(() => new OpenApiSchema
     {
         Type = "string",
         Format = "date",
         Nullable = true
     });
+
+    // Enable JWT input on Swagger
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        In = ParameterLocation.Header,
+        Description = "Nhập JWT Token vào đây",
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "bearer",
+        BearerFormat = "JWT"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement {
+        {
+            new OpenApiSecurityScheme {
+                Reference = new OpenApiReference {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[]{}
+        }
+    });
 });
 
+// ---------------------- AUTHENTICATION (JWT) ----------------------
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtIssuer,
+        ValidAudience = jwtAudience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey!))
+    };
+    // 📌 Custom bắt lỗi 401, 403
+    options.Events = new JwtBearerEvents
+    {
+        OnChallenge = context =>
+        {
+            context.HandleResponse(); // Ngăn response mặc định
 
-// ⭐ DEPENDENCY INJECTION
+            context.Response.StatusCode = 401;
+            context.Response.ContentType = "application/json";
+
+            var result = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                status = 401,
+                message = "Token không hợp lệ hoặc thiếu token."
+            });
+
+            return context.Response.WriteAsync(result);
+        },
+
+        OnForbidden = context =>
+        {
+            context.Response.StatusCode = 403;
+            context.Response.ContentType = "application/json";
+
+            var result = System.Text.Json.JsonSerializer.Serialize(new
+            {
+                status = 403,
+                message = "Bạn không có quyền truy cập tài nguyên này."
+            });
+
+            return context.Response.WriteAsync(result);
+        }
+    };
+});
+
+// ---------------------- AUTHORIZATION ----------------------
+builder.Services.AddAuthorization();
+
+// ---------------------- DEPENDENCY INJECTION ----------------------
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
 builder.Services.AddScoped<IJobPositionService, JobPositionService>();
-
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped<ISemesterRepository, SemesterRepository>();
 builder.Services.AddScoped<ISemesterService, SemesterService>();
@@ -108,24 +192,24 @@ builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
-
+builder.Services.AddScoped<JwtService>();
 
 builder.Services.AddSingleton<GoogleDriveService>();
 
-
+// ---------------------- BUILD APP ----------------------
 var app = builder.Build();
 
-
-// ⭐ SWAGGER UI
+// ---------------------- MIDDLEWARE ----------------------
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-
-// ⭐ ACTIVATE CORS BEFORE AUTHORIZATION
 app.UseCors("AllowReactApp");
+
+// MUST BE BEFORE Authorization
+app.UseAuthentication();
 
 app.UseAuthorization();
 
@@ -138,34 +222,25 @@ app.Run();
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";
-
     public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
-    {
-        var value = reader.GetString();
-        return DateOnly.ParseExact(value!, Format);
-    }
+        => DateOnly.ParseExact(reader.GetString()!, Format);
 
     public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
-    {
-        writer.WriteStringValue(value.ToString(Format));
-    }
+        => writer.WriteStringValue(value.ToString(Format));
 }
 
 public class NullableDateOnlyJsonConverter : JsonConverter<DateOnly?>
 {
     private const string Format = "yyyy-MM-dd";
-
     public override DateOnly? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
-        var value = reader.GetString();
-        return string.IsNullOrEmpty(value) ? null : DateOnly.ParseExact(value!, Format);
+        var str = reader.GetString();
+        return string.IsNullOrEmpty(str) ? null : DateOnly.ParseExact(str!, Format);
     }
 
     public override void Write(Utf8JsonWriter writer, DateOnly? value, JsonSerializerOptions options)
     {
-        if (value.HasValue)
-            writer.WriteStringValue(value.Value.ToString(Format));
-        else
-            writer.WriteNullValue();
+        if (value.HasValue) writer.WriteStringValue(value.Value.ToString(Format));
+        else writer.WriteNullValue();
     }
 }
