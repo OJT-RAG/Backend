@@ -6,6 +6,31 @@ using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Repositories.Context
 {
+    public class UserRoleConverter : ValueConverter<UserRole?, string?>
+    {
+        public UserRoleConverter() : base(
+            v => v.HasValue ? v.Value switch
+            {
+                UserRole.Admin => "admin",
+                UserRole.CroStaff => "cro_staff",
+                UserRole.Student => "student",
+                UserRole.Company => "company",
+                _ => throw new ArgumentException($"Unknown enum value: {v}")
+            } : null,
+            v => !string.IsNullOrEmpty(v) ? v switch
+            {
+                "admin" => UserRole.Admin,
+                "cro_staff" => UserRole.CroStaff,
+                "student" => UserRole.Student,
+                "company" => UserRole.Company,
+                _ => throw new ArgumentException($"Unknown database value: {v}")
+            } : null)
+        {
+        }
+    }
+
+namespace OJT_RAG.Repositories.Context
+{
     public partial class OJTRAGContext : DbContext
     {
         public OJTRAGContext()
@@ -214,23 +239,7 @@ namespace OJT_RAG.Repositories.Context
 
                 entity.Property(e => e.Role)
                     .HasColumnType("user_role_enum")
-                    .HasConversion(
-                        v => v.HasValue ? v.Value switch
-                        {
-                            UserRole.Admin => "admin",
-                            UserRole.CroStaff => "cro_staff",
-                            UserRole.Student => "student",
-                            UserRole.Company => "company",
-                            _ => throw new ArgumentException($"Unknown enum value: {v}")
-                        } : (string?)null,
-                        v => !string.IsNullOrEmpty(v) ? v switch
-                        {
-                            "admin" => UserRole.Admin,
-                            "cro_staff" => UserRole.CroStaff,
-                            "student" => UserRole.Student,
-                            "company" => UserRole.Company,
-                            _ => throw new ArgumentException($"Unknown database value: {v}")
-                        } : (UserRole?)null);
+                    .HasConversion(new UserRoleConverter());
 
                 entity.HasOne(d => d.Company).WithMany(p => p.Users);
                 entity.HasOne(d => d.Major).WithMany(p => p.Users);
