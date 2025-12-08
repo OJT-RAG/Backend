@@ -1,4 +1,6 @@
-﻿namespace OJT_RAG.ModelView.UserModelView
+﻿using OJT_RAG.Repositories.Entities;
+
+namespace OJT_RAG.ModelView.UserModelView
 {
     public class UserModelView
     {
@@ -6,6 +8,7 @@
         public long? MajorId { get; set; }
         public long? CompanyId { get; set; }
         public string? Email { get; set; }
+        public UserRole? Role { get; set; }
         public string? Fullname { get; set; }
         public string? StudentCode { get; set; }
         public DateOnly? Dob { get; set; }

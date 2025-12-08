@@ -27,6 +27,9 @@ public partial class User
     [StringLength(255)]
     public string? Password { get; set; }
 
+    [Column("role")]
+    public UserRole? Role { get; set; }
+
     [Column("fullname")]
     [StringLength(255)]
     public string? Fullname { get; set; }
