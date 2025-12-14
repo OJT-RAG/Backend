@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using OJT_RAG.API.Hubs;
 using OJT_RAG.Repositories;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Interfaces;
@@ -20,21 +22,48 @@ var builder = WebApplication.CreateBuilder(args);
 
 
 // ---------------------- JWT CONFIG ----------------------
-var jwtIssuer = builder.Configuration["Jwt:Issuer"];
-var jwtAudience = builder.Configuration["Jwt:Audience"];
-var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtKey =
+    Environment.GetEnvironmentVariable("JWT_KEY")
+    ?? builder.Configuration["Jwt:Key"];
 
-// ---------------------- CORS ----------------------
-builder.Services.AddCors(options =>
+var jwtIssuer =
+    Environment.GetEnvironmentVariable("JWT_ISSUER")
+    ?? builder.Configuration["Jwt:Issuer"];
+
+var jwtAudience =
+    Environment.GetEnvironmentVariable("JWT_AUDIENCE")
+    ?? builder.Configuration["Jwt:Audience"];
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+throw new Exception("JWT_KEY environment variable is missing");
+
+if (string.IsNullOrWhiteSpace(jwtKey))
+{
+throw new Exception("JWT_KEY environment variable is missing");
+}
+
+Console.WriteLine("JWT_KEY ENV = " + Environment.GetEnvironmentVariable("JWT_KEY"));
+
+if (string.IsNullOrEmpty(jwtKey))
+{
+    throw new Exception("JWT_KEY environment variable is missing");
+}
+    // ---------------------- CORS ----------------------
+    builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+        policy
+            .WithOrigins(
+                "http://localhost:3000",
+                "https://localhost:7031"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
     });
 });
+
 
 // ---------------------- JSON OPTIONS ----------------------
 builder.Services.AddControllers()
@@ -47,6 +76,7 @@ builder.Services.AddControllers()
 // ---------------------- DATABASE ----------------------
 builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 // ---------------------- SWAGGER ----------------------
 builder.Services.AddEndpointsApiExplorer();
@@ -194,6 +224,13 @@ builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepo
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
 builder.Services.AddScoped<JwtService>();
 
+builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
+builder.Services.AddScoped<UserChatService>();
+builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
+
+builder.Services.AddSignalR();
+
+
 builder.Services.AddSingleton<GoogleDriveService>();
 
 // ---------------------- BUILD APP ----------------------
@@ -207,6 +244,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("AllowReactApp");
+app.MapHub<UserChatHub>("/hubs/user-chat");
+
 
 // MUST BE BEFORE Authorization
 app.UseAuthentication();

@@ -1393,16 +1393,6 @@
           "buildTransitive/net6.0/_._": {}
         }
       },
-      "OJT_RAG.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "compile": {
-          "bin/placeholder/OJT_RAG.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OJT_RAG.Core.dll": {}
-        }
-      },
       "OJT_RAG.ModelViews/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
@@ -1422,8 +1412,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore": "9.0.10",
-          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4",
-          "OJT_RAG.Core": "1.0.0"
+          "Npgsql.EntityFrameworkCore.PostgreSQL": "9.0.4"
         },
         "compile": {
           "bin/placeholder/OJT_RAG.Repositories.dll": {}
@@ -1440,7 +1429,6 @@
           "Google.Apis.Drive.v3": "1.72.0.3944",
           "Microsoft.AspNetCore.Http.Features": "5.0.17",
           "Microsoft.IdentityModel.Tokens": "8.15.0",
-          "OJT_RAG.Core": "1.0.0",
           "OJT_RAG.ModelViews": "1.0.0",
           "OJT_RAG.Repositories": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "8.15.0"
@@ -4153,11 +4141,6 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "OJT_RAG.Core/1.0.0": {
-      "type": "project",
-      "path": "../OJT_RAG.Core/OJT_RAG.Core.csproj",
-      "msbuildProject": "../OJT_RAG.Core/OJT_RAG.Core.csproj"
     },
     "OJT_RAG.ModelViews/1.0.0": {
       "type": "project",

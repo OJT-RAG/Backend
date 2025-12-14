@@ -964,16 +964,6 @@
         "build": {
           "buildTransitive/net6.0/_._": {}
         }
-      },
-      "OJT_RAG.Core/1.0.0": {
-        "type": "project",
-        "framework": ".NETCoreApp,Version=v8.0",
-        "compile": {
-          "bin/placeholder/OJT_RAG.Core.dll": {}
-        },
-        "runtime": {
-          "bin/placeholder/OJT_RAG.Core.dll": {}
-        }
       }
     }
   },
@@ -2921,11 +2911,6 @@
         "system.threading.channels.nuspec",
         "useSharedDesignerContext.txt"
       ]
-    },
-    "OJT_RAG.Core/1.0.0": {
-      "type": "project",
-      "path": "../OJT_RAG.Core/OJT_RAG.Core.csproj",
-      "msbuildProject": "../OJT_RAG.Core/OJT_RAG.Core.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -2933,8 +2918,7 @@
       "Microsoft.EntityFrameworkCore >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Design >= 9.0.10",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.10",
-      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4",
-      "OJT_RAG.Core >= 1.0.0"
+      "Npgsql.EntityFrameworkCore.PostgreSQL >= 9.0.4"
     ]
   },
   "packageFolders": {
@@ -2964,11 +2948,7 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {
-            "F:\\OJT_RAG\\Backend\\OJT_RAG.Core\\OJT_RAG.Core.csproj": {
-              "projectPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.Core\\OJT_RAG.Core.csproj"
-            }
-          }
+          "projectReferences": {}
         }
       },
       "warningProperties": {

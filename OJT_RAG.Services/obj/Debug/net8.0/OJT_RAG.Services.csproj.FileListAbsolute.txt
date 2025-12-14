@@ -38,10 +38,8 @@ D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.Services\obj\Debug\net8.0\ref\OJT_RAG
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.deps.json
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.pdb
-F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Repositories.dll
-F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Core.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.ModelViews.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Repositories.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Services\obj\Debug\net8.0\OJT_RAG.Services.csproj.AssemblyReference.cache
