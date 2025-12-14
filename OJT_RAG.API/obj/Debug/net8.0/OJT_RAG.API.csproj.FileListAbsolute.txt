@@ -296,7 +296,6 @@ D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.genr
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\ref\OJT_RAG.API.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\appsettings.Development.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\appsettings.json
-F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\client_secret.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.exe
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.deps.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.runtimeconfig.json
@@ -424,13 +423,11 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.W
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
-F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Repositories.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Services.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.ModelViews.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Services.pdb
-F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Core.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Repositories.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.csproj.AssemblyReference.cache
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.GeneratedMSBuildEditorConfig.editorconfig
