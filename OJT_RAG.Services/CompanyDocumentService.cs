@@ -3,7 +3,7 @@ using OJT_RAG.ModelViews.CompanyDocument;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
-
+using System.Net.Http;
 namespace OJT_RAG.Services
 {
     public class CompanyDocumentService : ICompanyDocumentService
@@ -130,6 +130,15 @@ namespace OJT_RAG.Services
             }
 
             return await _repo.DeleteAsync(id);
+        }
+
+        public async Task<(byte[] fileBytes, string fileName, string contentType)?> Download(long id)
+        {
+            var doc = await _repo.GetByIdAsync(id);
+            if (doc == null || string.IsNullOrEmpty(doc.FileUrl))
+                return null;
+
+            return await _drive.DownloadFileByUrlAsync(doc.FileUrl);
         }
 
     }

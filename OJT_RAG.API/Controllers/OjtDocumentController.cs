@@ -128,5 +128,21 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
+
+        [Authorize]
+        [HttpGet("download/{id}")]
+        public async Task<IActionResult> Download(long id)
+        {
+            var result = await _service.DownloadAsync(id);
+            if (result == null)
+                return NotFound(new { message = "Không tìm thấy tài liệu OJT." });
+
+            return File(
+                result.Value.fileBytes,
+                result.Value.contentType,
+                result.Value.fileName
+            );
+        }
+
     }
 }

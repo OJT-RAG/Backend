@@ -138,5 +138,21 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { message = $"Đã xảy ra lỗi khi xóa final report với Id = {id}.", error = ex.Message });
             }
         }
+
+        [Authorize]
+        [HttpGet("download/{id}")]
+        public async Task<IActionResult> Download(long id)
+        {
+            var result = await _service.Download(id);
+            if (result == null)
+                return NotFound(new { message = "Không tìm thấy file báo cáo cuối kỳ." });
+
+            return File(
+                result.Value.fileBytes,
+                result.Value.contentType,
+                result.Value.fileName
+            );
+        }
+
     }
 }

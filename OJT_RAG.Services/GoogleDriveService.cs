@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 
 public class GoogleDriveService
 {
-    private readonly DriveService _drive;
+    public readonly DriveService _drive;
 
     public GoogleDriveService(IConfiguration config)
     {
@@ -114,4 +114,29 @@ public class GoogleDriveService
         if (end < 0) end = url.Length;
         return url[start..end];
     }
+
+
+    // ================= DOWNLOAD =================
+    public async Task<(byte[] fileBytes, string fileName, string contentType)> DownloadFileByUrlAsync(string fileUrl)
+    {
+        if (string.IsNullOrEmpty(fileUrl))
+            throw new ArgumentException("FileUrl is empty");
+
+        var fileId = ExtractFileIdFromUrl(fileUrl);
+        if (string.IsNullOrEmpty(fileId))
+            throw new Exception("Invalid Google Drive file URL");
+
+        // 🔹 Lấy metadata
+        var meta = await _drive.Files.Get(fileId).ExecuteAsync();
+
+        var fileName = meta.Name;
+        var contentType = meta.MimeType ?? "application/octet-stream";
+
+        // 🔹 Download file
+        using var stream = new MemoryStream();
+        await _drive.Files.Get(fileId).DownloadAsync(stream);
+
+        return (stream.ToArray(), fileName, contentType);
+    }
+
 }
