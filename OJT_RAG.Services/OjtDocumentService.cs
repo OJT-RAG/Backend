@@ -133,6 +133,15 @@ namespace OJT_RAG.Services
 
             return await _repo.DeleteAsync(id);
         }
+        public async Task<(byte[] fileBytes, string fileName, string contentType)?> DownloadAsync(long id)
+        {
+            var doc = await _repo.GetByIdAsync(id);
+            if (doc == null || string.IsNullOrEmpty(doc.FileUrl))
+                return null;
+
+            return await _drive.DownloadFileByUrlAsync(doc.FileUrl);
+        }
+
 
     }
 }

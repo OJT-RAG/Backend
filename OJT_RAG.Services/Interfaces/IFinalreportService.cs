@@ -14,5 +14,7 @@ namespace OJT_RAG.Services.Interfaces
         Task<bool> Create(CreateFinalreportDTO dto);
         Task<bool> Update(UpdateFinalreportDTO dto);
         Task<bool> Delete(long id);
+
+        Task<(byte[] fileBytes, string fileName, string contentType)?> Download(long id);
     }
 }

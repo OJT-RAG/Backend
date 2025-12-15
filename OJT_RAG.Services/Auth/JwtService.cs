@@ -8,64 +8,48 @@ namespace OJT_RAG.Services.Auth
 {
     public class JwtService
     {
-        private readonly string _issuer;
-        private readonly string _audience;
-        private readonly string _key;
+        private readonly IConfiguration _config;
 
-        public JwtService(IConfiguration configuration)
+        public JwtService(IConfiguration config)
         {
-            _issuer = configuration["Jwt:Issuer"]!;
-            _audience = configuration["Jwt:Audience"]!;
-            _key = configuration["Jwt:Key"]!;
+            _config = config;
         }
 
-        public string GenerateToken(long userId, string email/*, string role*/)
+        public string GenerateToken(long userId, string email)
         {
-            var claims = new List<Claim>
-            {
-                new Claim("userId", userId.ToString()),
-                new Claim(ClaimTypes.Email, email),
-              /*  new Claim(ClaimTypes.Role, role),*/
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-            };
+            var jwtKey = _config["Jwt:Key"];
+            var issuer = _config["Jwt:Issuer"];
+            var audience = _config["Jwt:Audience"];
 
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+            if (string.IsNullOrWhiteSpace(jwtKey))
+                throw new Exception("JWT_KEY is missing");
+
+            var key = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(jwtKey)
+            );
+
+            var creds = new SigningCredentials(
+                key,
+                SecurityAlgorithms.HmacSha256
+            );
+
+            var claims = new[]
+            {
+            new Claim(JwtRegisteredClaimNames.Sub, userId.ToString()),
+            new Claim(JwtRegisteredClaimNames.Email, email),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+        };
 
             var token = new JwtSecurityToken(
-                issuer: _issuer,
-                audience: _audience,
-                claims: claims,
+                issuer,
+                audience,
+                claims,
                 expires: DateTime.UtcNow.AddDays(7),
                 signingCredentials: creds
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-        public ClaimsPrincipal? ValidateToken(string token)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var keyBytes = Encoding.UTF8.GetBytes(_key);
-
-            try
-            {
-                return tokenHandler.ValidateToken(token, new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = _issuer,
-                    ValidAudience = _audience,
-                    IssuerSigningKey = new SymmetricSecurityKey(keyBytes),
-                    ClockSkew = TimeSpan.Zero
-                }, out _);
-            }
-            catch
-            {
-                return null;
-            }
-        }
     }
+
 }

@@ -34,22 +34,25 @@ var jwtAudience =
     Environment.GetEnvironmentVariable("JWT_AUDIENCE")
     ?? builder.Configuration["Jwt:Audience"];
 
-if (string.IsNullOrWhiteSpace(jwtKey))
-throw new Exception("JWT_KEY environment variable is missing");
+Console.WriteLine($"JWT_KEY loaded: {!string.IsNullOrWhiteSpace(jwtKey)}");
+Console.WriteLine("JWT SOURCE = " +
+    (Environment.GetEnvironmentVariable("JWT_KEY") != null ? "ENV" : "APPSETTINGS"));
 
 if (string.IsNullOrWhiteSpace(jwtKey))
-{
-throw new Exception("JWT_KEY environment variable is missing");
-}
+    throw new Exception("JWT_KEY is missing");
 
-Console.WriteLine("JWT_KEY ENV = " + Environment.GetEnvironmentVariable("JWT_KEY"));
+if (string.IsNullOrWhiteSpace(jwtIssuer))
+    throw new Exception("JWT_ISSUER is missing");
 
-if (string.IsNullOrEmpty(jwtKey))
-{
-    throw new Exception("JWT_KEY environment variable is missing");
-}
-    // ---------------------- CORS ----------------------
-    builder.Services.AddCors(options =>
+if (string.IsNullOrWhiteSpace(jwtAudience))
+    throw new Exception("JWT_AUDIENCE is missing");
+
+// 🔑 Inject lại vào IConfiguration cho toàn app
+builder.Configuration["Jwt:Key"] = jwtKey;
+builder.Configuration["Jwt:Issuer"] = jwtIssuer;
+builder.Configuration["Jwt:Audience"] = jwtAudience;
+// ---------------------- CORS ----------------------
+builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", policy =>
     {
