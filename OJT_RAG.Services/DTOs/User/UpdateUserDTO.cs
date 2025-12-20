@@ -7,7 +7,7 @@ namespace OJT_RAG.DTOs.UserDTO
         public long UserId { get; set; }
         public long? MajorId { get; set; }
         public long? CompanyId { get; set; }
-        public UserRole? Role { get; set; }
+        public string? Role { get; set; }
         public string? Fullname { get; set; }
         public string? StudentCode { get; set; }
         public DateOnly? Dob { get; set; }

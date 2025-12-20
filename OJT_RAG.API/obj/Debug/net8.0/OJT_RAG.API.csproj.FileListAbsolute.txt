@@ -140,6 +140,7 @@ F:\OJT_RAG\OJT_RAG\OJT_RAG.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Worksp
 F:\OJT_RAG\OJT_RAG\OJT_RAG.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\OJT_RAG\OJT_RAG\OJT_RAG.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\OJT_RAG\OJT_RAG\OJT_RAG.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+<<<<<<< HEAD
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\appsettings.Development.json
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\appsettings.json
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.staticwebassets.endpoints.json
@@ -294,6 +295,8 @@ D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\refint\OJT_RAG.A
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.pdb
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.genruntimeconfig.cache
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\ref\OJT_RAG.API.dll
+=======
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\appsettings.Development.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\appsettings.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.exe
@@ -301,12 +304,16 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.deps.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.runtimeconfig.json
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.pdb
+<<<<<<< HEAD
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Auth.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Drive.v3.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Humanizer.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Humanizer.dll
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Build.Locator.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
@@ -327,6 +334,7 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyI
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+<<<<<<< HEAD
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
@@ -339,6 +347,12 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.d
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Mono.TextTemplating.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.Primitives.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.OpenApi.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Mono.TextTemplating.dll
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Npgsql.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
@@ -351,9 +365,13 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Composition.Hosting.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Composition.Runtime.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Composition.TypedParts.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Diagnostics.DiagnosticSource.dll
+<<<<<<< HEAD
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.IO.Pipelines.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Management.dll
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.IO.Pipelines.dll
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Text.Json.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\cs\Microsoft.CodeAnalysis.resources.dll
@@ -421,13 +439,22 @@ F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\ru\Microsoft.CodeAnalysis.Worksp
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+<<<<<<< HEAD
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Core.dll
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Repositories.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Services.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.ModelViews.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Services.pdb
+<<<<<<< HEAD
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Core.pdb
+>>>>>>> 352f4a2 (change role to string to avoid bug)
 F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.Repositories.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.csproj.AssemblyReference.cache
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.GeneratedMSBuildEditorConfig.editorconfig
@@ -451,6 +478,7 @@ F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\refint\OJT_RAG.API.dll
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.pdb
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.genruntimeconfig.cache
 F:\OJT_RAG\Backend\OJT_RAG.API\obj\Debug\net8.0\ref\OJT_RAG.API.dll
+<<<<<<< HEAD
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\appsettings.Development.json
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\appsettings.json
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\bin\Debug\net8.0\OJT_RAG.API.staticwebassets.endpoints.json
@@ -597,3 +625,14 @@ D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\refint\OJT_RAG.A
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.pdb
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\OJT_RAG.API.genruntimeconfig.cache
 D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.API\obj\Debug\net8.0\ref\OJT_RAG.API.dll
+=======
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Auth.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Core.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Google.Apis.Drive.v3.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\System.Management.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\runtimes\win\lib\net7.0\System.Management.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+F:\OJT_RAG\Backend\OJT_RAG.API\bin\Debug\net8.0\client_secret.json
+>>>>>>> 352f4a2 (change role to string to avoid bug)

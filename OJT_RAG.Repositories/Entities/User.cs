@@ -28,7 +28,8 @@ public partial class User
     public string? Password { get; set; }
 
     [Column("role")]
-    public UserRole? Role { get; set; }
+    [StringLength(20)]
+    public string? Role { get; set; }
 
     [Column("fullname")]
     [StringLength(255)]

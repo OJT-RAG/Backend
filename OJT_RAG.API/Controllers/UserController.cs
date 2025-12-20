@@ -88,7 +88,7 @@ namespace OJT_RAG.API.Controllers
 
         // ------------------------- CREATE ----------------------------
         [HttpPost("create")]
-        public async Task<IActionResult> Create(CreateUserDTO dto)
+        public async Task<IActionResult> Create([FromBody] CreateUserDTO dto)
         {
             try
             {
