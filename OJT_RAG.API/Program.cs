@@ -231,6 +231,8 @@ builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
 
+builder.Services.AddScoped<GoogleAuthService>();
+
 builder.Services.AddSignalR();
 
 
