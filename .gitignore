@@ -29,3 +29,5 @@ artifacts/
 # Secrets (KHÔNG BAO GIỜ ĐƯỢC PUSH)
 OJT_RAG.API/client_secret.json
 OJT_RAG.API/refresh_token.txt
+appsettings.Development.json
+appsettings.json
