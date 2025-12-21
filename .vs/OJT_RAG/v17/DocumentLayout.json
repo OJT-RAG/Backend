@@ -50,8 +50,7 @@
               "RelativeToolTip": "OJT_RAG.API\\Controllers\\AuthController.cs",
               "ViewState": "AQIAAAsAAAAAAAAAAAAQwBwAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-20T17:48:02.217Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-20T17:48:02.217Z"
             },
             {
               "$type": "Document",
@@ -63,8 +62,7 @@
               "RelativeToolTip": "OJT_RAG.Services\\Auth\\GoogleAuthService.cs",
               "ViewState": "AQIAAA8AAAAAAAAAAAAswB8AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-20T17:46:19.399Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-20T17:46:19.399Z"
             },
             {
               "$type": "Document",
@@ -76,8 +74,7 @@
               "RelativeToolTip": "OJT_RAG.Services\\Auth\\GoogleLoginRequestDTO.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-20T17:46:05.298Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-20T17:46:05.298Z"
             },
             {
               "$type": "Document",
@@ -114,8 +111,7 @@
               "RelativeToolTip": "OJT_RAG.Services\\FinalreportService.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T16:01:58.244Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-15T16:01:58.244Z"
             },
             {
               "$type": "Document",
@@ -127,8 +123,7 @@
               "RelativeToolTip": "OJT_RAG.Services\\GoogleDriveService.cs",
               "ViewState": "AQIAAIYAAAAAAAAAAAAUwCkAAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-15T16:00:20.944Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-12-15T16:00:20.944Z"
             }
           ]
         }
