@@ -1,9 +1,26 @@
 # Visual Studio
 .vs/
 
-# Build output
+# Ignore build output of ALL projects
+**/bin/
+**/obj/
+
+# Build results
 bin/
 obj/
+[Bb]uild/
+[Dd]ebug*/
+[Rr]elease*/
+x64/
+x86/
+[Aa]ny CPU/
+
+# .NET Core / ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+*.md
 
 # User-specific files
 *.user
@@ -14,3 +31,5 @@ obj/
 # Secrets (KHÔNG BAO GIỜ ĐƯỢC PUSH)
 OJT_RAG.API/client_secret.json
 OJT_RAG.API/refresh_token.txt
+appsettings.Development.json
+appsettings.json
