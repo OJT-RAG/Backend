@@ -35,3 +35,15 @@ F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\refint\OJT_RAG.ModelViews.dll
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.pdb
 F:\OJT_RAG\Backend\OJT_RAG.ModelViews\obj\Debug\net8.0\ref\OJT_RAG.ModelViews.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.deps.json
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\bin\Debug\net8.0\OJT_RAG.ModelViews.pdb
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.AssemblyInfoInputs.cache
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.AssemblyInfo.cs
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.csproj.CoreCompileInputs.cache
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.sourcelink.json
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\refint\OJT_RAG.ModelViews.dll
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\OJT_RAG.ModelViews.pdb
+D:\Project\CapStone\OJT_RAG_CSharp\OJT_RAG.ModelViews\obj\Debug\net8.0\ref\OJT_RAG.ModelViews.dll

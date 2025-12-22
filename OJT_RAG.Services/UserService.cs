@@ -25,6 +25,7 @@ namespace OJT_RAG.Services.UserService
                 MajorId = u.MajorId,
                 CompanyId = u.CompanyId,
                 Email = u.Email,
+                Role = u.Role,
                 Fullname = u.Fullname,
                 StudentCode = u.StudentCode,
                 Dob = u.Dob,
@@ -46,6 +47,7 @@ namespace OJT_RAG.Services.UserService
                 MajorId = u.MajorId,
                 CompanyId = u.CompanyId,
                 Email = u.Email,
+                Role = u.Role,
                 Fullname = u.Fullname,
                 StudentCode = u.StudentCode,
                 Dob = u.Dob,
@@ -64,6 +66,7 @@ namespace OJT_RAG.Services.UserService
                 CompanyId = dto.CompanyId,
                 Email = dto.Email,
                 Password = dto.Password,
+                Role = dto.Role,
                 Fullname = dto.Fullname,
                 StudentCode = dto.StudentCode,
                 Dob = dto.Dob,
@@ -85,6 +88,7 @@ namespace OJT_RAG.Services.UserService
 
             u.MajorId = dto.MajorId;
             u.CompanyId = dto.CompanyId;
+            u.Role = dto.Role;
             u.Fullname = dto.Fullname;
             u.StudentCode = dto.StudentCode;
             u.Dob = dto.Dob;
@@ -122,6 +126,7 @@ namespace OJT_RAG.Services.UserService
                 MajorId = user.MajorId,
                 CompanyId = user.CompanyId,
                 Email = user.Email,
+                Role = user.Role,
                 Fullname = user.Fullname,
                 StudentCode = user.StudentCode,
                 Dob = user.Dob,
