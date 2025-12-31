@@ -233,6 +233,7 @@ builder.Services.AddSingleton<IUserIdProvider, UserIdProvider>();
 
 builder.Services.AddScoped<GoogleAuthService>();
 
+
 builder.Services.AddSignalR();
 
 
