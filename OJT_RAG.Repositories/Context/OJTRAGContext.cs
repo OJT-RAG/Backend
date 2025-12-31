@@ -53,7 +53,7 @@ namespace OJT_RAG.Repositories.Context
         public virtual DbSet<SemesterCompany> SemesterCompanies { get; set; }
         public virtual DbSet<Companydocumenttag> Companydocumenttags { get; set; }
         public virtual DbSet<Ojtdocumenttag> Ojtdocumenttags { get; set; }
-
+        public virtual DbSet<UserChatMessage> UserChatMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

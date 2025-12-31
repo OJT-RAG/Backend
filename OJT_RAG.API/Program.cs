@@ -1,6 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using OJT_RAG.Repositories;
@@ -9,9 +7,12 @@ using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Repositories.Repositories;
 using OJT_RAG.Services;
+using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -108,6 +109,8 @@ builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
+builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<GoogleAuthService>();
 
 builder.Services.AddSingleton<GoogleDriveService>();
 

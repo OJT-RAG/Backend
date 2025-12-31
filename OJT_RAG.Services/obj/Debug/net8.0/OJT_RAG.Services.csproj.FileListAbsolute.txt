@@ -18,9 +18,7 @@ F:\OJT_RAG\OJT_RAG\OJT_RAG.Services\obj\Debug\net8.0\ref\OJT_RAG.Services.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.deps.json
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Services.pdb
-F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Core.dll
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Repositories.dll
-F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Core.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Services\bin\Debug\net8.0\OJT_RAG.Repositories.pdb
 F:\OJT_RAG\Backend\OJT_RAG.Services\obj\Debug\net8.0\OJT_RAG.Services.csproj.AssemblyReference.cache
 F:\OJT_RAG\Backend\OJT_RAG.Services\obj\Debug\net8.0\OJT_RAG.Services.GeneratedMSBuildEditorConfig.editorconfig
