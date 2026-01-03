@@ -6,8 +6,8 @@ using OJT_RAG.Services.Interfaces;
 
 namespace OJT_RAG.API.Controllers
 {
-    [Route("api/user")]
     [ApiController]
+    [Route("api/user")]
     public class UserController : ControllerBase
     {
         private readonly IUserService _service;
@@ -19,98 +19,71 @@ namespace OJT_RAG.API.Controllers
             _jwt = jwt;
         }
 
-        // ------------------------- LOGIN ----------------------------
+        // ================= LOGIN =================
         [HttpPost("login")]
-        [AllowAnonymous] // không cần token
+        [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequestDTO dto)
         {
-            var user = await _service.Login(dto.Email, dto.Password);
-            if (user == null)
+            try
             {
-                return Unauthorized(new { message = "Email hoặc mật khẩu không đúng." });
+                var user = await _service.Login(dto.Email, dto.Password);
+                if (user == null)
+                    return Unauthorized(new { message = "Email hoặc mật khẩu không đúng" });
+
+                var token = _jwt.GenerateToken(user.UserId, user.Email);
+
+                return Ok(new { token, data = user });
             }
-
-            // 🎯 tạo JWT bằng JwtService inject từ DI
-            var token = _jwt.GenerateToken(user.UserId, user.Email/*, user.Role*/);
-
-            return Ok(new
+            catch (Exception ex)
             {
-                message = "Đăng nhập thành công.",
-                token = token,
-                data = user
-            });
+                return StatusCode(500, new { message = ex.Message });
+            }
         }
 
-
-        // ------------------------- GET ALL ----------------------------
+        // ================= GET ALL =================
         [HttpGet("getAll")]
-       
         public async Task<IActionResult> GetAll()
         {
             try
             {
-                var result = await _service.GetAll();
-                return Ok(new { message = "Lấy danh sách người dùng thành công.", data = result });
+                return Ok(await _service.GetAll());
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new
-                {
-                    message = "Đã xảy ra lỗi khi lấy danh sách người dùng.",
-                    error = ex.Message
-                });
+                return StatusCode(500, ex.Message);
             }
         }
 
-
-        // ------------------------- GET BY ID ----------------------------
+        // ================= GET BY ID =================
         [HttpGet("get/{id}")]
-   
         public async Task<IActionResult> Get(long id)
         {
             try
             {
                 var user = await _service.GetById(id);
-                return user == null
-                    ? NotFound(new { message = $"Không tìm thấy người dùng với Id = {id}." })
-                    : Ok(new { message = "Lấy người dùng thành công.", data = user });
+                return user == null ? NotFound() : Ok(user);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new
-                {
-                    message = $"Đã xảy ra lỗi khi lấy người dùng với Id = {id}.",
-                    error = ex.Message
-                });
+                return StatusCode(500, ex.Message);
             }
         }
 
-
-        // ------------------------- CREATE ----------------------------
+        // ================= CREATE (UPLOAD CV + AVATAR) =================
         [HttpPost("create")]
-        public async Task<IActionResult> Create([FromBody] CreateUserDTO dto)
+        [Consumes("multipart/form-data")]
+        public async Task<IActionResult> Create([FromForm] CreateUserDTO dto)
         {
             try
             {
-                var result = await _service.Create(dto);
-                return Ok(new { message = "Tạo người dùng thành công.", data = result });
+                await _service.Create(dto);
+                return Ok(new { message = "Tạo user thành công" });
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate key"))
-                {
-                    return BadRequest(new
-                    {
-                        message = "Người dùng đã tồn tại (Id hoặc trường unique bị trùng)."
-                    });
-                }
-
-                Console.WriteLine("ERROR: " + ex.ToString());
-                throw;
+                return BadRequest(new { message = ex.Message });
             }
         }
-
-
         // ------------------------- UPDATE ----------------------------
         [HttpPut("update")]
         public async Task<IActionResult> Update(UpdateUserDTO dto)
@@ -140,25 +113,18 @@ namespace OJT_RAG.API.Controllers
             }
         }
 
-
-        // ------------------------- DELETE ----------------------------
+        // ================= DELETE =================
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
             try
             {
-                var ok = await _service.Delete(id);
-                return ok
-                    ? Ok(new { message = "Xóa người dùng thành công." })
-                    : NotFound(new { message = "Không tìm thấy người dùng để xóa." });
+                await _service.Delete(id);
+                return Ok();
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new
-                {
-                    message = $"Đã xảy ra lỗi khi xóa người dùng với Id = {id}.",
-                    error = ex.Message
-                });
+                return StatusCode(500, ex.Message);
             }
         }
     }
