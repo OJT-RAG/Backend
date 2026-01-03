@@ -17,9 +17,10 @@ namespace OJT_RAG.Services.Auth
 
         public string GenerateToken(long userId, string email)
         {
-            var jwtKey = _config["Jwt:Key"];
-            var issuer = _config["Jwt:Issuer"];
-            var audience = _config["Jwt:Audience"];
+            var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY");
+            var issuer = Environment.GetEnvironmentVariable("JWT_ISSUER");
+            var audience = Environment.GetEnvironmentVariable("JWT_AUDIENCE");
+
 
             if (string.IsNullOrWhiteSpace(jwtKey))
                 throw new Exception("JWT_KEY is missing");

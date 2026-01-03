@@ -1,46 +1,57 @@
 ﻿using Google.Apis.Auth;
+using Microsoft.EntityFrameworkCore;
+using OJT_RAG.Repositories;
+using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
-using OJT_RAG.Repositories.Interfaces;
-using OJT_RAG.Services.Auth;
 
-public class GoogleAuthService
+namespace OJT_RAG.Services.Auth
 {
-    private readonly IUserRepository _userRepo;
-    private readonly JwtService _jwtService;
-
-    public GoogleAuthService(
-        IUserRepository userRepo,
-        JwtService jwtService)
+    public class GoogleAuthService
     {
-        _userRepo = userRepo;
-        _jwtService = jwtService;
-    }
+        private readonly OJTRAGContext _context;
+        private readonly JwtService _jwtService;
 
-    public async Task<string> LoginWithGoogleAsync(string idToken)
-    {
-        // ✅ Verify token với Google
-        var payload = await GoogleJsonWebSignature.ValidateAsync(idToken);
-
-        var email = payload.Email;
-        var name = payload.Name;
-
-        // ✅ Tìm user theo email
-        var user = await _userRepo.GetByEmailAsync(email);
-
-        // ❗ Nếu chưa tồn tại → tạo mới
-        if (user == null)
+        public GoogleAuthService(OJTRAGContext context, JwtService jwtService)
         {
-            user = new User
-            {
-                Email = email,
-                Fullname = name,
-                CreateAt = DateTime.UtcNow.ToLocalTime()
-            };
-
-            await _userRepo.AddAsync(user);
+            _context = context;
+            _jwtService = jwtService;
         }
 
-        // ✅ Tạo JWT nội bộ
-        return _jwtService.GenerateToken(user.UserId, user.Email);
+        public async Task<string> LoginWithGoogleAsync(string idToken)
+        {
+            var clientId = Environment.GetEnvironmentVariable("GOOGLE_CLIENT_ID");
+
+            if (string.IsNullOrWhiteSpace(clientId))
+                throw new Exception("GOOGLE_CLIENT_ID not found");
+
+            var payload = await GoogleJsonWebSignature.ValidateAsync(
+                idToken,
+                new GoogleJsonWebSignature.ValidationSettings
+                {
+                    Audience = new[] { clientId }
+                }
+            );
+
+            var user = await _context.Users
+                .FirstOrDefaultAsync(x => x.Email == payload.Email);
+
+            if (user == null)
+            {
+                user = new User
+                {
+                    Email = payload.Email,
+                    Fullname = payload.Name,
+                    AvatarUrl = payload.Picture,
+                    Role = "Student",
+                    CreateAt = DateTime.UtcNow.ToLocalTime(),
+                    UpdateAt = DateTime.UtcNow.ToLocalTime()
+                };
+
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
+            }
+
+            return _jwtService.GenerateToken(user.UserId, user.Email!);
+        }
     }
 }

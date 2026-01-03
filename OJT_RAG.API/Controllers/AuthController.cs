@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OJT_RAG.DTOs.Auth;
+using OJT_RAG.Services.Auth;
 
 [ApiController]
 [Route("api/auth")]
@@ -22,17 +24,19 @@ public class AuthController : ControllerBase
 
             return Ok(new
             {
-                message = "Login Google thành công",
+                message = "Google login thành công",
                 accessToken = token
             });
         }
-        catch (Exception ex)
+        catch (DbUpdateException ex)
         {
-            return Unauthorized(new
+            var detail = ex.InnerException?.Message;
+            return BadRequest(new
             {
-                message = "Google login failed",
-                error = ex.Message
+                message = "DB ERROR",
+                detail
             });
         }
+
     }
 }

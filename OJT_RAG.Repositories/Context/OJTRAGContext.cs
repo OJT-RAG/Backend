@@ -59,7 +59,7 @@ namespace OJT_RAG.Repositories.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
+                optionsBuilder.UseNpgsql("Host=localhost;Database=OJT_RAG;Username=postgres;Password=123456");
             }
         }
 
@@ -86,11 +86,15 @@ namespace OJT_RAG.Repositories.Context
             {
                 entity.HasKey(e => e.UserId);
 
+                entity.Property(e => e.UserId)
+                      .HasColumnName("user_id")
+                      .ValueGeneratedOnAdd(); // ⭐⭐⭐ BẮT BUỘC
+
                 entity.Property(e => e.Role)
                       .HasColumnName("role")
-                      //.HasColumnType("user_role_enum")
                       .IsRequired(true);
             });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

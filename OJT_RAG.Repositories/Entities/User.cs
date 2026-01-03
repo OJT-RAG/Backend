@@ -11,6 +11,7 @@ public partial class User
 {
     [Key]
     [Column("user_id")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long UserId { get; set; }
 
     [Column("major_id")]
