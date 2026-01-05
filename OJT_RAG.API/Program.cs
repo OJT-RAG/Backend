@@ -19,14 +19,14 @@ var builder = WebApplication.CreateBuilder(args);
 // ====================== CORS ======================
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("AllowReactApp", policy =>
+    options.AddPolicy("AllowAll", policy =>
     {
-        policy.WithOrigins("http://localhost:3000")
+        policy.AllowAnyOrigin()
               .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
+              .AllowAnyMethod();
     });
 });
+
 
 // ====================== JSON ======================
 builder.Services.AddControllers()
