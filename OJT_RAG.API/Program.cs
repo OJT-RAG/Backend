@@ -115,8 +115,11 @@ var app = builder.Build();
     app.UseSwaggerUI();
 
 
-app.UseCors("AllowReactApp");
+app.UseCors("AllowAll");
+
+app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
