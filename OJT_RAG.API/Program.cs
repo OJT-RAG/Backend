@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Text.Json;
+using System.Text.Json.Serialization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using OJT_RAG.Repositories;
@@ -7,12 +9,10 @@ using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Repositories.Repositories;
 using OJT_RAG.Services;
-using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+using OJT_RAG.Services.Auth; // ⭐ THÊM USING NÀY NẾU CHƯA CÓ (để nhận diện JwtService)
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,21 +37,16 @@ builder.Services.AddControllers()
     });
 
 // ====================== DATABASE (Npgsql 8.x — FIX ENUM 100%) ======================
-
 // Build DataSourceBuilder
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(
     builder.Configuration.GetConnectionString("DefaultConnection")
 );
-
 // ⭐ Đăng ký PostgreSQL enum
 dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
-
 // ⭐ Cho phép unmapped enum / composite
 dataSourceBuilder.EnableUnmappedTypes();
-
 // Build DataSource
 var dataSource = dataSourceBuilder.Build();
-
 // ⭐ Đăng ký DbContext sử dụng DataSource
 builder.Services.AddDbContext<OJTRAGContext>(options =>
 {
@@ -67,7 +62,6 @@ builder.Services.AddSwaggerGen(c =>
         Type = "string",
         Format = "date"
     });
-
     c.MapType<DateOnly?>(() => new OpenApiSchema
     {
         Type = "string",
@@ -109,12 +103,10 @@ builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
-builder.Services.AddScoped<UserChatService>();
-builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
-builder.Services.AddScoped<JwtService>();
-builder.Services.AddScoped<GoogleAuthService>();
-
 builder.Services.AddSingleton<GoogleDriveService>();
+
+// ⭐ THÊM DÒNG NÀY ĐỂ FIX LỖI UNABLE TO RESOLVE JWTSERVICE
+builder.Services.AddScoped<JwtService>();
 
 // ====================== APP ======================
 var app = builder.Build();
@@ -128,16 +120,15 @@ if (app.Environment.IsDevelopment())
 app.UseCors("AllowReactApp");
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
 
 // ====================== JSON CONVERTERS ======================
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";
-
     public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         => DateOnly.ParseExact(reader.GetString()!, Format);
-
     public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
         => writer.WriteStringValue(value.ToString(Format));
 }
@@ -145,13 +136,11 @@ public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 public class NullableDateOnlyJsonConverter : JsonConverter<DateOnly?>
 {
     private const string Format = "yyyy-MM-dd";
-
     public override DateOnly? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var value = reader.GetString();
         return string.IsNullOrEmpty(value) ? null : DateOnly.ParseExact(value!, Format);
     }
-
     public override void Write(Utf8JsonWriter writer, DateOnly? value, JsonSerializerOptions options)
     {
         if (value.HasValue) writer.WriteStringValue(value.Value.ToString(Format));

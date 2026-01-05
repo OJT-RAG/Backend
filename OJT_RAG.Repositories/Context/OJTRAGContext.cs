@@ -6,7 +6,6 @@ using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Repositories.Context
 {
-    // ⭐ Converter: DateTime -> lưu nguyên nhưng luôn đọc về dưới dạng Unspecified
     public class UnspecifiedDateTimeConverter : ValueConverter<DateTime, DateTime>
     {
         public UnspecifiedDateTimeConverter()
@@ -24,7 +23,6 @@ namespace OJT_RAG.Repositories.Context
                 v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Unspecified) : v)
         { }
     }
-
 
     public partial class OJTRAGContext : DbContext
     {
@@ -48,21 +46,20 @@ namespace OJT_RAG.Repositories.Context
         public virtual DbSet<JobTitleOverview> JobTitleOverviews { get; set; }
         public virtual DbSet<Major> Majors { get; set; }
         public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<UserChatMessage> UserChatMessages { get; set; } // ⭐ THÊM DÒNG NÀY ĐỂ FIX LỖI
         public virtual DbSet<Ojtdocument> Ojtdocuments { get; set; }
         public virtual DbSet<Semester> Semesters { get; set; }
         public virtual DbSet<SemesterCompany> SemesterCompanies { get; set; }
         public virtual DbSet<Companydocumenttag> Companydocumenttags { get; set; }
         public virtual DbSet<Ojtdocumenttag> Ojtdocumenttags { get; set; }
-        public virtual DbSet<UserChatMessage> UserChatMessages { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseNpgsql("Host=localhost;Database=OJT_RAG;Username=postgres;Password=123456");
+                optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
             }
         }
-
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -86,15 +83,11 @@ namespace OJT_RAG.Repositories.Context
             {
                 entity.HasKey(e => e.UserId);
 
-                entity.Property(e => e.UserId)
-                      .HasColumnName("user_id")
-                      .ValueGeneratedOnAdd(); // ⭐⭐⭐ BẮT BUỘC
-
                 entity.Property(e => e.Role)
                       .HasColumnName("role")
+                      //.HasColumnType("user_role_enum")
                       .IsRequired(true);
             });
-
 
             OnModelCreatingPartial(modelBuilder);
         }
