@@ -1,19 +1,13 @@
-# =========================
-# BUILD STAGE
-# =========================
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Cấu hình NuGet cho Linux container
 ENV NUGET_PACKAGES=/root/.nuget/packages
 ENV DOTNET_NOLOGO=true
 ENV DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
 
-# Copy NuGet config TRƯỚC
 COPY NuGet.config .
-
-# Copy solution & csproj để cache restore
 COPY OJT_RAG.sln ./
+
 COPY OJT_RAG.API/OJT_RAG.API.csproj OJT_RAG.API/
 COPY OJT_RAG.Core/OJT_RAG.Core.csproj OJT_RAG.Core/
 COPY OJT_RAG.Engine/OJT_RAG.Engine.csproj OJT_RAG.Engine/
@@ -22,21 +16,16 @@ COPY OJT_RAG.Repositories/OJT_RAG.Repositories.csproj OJT_RAG.Repositories/
 COPY OJT_RAG.Services/OJT_RAG.Services.csproj OJT_RAG.Services/
 COPY OJT_RAG.WorkerService/OJT_RAG.WorkerService.csproj OJT_RAG.WorkerService/
 
-# Restore trong container
+
 RUN dotnet restore OJT_RAG.sln
 
-# Copy toàn bộ source
 COPY . .
 
-# Publish API
+
 RUN dotnet publish OJT_RAG.API/OJT_RAG.API.csproj \
     -c Release \
-    -o /app/publish \
-    --no-restore
+    -o /app/publish
 
-# =========================
-# RUNTIME STAGE
-# =========================
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
