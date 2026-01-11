@@ -5,6 +5,6 @@ namespace OJT_RAG.Repositories.Interfaces
     public interface IUserChatRepository
     {
         Task<UserChatMessage> AddAsync(UserChatMessage message);
-        Task<IEnumerable<UserChatMessage>> GetConversation(long user1, long user2);
+        Task<List<UserChatMessage>> GetConversation(long user1, long user2);
     }
 }

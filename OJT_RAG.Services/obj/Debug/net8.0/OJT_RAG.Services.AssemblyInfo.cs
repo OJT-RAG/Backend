@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7cb5f8a5f95472b86a557a68337c3a0073c325bc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84554833674efd62af22ae639b49fe8b069b799b")]
 [assembly: System.Reflection.AssemblyProductAttribute("OJT_RAG.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OJT_RAG.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

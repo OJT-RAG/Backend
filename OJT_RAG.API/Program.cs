@@ -109,6 +109,8 @@ builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
+builder.Services.AddScoped<UserChatService>();
+builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<JwtService>();
 builder.Services.AddScoped<GoogleAuthService>();
 
