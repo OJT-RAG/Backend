@@ -2565,19 +2565,78 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateUserDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateUserDTO"
+                "type": "object",
+                "properties": {
+                  "MajorId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "CompanyId": {
+                    "type": "integer",
+                    "format": "int64"
+                  },
+                  "Email": {
+                    "type": "string"
+                  },
+                  "Password": {
+                    "type": "string"
+                  },
+                  "Fullname": {
+                    "type": "string"
+                  },
+                  "StudentCode": {
+                    "type": "string"
+                  },
+                  "Dob": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "Phone": {
+                    "type": "string"
+                  },
+                  "AvatarUrl": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CvUrl": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "MajorId": {
+                  "style": "form"
+                },
+                "CompanyId": {
+                  "style": "form"
+                },
+                "Email": {
+                  "style": "form"
+                },
+                "Password": {
+                  "style": "form"
+                },
+                "Fullname": {
+                  "style": "form"
+                },
+                "StudentCode": {
+                  "style": "form"
+                },
+                "Dob": {
+                  "style": "form"
+                },
+                "Phone": {
+                  "style": "form"
+                },
+                "AvatarUrl": {
+                  "style": "form"
+                },
+                "CvUrl": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -2594,21 +2653,91 @@
         "tags": [
           "User"
         ],
+        "parameters": [
+          {
+            "name": "UserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "MajorId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "CompanyId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int64"
+            }
+          },
+          {
+            "name": "Fullname",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StudentCode",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Dob",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "Phone",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "Password",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/UpdateUserDTO"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserDTO"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/UpdateUserDTO"
+                "type": "object",
+                "properties": {
+                  "AvatarUrl": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "CvUrl": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              },
+              "encoding": {
+                "AvatarUrl": {
+                  "style": "form"
+                },
+                "CvUrl": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -2636,6 +2765,37 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/api/user-chat/send": {
+      "post": {
+        "tags": [
+          "UserChat"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessageDTO"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Success"
@@ -2976,59 +3136,6 @@
         },
         "additionalProperties": false
       },
-      "CreateUserDTO": {
-        "type": "object",
-        "properties": {
-          "majorId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "companyId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "email": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
-          },
-          "fullname": {
-            "type": "string",
-            "nullable": true
-          },
-          "studentCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "dob": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "avatarUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "cvUrl": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "GoogleLoginRequestDTO": {
         "type": "object",
         "properties": {
@@ -3096,6 +3203,24 @@
           },
           "isActive": {
             "type": "boolean",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendMessageDTO": {
+        "type": "object",
+        "properties": {
+          "senderId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "receiverId": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "content": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -3359,59 +3484,6 @@
           "approvedAt": {
             "type": "string",
             "format": "date-time",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "UpdateUserDTO": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "majorId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "companyId": {
-            "type": "integer",
-            "format": "int64",
-            "nullable": true
-          },
-          "role": {
-            "type": "string",
-            "nullable": true
-          },
-          "fullname": {
-            "type": "string",
-            "nullable": true
-          },
-          "studentCode": {
-            "type": "string",
-            "nullable": true
-          },
-          "dob": {
-            "type": "string",
-            "format": "date",
-            "nullable": true
-          },
-          "phone": {
-            "type": "string",
-            "nullable": true
-          },
-          "avatarUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "cvUrl": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
             "nullable": true
           }
         },

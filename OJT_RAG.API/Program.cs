@@ -12,9 +12,45 @@ using OJT_RAG.Services;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
-using OJT_RAG.Services.Auth; // ⭐ THÊM USING NÀY NẾU CHƯA CÓ (để nhận diện JwtService)
+using OJT_RAG.Services.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// ====================== CẤU HÌNH CONNECTION STRING (RAILWAY FRIENDLY) ======================
+// 1. Kiểm tra xem có biến DATABASE_URL từ Railway không
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+string connectionString;
+
+if (string.IsNullOrEmpty(databaseUrl))
+{
+    // Nếu không có (chạy ở Local), lấy từ file appsettings.json
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+}
+else
+{
+    // Nếu có (chạy trên Railway), parse từ định dạng postgres:// sang định dạng .NET
+    var uri = new Uri(databaseUrl);
+    var userInfo = uri.UserInfo.Split(':');
+
+    // Xây dựng Connection String phù hợp với thư viện Npgsql
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Prefer;Trust Server Certificate=true;";
+}
+
+// ====================== DATABASE (Npgsql 8.x + ENUM) ======================
+// Khởi tạo DataSourceBuilder với connectionString đã chọn lọc
+var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
+
+// Đăng ký PostgreSQL enum (Giữ nguyên logic của bạn)
+dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
+dataSourceBuilder.EnableUnmappedTypes();
+
+var dataSource = dataSourceBuilder.Build();
+
+// Đăng ký DbContext
+builder.Services.AddDbContext<OJTRAGContext>(options =>
+{
+    options.UseNpgsql(dataSource);
+});
 
 // ====================== CORS ======================
 builder.Services.AddCors(options =>
@@ -27,8 +63,7 @@ builder.Services.AddCors(options =>
     });
 });
 
-
-// ====================== JSON ======================
+// ====================== JSON CONVERTERS ======================
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -36,41 +71,16 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
     });
 
-// ====================== DATABASE (Npgsql 8.x — FIX ENUM 100%) ======================
-// Build DataSourceBuilder
-var dataSourceBuilder = new NpgsqlDataSourceBuilder(
-    builder.Configuration.GetConnectionString("DefaultConnection")
-);
-// ⭐ Đăng ký PostgreSQL enum
-dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
-// ⭐ Cho phép unmapped enum / composite
-dataSourceBuilder.EnableUnmappedTypes();
-// Build DataSource
-var dataSource = dataSourceBuilder.Build();
-// ⭐ Đăng ký DbContext sử dụng DataSource
-builder.Services.AddDbContext<OJTRAGContext>(options =>
-{
-    options.UseNpgsql(dataSource);
-});
-
 // ====================== SWAGGER ======================
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
-    c.MapType<DateOnly>(() => new OpenApiSchema
-    {
-        Type = "string",
-        Format = "date"
-    });
-    c.MapType<DateOnly?>(() => new OpenApiSchema
-    {
-        Type = "string",
-        Format = "date",
-        Nullable = true
-    });
+    c.MapType<DateOnly>(() => new OpenApiSchema { Type = "string", Format = "date" });
+    c.MapType<DateOnly?>(() => new OpenApiSchema { Type = "string", Format = "date", Nullable = true });
 });
 
 // ====================== DEPENDENCY INJECTION ======================
+// Đăng ký các Repository và Service
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
@@ -103,28 +113,34 @@ builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
-builder.Services.AddSingleton<GoogleDriveService>();
 
-// ⭐ THÊM DÒNG NÀY ĐỂ FIX LỖI UNABLE TO RESOLVE JWTSERVICE
+builder.Services.AddSingleton<GoogleDriveService>();
 builder.Services.AddScoped<JwtService>();
 
-// ====================== APP ======================
+// ====================== APP CONFIG ======================
 var app = builder.Build();
 
-    app.UseSwagger();
-    app.UseSwaggerUI();
+// Tự động áp dụng Migration khi chạy trên Railway (Rất quan trọng)
+if (!string.IsNullOrEmpty(databaseUrl))
+{
+    using (var scope = app.Services.CreateScope())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
+        db.Database.Migrate();
+    }
+}
 
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors("AllowAll");
-
 app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
 
 app.Run();
 
-// ====================== JSON CONVERTERS ======================
+// ====================== JSON CONVERTERS CLASS ======================
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";
