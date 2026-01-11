@@ -1,35 +1,68 @@
-# Visual Studio
-.vs/
-
-# Ignore build output of ALL projects
-**/bin/
-**/obj/
-
-# Build results
-bin/
-obj/
-[Bb]uild/
-[Dd]ebug*/
-[Rr]elease*/
-x64/
-x86/
-[Aa]ny CPU/
-
-# .NET Core / ASP.NET
-project.lock.json
-project.fragment.lock.json
-artifacts/
-
-*.md
+# =============================================
+# Visual Studio / .NET / ASP.NET Core
+# =============================================
 
 # User-specific files
-*.user
+*.rsuser
 *.suo
+*.user
 *.userosscache
 *.sln.docstates
 
-# Secrets (KHÔNG BAO GIỜ ĐƯỢC PUSH)
-OJT_RAG.API/client_secret.json
-OJT_RAG.API/refresh_token.txt
-appsettings.Development.json
-appsettings.json
+# Build results & intermediates (MỤC TIÊU CHÍNH: NGĂN CONFLICT OBJ/BIN)
+**/bin/
+**/obj/
+**/Debug/
+**/Release/
+**/x64/
+**/x86/
+**/Any CPU/
+**/logs/
+**/Logs/
+
+# NuGet specific files (rất hay gây conflict cả khi đã ignore obj/)
+*.nupkg
+*.snupkg
+*.nuget.g.props
+*.nuget.g.targets
+*.nuget.cache
+project.assets.json
+project.lock.json
+project.fragment.lock.json
+**/packages/*
+!**/packages/build/                 # Giữ nếu dùng build targets
+!**/packages/repositories.config    # Hiếm khi cần, nhưng an toàn
+
+# Visual Studio folder & cache
+.vs/
+.vscode/
+.vs/
+*.vs/
+*.cache
+*.pdb
+*.psess
+*.vsp
+*.vspx
+*.vsps
+*.vssscc
+
+# ASP.NET / .NET Core specific
+appsettings.*.json                  # Nếu bạn có appsettings.Development.json riêng, ignore nó
+appsettings.json                    # Nếu chứa secret, ignore (nhưng thường override bằng user secrets)
+client_secret.json
+refresh_token.txt
+
+# Other common ignores
+*.md~                               # Temp markdown files
+*.tmp
+*.bak
+Thumbs.db
+.DS_Store
+
+# =============================================
+# Nếu project dùng Docker / test / publish
+# =============================================
+**/publish/
+**/out/
+**/TestResults/
+**/coverage/
