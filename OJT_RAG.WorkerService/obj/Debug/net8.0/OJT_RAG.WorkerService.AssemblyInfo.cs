@@ -11,11 +11,10 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-OJT_RAG.WorkerService-264b55d6-466f-4882-a8e6-f85a12941a9f")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84554833674efd62af22ae639b49fe8b069b799b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9975dc09849b59b2f079c13b892a002c6c057816")]
 [assembly: System.Reflection.AssemblyProductAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

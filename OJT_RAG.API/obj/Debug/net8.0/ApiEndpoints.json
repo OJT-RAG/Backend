@@ -1,0 +1,1696 @@
+[
+  {
+    "ContainingType": "AuthController",
+    "Method": "GoogleLogin",
+    "RelativePath": "api/auth/google-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.Auth.GoogleLoginRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "Create",
+    "RelativePath": "api/ChatRoom/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.ChatRoomDTO.CreateChatRoomDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "Delete",
+    "RelativePath": "api/ChatRoom/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "GetById",
+    "RelativePath": "api/ChatRoom/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "GetAll",
+    "RelativePath": "api/ChatRoom/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "Update",
+    "RelativePath": "api/ChatRoom/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.ChatRoomDTO.UpdateChatRoomDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.ChatRoomController",
+    "Method": "GetByUser",
+    "RelativePath": "api/ChatRoom/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentTagController",
+    "Method": "GetAll",
+    "RelativePath": "api/company-document-tag",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentTagController",
+    "Method": "GetById",
+    "RelativePath": "api/company-document-tag/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentTagController",
+    "Method": "Create",
+    "RelativePath": "api/company-document-tag/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.CompanyDocumentTag.CreateCompanyDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentTagController",
+    "Method": "Delete",
+    "RelativePath": "api/company-document-tag/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentTagController",
+    "Method": "Update",
+    "RelativePath": "api/company-document-tag/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.CompanyDocumentTag.UpdateCompanyDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyController",
+    "Method": "Create",
+    "RelativePath": "api/Company/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OJT_RAG.ModelViews.Company.CompanyCreateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyController",
+    "Method": "Delete",
+    "RelativePath": "api/Company/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyController",
+    "Method": "GetById",
+    "RelativePath": "api/Company/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyController",
+    "Method": "GetAll",
+    "RelativePath": "api/Company/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyController",
+    "Method": "Update",
+    "RelativePath": "api/Company/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OJT_RAG.ModelViews.Company.CompanyUpdateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "Create",
+    "RelativePath": "api/CompanyDocument/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "SemesterCompanyId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UploadedBy",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsPublic",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "Delete",
+    "RelativePath": "api/CompanyDocument/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "Download",
+    "RelativePath": "api/CompanyDocument/download/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "GetById",
+    "RelativePath": "api/CompanyDocument/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "GetAll",
+    "RelativePath": "api/CompanyDocument/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "GetBySemester",
+    "RelativePath": "api/CompanyDocument/getBySemester/{semCompanyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semCompanyId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.CompanyDocumentController",
+    "Method": "Update",
+    "RelativePath": "api/CompanyDocument/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CompanyDocumentId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemesterCompanyId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UploadedBy",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsPublic",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DatabaseTestController",
+    "Method": "Check",
+    "RelativePath": "api/DatabaseTest/check",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DocumentTagController",
+    "Method": "Get",
+    "RelativePath": "api/document-tag/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DocumentTagController",
+    "Method": "GetAll",
+    "RelativePath": "api/document-tag/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DocumentTagController",
+    "Method": "Create",
+    "RelativePath": "api/document-tag/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.DocumentTagDTO.CreateDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DocumentTagController",
+    "Method": "Delete",
+    "RelativePath": "api/document-tag/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.DocumentTagController",
+    "Method": "Update",
+    "RelativePath": "api/document-tag/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.DocumentTagDTO.UpdateDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "Create",
+    "RelativePath": "api/Finalreport/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "JobPositionId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemesterId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentReportText",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyFeedback",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyRating",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyEvaluator",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "Delete",
+    "RelativePath": "api/Finalreport/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "Download",
+    "RelativePath": "api/Finalreport/download/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "GetById",
+    "RelativePath": "api/Finalreport/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "GetAll",
+    "RelativePath": "api/Finalreport/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "GetByJob",
+    "RelativePath": "api/Finalreport/job/{jobPositionId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "jobPositionId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "GetBySemester",
+    "RelativePath": "api/Finalreport/semester/{semesterId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semesterId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "Update",
+    "RelativePath": "api/Finalreport/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "FinalreportId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "UserId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "JobPositionId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemesterId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentReportText",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyFeedback",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyRating",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "CompanyEvaluator",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.FinalreportController",
+    "Method": "GetByUser",
+    "RelativePath": "api/Finalreport/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobPositionController",
+    "Method": "Create",
+    "RelativePath": "api/job-position/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.JobPositionDTO.CreateJobPositionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobPositionController",
+    "Method": "Delete",
+    "RelativePath": "api/job-position/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobPositionController",
+    "Method": "Get",
+    "RelativePath": "api/job-position/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobPositionController",
+    "Method": "GetAll",
+    "RelativePath": "api/job-position/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobPositionController",
+    "Method": "Update",
+    "RelativePath": "api/job-position/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.JobPositionDTO.UpdateJobPositionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobTitleOverviewController",
+    "Method": "Create",
+    "RelativePath": "api/job-title-overview/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.JobTitleOverviewDTO.CreateJobTitleOverviewDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobTitleOverviewController",
+    "Method": "Delete",
+    "RelativePath": "api/job-title-overview/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobTitleOverviewController",
+    "Method": "Get",
+    "RelativePath": "api/job-title-overview/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobTitleOverviewController",
+    "Method": "GetAll",
+    "RelativePath": "api/job-title-overview/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobTitleOverviewController",
+    "Method": "Update",
+    "RelativePath": "api/job-title-overview/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.JobTitleOverviewDTO.UpdateJobTitleOverviewDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "Create",
+    "RelativePath": "api/JobBookmark/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OJT_RAG.DTOs.JobBookmarkDTO.CreateJobBookmarkDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "Delete",
+    "RelativePath": "api/JobBookmark/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "GetById",
+    "RelativePath": "api/JobBookmark/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "GetAll",
+    "RelativePath": "api/JobBookmark/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "Update",
+    "RelativePath": "api/JobBookmark/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "OJT_RAG.DTOs.JobBookmarkDTO.UpdateJobBookmarkDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobBookmarkController",
+    "Method": "GetByUserId",
+    "RelativePath": "api/JobBookmark/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobDescriptionController",
+    "Method": "Create",
+    "RelativePath": "api/JobDescription/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.Services.DTOs.JobDescription.CreateJobDescriptionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobDescriptionController",
+    "Method": "Delete",
+    "RelativePath": "api/JobDescription/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobDescriptionController",
+    "Method": "GetById",
+    "RelativePath": "api/JobDescription/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobDescriptionController",
+    "Method": "GetAll",
+    "RelativePath": "api/JobDescription/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.JobDescriptionController",
+    "Method": "Update",
+    "RelativePath": "api/JobDescription/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.Services.DTOs.JobDescription.UpdateJobDescriptionDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MajorController",
+    "Method": "Create",
+    "RelativePath": "api/Major/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.Services.DTOs.Major.CreateMajorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MajorController",
+    "Method": "Delete",
+    "RelativePath": "api/Major/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MajorController",
+    "Method": "GetById",
+    "RelativePath": "api/Major/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MajorController",
+    "Method": "GetAll",
+    "RelativePath": "api/Major/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MajorController",
+    "Method": "Update",
+    "RelativePath": "api/Major/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.Services.DTOs.Major.UpdateMajorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "GetByChatRoom",
+    "RelativePath": "api/Message/chat-room/{chatRoomId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatRoomId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "Create",
+    "RelativePath": "api/Message/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.MessageDTO.CreateMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "Delete",
+    "RelativePath": "api/Message/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "GetById",
+    "RelativePath": "api/Message/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "GetAll",
+    "RelativePath": "api/Message/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.MessageController",
+    "Method": "Update",
+    "RelativePath": "api/Message/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.MessageDTO.UpdateMessageDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.OjtDocumentTagController",
+    "Method": "GetAll",
+    "RelativePath": "api/ojt-document-tag",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.OjtDocumentTagController",
+    "Method": "GetById",
+    "RelativePath": "api/ojt-document-tag/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.OjtDocumentTagController",
+    "Method": "Create",
+    "RelativePath": "api/ojt-document-tag/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.OjtDocumentTag.CreateOjtDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.OjtDocumentTagController",
+    "Method": "Delete",
+    "RelativePath": "api/ojt-document-tag/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.OjtDocumentTagController",
+    "Method": "Update",
+    "RelativePath": "api/ojt-document-tag/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.OjtDocumentTag.UpdateOjtDocumentTagDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "Create",
+    "RelativePath": "api/OjtDocument/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemesterId",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsGeneral",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "UploadedBy",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "Delete",
+    "RelativePath": "api/OjtDocument/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "Download",
+    "RelativePath": "api/OjtDocument/download/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "GetById",
+    "RelativePath": "api/OjtDocument/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "GetAll",
+    "RelativePath": "api/OjtDocument/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.Controllers.OjtDocumentController",
+    "Method": "Update",
+    "RelativePath": "api/OjtDocument/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OjtdocumentId",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "Title",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SemesterId",
+        "Type": "System.Nullable\u00601[[System.Int64, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "IsGeneral",
+        "Type": "System.Nullable\u00601[[System.Boolean, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "File",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "Get",
+    "RelativePath": "api/semester-company/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "GetAll",
+    "RelativePath": "api/semester-company/all",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "GetByCompany",
+    "RelativePath": "api/semester-company/company/{companyId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "companyId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "Create",
+    "RelativePath": "api/semester-company/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.SemesterCompanyDTO.CreateSemesterCompanyDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "Delete",
+    "RelativePath": "api/semester-company/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "GetBySemester",
+    "RelativePath": "api/semester-company/semester/{semesterId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "semesterId",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterCompanyController",
+    "Method": "Update",
+    "RelativePath": "api/semester-company/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.SemesterCompanyDTO.UpdateSemesterCompanyDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterController",
+    "Method": "Create",
+    "RelativePath": "api/Semester/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.SemesterDTO.SemesterCreateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterController",
+    "Method": "Delete",
+    "RelativePath": "api/Semester/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterController",
+    "Method": "Get",
+    "RelativePath": "api/Semester/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterController",
+    "Method": "GetAll",
+    "RelativePath": "api/Semester/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.SemesterController",
+    "Method": "Update",
+    "RelativePath": "api/Semester/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.SemesterDTO.SemesterUpdateDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "UserChatController",
+    "Method": "Get",
+    "RelativePath": "api/user-chat/conversation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "user1",
+        "Type": "System.Int64",
+        "IsRequired": false
+      },
+      {
+        "Name": "user2",
+        "Type": "System.Int64",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "Create",
+    "RelativePath": "api/user/create",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.UserDTO.CreateUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "Delete",
+    "RelativePath": "api/user/delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "Get",
+    "RelativePath": "api/user/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int64",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "GetAll",
+    "RelativePath": "api/user/getAll",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "Login",
+    "RelativePath": "api/user/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.UserDTO.LoginRequestDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "OJT_RAG.API.Controllers.UserController",
+    "Method": "Update",
+    "RelativePath": "api/user/update",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "OJT_RAG.DTOs.UserDTO.UpdateUserDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "GoogleAuthController",
+    "Method": "Callback",
+    "RelativePath": "auth/google/callback",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "code",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
