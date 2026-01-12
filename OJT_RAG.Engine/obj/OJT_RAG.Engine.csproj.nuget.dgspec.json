@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj": {}
+    "F:\\OJT_RAG\\Backend\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj": {}
   },
   "projects": {
-    "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj": {
+    "F:\\OJT_RAG\\Backend\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+        "projectUniqueName": "F:\\OJT_RAG\\Backend\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
         "projectName": "OJT_RAG.Engine",
-        "projectPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
-        "packagesPath": "C:\\Users\\nguye\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\CapStone\\OJT_RAG_CSharp\\OJT_RAG.Engine\\obj\\",
+        "projectPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.Engine\\OJT_RAG.Engine.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "F:\\OJT_RAG\\Backend\\OJT_RAG.Engine\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "D:\\Project\\CapStone\\OJT_RAG_CSharp\\NuGet.Config",
-          "C:\\Users\\nguye\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "F:\\OJT_RAG\\Backend\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -84,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.308/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
