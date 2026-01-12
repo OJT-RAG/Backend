@@ -55,15 +55,12 @@ namespace OJT_RAG.Repositories.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
-            if (!string.IsNullOrEmpty(envConnection))
-            {
-                optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
-            }
-            else
-            {
-                optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
-            }
+            //var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
+            //if (!optionsBuilder.IsConfigured)
+            //{
+            //    // Chuỗi này CHỈ dùng cho Migration ở máy Local
+            //    optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
+            //}
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
