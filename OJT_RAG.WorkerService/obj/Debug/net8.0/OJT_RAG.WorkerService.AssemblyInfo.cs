@@ -11,7 +11,6 @@
 using System;
 using System.Reflection;
 
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("dotnet-OJT_RAG.WorkerService-264b55d6-466f-4882-a8e6-f85a12941a9f")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("OJT_RAG.WorkerService")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
