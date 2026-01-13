@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OJT_RAG.DTOs.JobPositionDTO;
 using OJT_RAG.Services.Interfaces;
 
@@ -53,18 +54,55 @@ namespace OJT_RAG.API.Controllers
         public async Task<IActionResult> Create([FromBody] CreateJobPositionDTO dto)
         {
             if (!ModelState.IsValid)
-                return BadRequest(new { success = false, errors = ModelState });
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Dữ liệu không hợp lệ",
+                    errors = ModelState
+                });
 
             try
             {
                 var result = await _service.Create(dto);
-                return CreatedAtAction(nameof(Get), new { id = "result_id" }, new { success = true, message = "Tạo vị trí công việc thành công", data = result });
+
+                return Ok(new
+                {
+                    success = true,
+                    message = "Tạo vị trí công việc thành công",
+                    data = result
+                });
+            }
+            catch (DbUpdateException ex)
+            {
+                // Lỗi DB thật (FK, length, not null…)
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Lỗi dữ liệu khi lưu vào database",
+                    error = ex.InnerException?.Message
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                // Lỗi nghiệp vụ (vd: major/semester không tồn tại)
+                return BadRequest(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
             }
             catch (Exception ex)
             {
-                return BadRequest(new { success = false, message = "Không thể tạo vị trí công việc.", error = ex.Message });
+                // Lỗi không xác định
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi hệ thống",
+                    error = ex.Message
+                });
             }
         }
+
 
         // ================= UPDATE =================
         [HttpPut("update")]

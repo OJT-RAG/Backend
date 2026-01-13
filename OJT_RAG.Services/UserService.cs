@@ -129,6 +129,7 @@ namespace OJT_RAG.Services.UserService
                 MajorId = u.MajorId,
                 CompanyId = u.CompanyId,
                 Email = u.Email,
+                Role = u.Role,
                 Fullname = u.Fullname,
                 StudentCode = u.StudentCode,
                 Dob = u.Dob,
