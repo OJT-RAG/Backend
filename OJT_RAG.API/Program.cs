@@ -17,42 +17,32 @@ using OJT_RAG.Services.Auth;
 var builder = WebApplication.CreateBuilder(args);
 
 // ====================== CẤU HÌNH CONNECTION STRING (RAILWAY FRIENDLY) ======================
-// 1. Kiểm tra xem có biến DATABASE_URL từ Railway không
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 string connectionString;
 
 if (string.IsNullOrEmpty(databaseUrl))
 {
-    // Nếu không có (chạy ở Local), lấy từ file appsettings.json
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 }
 else
 {
-    // Nếu có (chạy trên Railway), parse từ định dạng postgres:// sang định dạng .NET
     var uri = new Uri(databaseUrl);
     var userInfo = uri.UserInfo.Split(':');
-
-    // Xây dựng Connection String phù hợp với thư viện Npgsql
     connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Prefer;Trust Server Certificate=true;";
 }
 
 // ====================== DATABASE (Npgsql 8.x + ENUM) ======================
-// Khởi tạo DataSourceBuilder với connectionString đã chọn lọc
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
-
-// Đăng ký PostgreSQL enum (Giữ nguyên logic của bạn)
 dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
 dataSourceBuilder.EnableUnmappedTypes();
-
 var dataSource = dataSourceBuilder.Build();
 
-// Đăng ký DbContext
 builder.Services.AddDbContext<OJTRAGContext>(options =>
 {
     options.UseNpgsql(dataSource);
 });
 
-// ====================== CORS ======================
+// ====================== CORS (ĐÃ FIX TÊN POLICY) ======================
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -85,7 +75,6 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // ====================== DEPENDENCY INJECTION ======================
-// Đăng ký các Repository và Service
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
 builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
@@ -120,14 +109,13 @@ builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepo
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
-
+builder.Services.AddScoped<GoogleAuthService>();
 builder.Services.AddSingleton<GoogleDriveService>();
 builder.Services.AddScoped<JwtService>();
 
 // ====================== APP CONFIG ======================
 var app = builder.Build();
 
-// Tự động áp dụng Migration khi chạy trên Railway (Rất quan trọng)
 if (!string.IsNullOrEmpty(databaseUrl))
 {
     using (var scope = app.Services.CreateScope())
@@ -140,7 +128,9 @@ if (!string.IsNullOrEmpty(databaseUrl))
 app.UseSwagger();
 app.UseSwaggerUI();
 
+// SỬA TÊN POLICY TẠI ĐÂY ĐỂ KHỚP VỚI KHAI BÁO
 app.UseCors("AllowFrontend");
+
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
