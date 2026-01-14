@@ -42,7 +42,7 @@ namespace OJT_RAG.Services.Auth
                     Email = payload.Email,
                     Fullname = payload.Name,
                     AvatarUrl = payload.Picture,
-                    Role = "Student",
+                    Role = UserRole.student.ToString(),
                     CreateAt = DateTime.UtcNow.ToLocalTime(),
                     UpdateAt = DateTime.UtcNow.ToLocalTime()
                 };
