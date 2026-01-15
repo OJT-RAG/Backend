@@ -83,4 +83,5 @@ public partial class User
 
     [InverseProperty("UploadedByNavigation")]
     public virtual ICollection<Ojtdocument> Ojtdocuments { get; set; } = new List<Ojtdocument>();
+
 }

@@ -74,32 +74,57 @@ namespace OJT_RAG.API.Controllers
                 });
             }
         }
-        [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CreateCompanyDocumentDTO dto)
         {
             try
             {
+                var userIdClaim = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+                if (long.TryParse(userIdClaim, out long userId))
+                {
+                    dto.UploadedBy = userId; // Backend tự gán 7, bất kể user nhập gì hoặc để trống
+                }
+
+                // Tiếp tục logic xử lý...
                 var result = await _service.Create(dto);
-                return Ok(new { message = "Tạo tài liệu công ty thành công.", data = result });
+                return Ok(new { message = "Tạo tài liệu thành công với ID người dùng: " + userId });
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null)
-                {
-                    // Foreign key violated
-                    if (ex.InnerException.Message.Contains("foreign key"))
-                        return BadRequest(new { message = "SemesterCompanyId không tồn tại." });
+                var realErrorMessage = ex.InnerException?.Message ?? ex.Message;
 
-                    // Duplicate key
-                    if (ex.InnerException.Message.Contains("duplicate"))
-                        return BadRequest(new { message = "Tài liệu đã tồn tại." });
+                // Bắt lỗi 23502: Cột ID hoặc các cột NOT NULL bị trống (Lỗi Database)
+                if (realErrorMessage.Contains("23502") || realErrorMessage.Contains("null value"))
+                {
+                    return BadRequest(new
+                    {
+                        message = "Lỗi Database: Cột ID chưa được thiết lập Identity (Tự tăng) hoặc thiếu dữ liệu bắt buộc.",
+                        detail = realErrorMessage
+                    });
+                }
+
+                // Bắt lỗi 23503: Khóa ngoại (SemesterCompanyId hoặc UploadedBy không tồn tại)
+                if (realErrorMessage.Contains("23503") || realErrorMessage.Contains("foreign key"))
+                {
+                    return BadRequest(new
+                    {
+                        message = "Lỗi ràng buộc: SemesterCompanyId không tồn tại hoặc ID người dùng không hợp lệ.",
+                        detail = realErrorMessage
+                    });
+                }
+
+                // Lỗi trùng lặp
+                if (realErrorMessage.Contains("23505") || realErrorMessage.Contains("duplicate"))
+                {
+                    return BadRequest(new { message = "Tài liệu này đã tồn tại.", detail = realErrorMessage });
                 }
 
                 return StatusCode(500, new
                 {
-                    message = "Đã xảy ra lỗi khi tạo tài liệu.",
-                    error = ex.Message
+                    message = "Đã xảy ra lỗi hệ thống khi tạo tài liệu.",
+                    error = ex.Message,
+                    innerError = realErrorMessage
                 });
             }
         }
