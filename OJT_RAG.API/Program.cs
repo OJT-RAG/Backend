@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Npgsql;
 using OJT_RAG.Repositories;
@@ -12,18 +14,21 @@ using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
+using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ====================== CẤU HÌNH CONNECTION STRING (RAILWAY FRIENDLY) ======================
+// ====================== LẤY BIẾN MÔI TRƯỜNG ======================
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-string connectionString;
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key";
 
+// ====================== CẤU HÌNH CONNECTION STRING ======================
+string connectionString;
 if (string.IsNullOrEmpty(databaseUrl))
 {
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
 }
 else
 {
@@ -43,23 +48,55 @@ builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(dataSource);
 });
 
-// ====================== CORS (ĐÃ FIX TÊN POLICY) ======================
+// ====================== CẤU HÌNH JWT AUTHENTICATION + BẮT LỖI LOGIN ======================
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+
+    // Bắt lỗi khi chưa login hoặc token hết hạn
+    options.Events = new JwtBearerEvents
+    {
+        OnChallenge = context =>
+        {
+            context.HandleResponse();
+            context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+            context.Response.ContentType = "application/json";
+
+            var result = JsonSerializer.Serialize(new
+            {
+                message = "Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn. Vui lòng đăng nhập lại!"
+            });
+
+            return context.Response.WriteAsync(result);
+        }
+    };
+});
+
+// ====================== CORS ======================
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
         policy
-            .WithOrigins(
-                "http://localhost:3000",
-                "https://frontend-ojt-544c.vercel.app"
-            )
+            .WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .AllowCredentials();
     });
 });
 
-// ====================== JSON CONVERTERS ======================
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -67,12 +104,33 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
     });
 
-// ====================== SWAGGER ======================
+// ====================== SWAGGER CONFIG ======================
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.MapType<DateOnly>(() => new OpenApiSchema { Type = "string", Format = "date" });
     c.MapType<DateOnly?>(() => new OpenApiSchema { Type = "string", Format = "date", Nullable = true });
+
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Name = "Authorization",
+        Type = SecuritySchemeType.Http,
+        Scheme = "Bearer",
+        BearerFormat = "JWT",
+        In = ParameterLocation.Header,
+        Description = "Dán Token vào đây (Không cần gõ chữ Bearer)"
+    });
+
+    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
+            },
+            new string[] {}
+        }
+    });
 });
 
 // ====================== DEPENDENCY INJECTION ======================
@@ -116,8 +174,7 @@ builder.Services.AddScoped<JwtService>();
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 
-
-// ====================== APP CONFIG ======================
+// ====================== APP BUILD & MIDDLEWARE ======================
 var app = builder.Build();
 
 if (!string.IsNullOrEmpty(databaseUrl))
@@ -132,16 +189,19 @@ if (!string.IsNullOrEmpty(databaseUrl))
 app.UseSwagger();
 app.UseSwaggerUI();
 
-// SỬA TÊN POLICY TẠI ĐÂY ĐỂ KHỚP VỚI KHAI BÁO
 app.UseCors("AllowFrontend");
 
+app.UseRouting();
+
+// Thứ tự quan trọng: Authentication TRƯỚC Authorization
 app.UseAuthentication();
 app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
 
-// ====================== JSON CONVERTERS CLASS ======================
+// ====================== CONVERTERS ======================
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";
