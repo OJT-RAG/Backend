@@ -175,12 +175,12 @@ builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 var app = builder.Build();
 
 // Auto migrate nếu dùng DATABASE_URL (production)
-if (!string.IsNullOrEmpty(databaseUrl))
-{
-    using var scope = app.Services.CreateScope();
-    var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
-    db.Database.Migrate();
-}
+//if (!string.IsNullOrEmpty(databaseUrl))
+//{
+//    using var scope = app.Services.CreateScope();
+//    var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
+//    db.Database.Migrate();
+//}
 
 app.UseSwagger();
 app.UseSwaggerUI();
