@@ -88,7 +88,7 @@ namespace OJT_RAG.API.Controllers
 
                 // Tiếp tục logic xử lý...
                 var result = await _service.Create(dto);
-                return Ok(new { message = "Tạo tài liệu thành công với ID người dùng: " + userId });
+                return Ok(new { message = "Tạo tài liệu thành công với ID người dùng: " + dto.UploadedBy });
             }
             catch (Exception ex)
             {
