@@ -1,4 +1,4 @@
-﻿using OJT_RAG.DTOs.CompanyDocumentDTO;
+using OJT_RAG.DTOs.CompanyDocumentDTO;
 using OJT_RAG.ModelViews.CompanyDocument;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
@@ -41,30 +41,41 @@ namespace OJT_RAG.Services
 
         public async Task<bool> Create(CreateCompanyDocumentDTO dto)
         {
-            // 1. Folder cha OJT_RAG
-            var rootFolderId = await _drive.GetOrCreateFolderAsync("OJT_RAG");
-
-            // 2. Folder con theo SemesterCompanyId
-            var folderName = $"Company_Document_Semester_{dto.SemesterCompanyId}";
-            var childFolderId = await _drive.GetOrCreateFolderAsync(folderName, rootFolderId);
-
-            // 3. Upload file vào folder con
-            string? fileUrl = null;
-            if (dto.File != null)
-                fileUrl = await _drive.UploadFileAsync(dto.File, childFolderId);
-
-            // 4. Save DB
-            var entity = new Companydocument
+            try
             {
-                SemesterCompanyId = dto.SemesterCompanyId,
-                Title = dto.Title,
-                UploadedBy = dto.UploadedBy,
-                IsPublic = dto.IsPublic,
-                FileUrl = fileUrl
-            };
+                // 1. Quản lý thư mục Google Drive
+                var rootFolderId = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+                var folderName = $"Company_Document_Semester_{dto.SemesterCompanyId}";
+                var childFolderId = await _drive.GetOrCreateFolderAsync(folderName, rootFolderId);
 
-            await _repo.AddAsync(entity);
-            return true;
+                // 2. Xử lý Upload file
+                string? fileUrl = null;
+                if (dto.File != null && dto.File.Length > 0)
+                {
+                    fileUrl = await _drive.UploadFileAsync(dto.File, childFolderId);
+                }
+
+                // 3. Khởi tạo Entity (Dựa trên DTO giữ nguyên của bạn)
+                var entity = new Companydocument
+                {
+                    SemesterCompanyId = dto.SemesterCompanyId,
+                    Title = !string.IsNullOrWhiteSpace(dto.Title) ? dto.Title : (dto.File?.FileName ?? "Tài liệu không tên"),
+                    UploadedBy = dto.UploadedBy ?? 0,
+                    IsPublic = dto.IsPublic ?? true,
+                    FileUrl = fileUrl
+                };
+
+                // 4. THỰC HIỆN LƯU (SỬA LỖI TẠI ĐÂY)
+                await _repo.AddAsync(entity);
+
+                // Nếu dòng trên chạy không lỗi, trả về true
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"[Create Error]: {ex.Message}");
+                throw; // Ném lỗi để Controller xử lý thông báo 400/500
+            }
         }
 
 
