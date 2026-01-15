@@ -72,39 +72,51 @@ namespace OJT_RAG.Services.UserService
 
         // ================= UPDATE =================
         public async Task<bool> Update(UpdateUserDTO dto)
-        {
-            var u = await _repo.GetByIdAsync(dto.UserId);
-            if (u == null) return false;
+{
+    var u = await _repo.GetByIdAsync(dto.UserId);
+    if (u == null) return false;
 
-            var root = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+    var root = await _drive.GetOrCreateFolderAsync("OJT_RAG");
 
-            if (dto.AvatarUrl != null)
-            {
-                var avatarFolder = await _drive.GetOrCreateFolderAsync("USER_AVATAR", root);
-                u.AvatarUrl = await _drive.UploadFileAsync(dto.AvatarUrl, avatarFolder);
-            }
+    if (dto.AvatarUrl != null)
+    {
+        var avatarFolder = await _drive.GetOrCreateFolderAsync("USER_AVATAR", root);
+        u.AvatarUrl = await _drive.UploadFileAsync(dto.AvatarUrl, avatarFolder);
+    }
 
-            if (dto.CvUrl != null)
-            {
-                var cvFolder = await _drive.GetOrCreateFolderAsync("USER_CV", root);
-                u.CvUrl = await _drive.UploadFileAsync(dto.CvUrl, cvFolder);
-            }
+    if (dto.CvUrl != null)
+    {
+        var cvFolder = await _drive.GetOrCreateFolderAsync("USER_CV", root);
+        u.CvUrl = await _drive.UploadFileAsync(dto.CvUrl, cvFolder);
+    }
 
-            u.MajorId = dto.MajorId;
-            u.CompanyId = dto.CompanyId;
-            u.Fullname = dto.Fullname;
-            u.StudentCode = dto.StudentCode;
-            u.Dob = dto.Dob;
-            u.Phone = dto.Phone;
+    if (dto.MajorId.HasValue)
+        u.MajorId = dto.MajorId.Value;
 
-            if (!string.IsNullOrEmpty(dto.Password))
-                u.Password = dto.Password;
+    if (dto.CompanyId.HasValue)
+        u.CompanyId = dto.CompanyId.Value;
 
-            u.UpdateAt = DateTime.Now;
+    if (!string.IsNullOrEmpty(dto.Fullname))
+        u.Fullname = dto.Fullname;
 
-            await _repo.UpdateAsync(u);
-            return true;
-        }
+    if (!string.IsNullOrEmpty(dto.StudentCode))
+        u.StudentCode = dto.StudentCode;
+
+    if (dto.Dob.HasValue)
+        u.Dob = dto.Dob.Value;
+
+    if (!string.IsNullOrEmpty(dto.Phone))
+        u.Phone = dto.Phone;
+
+    if (!string.IsNullOrEmpty(dto.Password))
+        u.Password = dto.Password;
+
+    u.UpdateAt = DateTime.Now;
+
+    await _repo.UpdateAsync(u);
+    return true;
+}
+
 
         // ================= DELETE =================
         public async Task<bool> Delete(long id)
