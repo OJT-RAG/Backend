@@ -102,7 +102,7 @@ namespace OJT_RAG.API.Controllers
 
         // ------------------------- UPDATE ----------------------------
         [HttpPut("update")]
-        public async Task<IActionResult> Update([FromBody] UpdateUserDTO dto)
+        public async Task<IActionResult> Update([FromForm] UpdateUserDTO dto)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);

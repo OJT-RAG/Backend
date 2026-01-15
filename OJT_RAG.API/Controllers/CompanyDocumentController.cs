@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.CompanyDocumentDTO;
 using OJT_RAG.Services.Interfaces;
