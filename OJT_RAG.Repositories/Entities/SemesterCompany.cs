@@ -10,7 +10,9 @@ namespace OJT_RAG.Repositories.Entities;
 public partial class SemesterCompany
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("semester_company_id")]
+
     public long SemesterCompanyId { get; set; }
 
     [Column("semester_id")]

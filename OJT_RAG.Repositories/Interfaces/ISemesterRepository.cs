@@ -10,5 +10,7 @@ namespace OJT_RAG.Repositories.Interfaces
         Task Add(Semester entity);
         Task Update(Semester entity);
         Task Delete(long id);
+        Task<bool> ExistsAsync(long id);
+
     }
 }

@@ -5,6 +5,7 @@ public enum UserRole
     Admin,
     CroStaff,
     student,
-    Company
+    Company,
+    Student
 }
 

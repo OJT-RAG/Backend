@@ -69,5 +69,10 @@ namespace OJT_RAG.Repositories.Repositories
             _context.Companies.Remove(item);
             await _context.SaveChangesAsync();
         }
+        public async Task<bool> ExistsAsync(long id)
+        {
+            return await _context.Companies.AnyAsync(x => x.CompanyId == id);
+        }
+
     }
 }

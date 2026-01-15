@@ -11,5 +11,7 @@ namespace OJT_RAG.Repositories.Interfaces
         Task Add(Company entity);
         Task Update(Company entity);
         Task Delete(long id);
+        Task<bool> ExistsAsync(long id);
+
     }
 }

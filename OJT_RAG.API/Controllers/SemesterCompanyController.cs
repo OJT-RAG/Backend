@@ -92,12 +92,14 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                // Bắt lỗi trùng lặp liên kết giữa Semester và Company (Unique Constraint)
-                if (ex.InnerException?.Message.Contains("duplicate") == true)
-                    return Conflict(new { success = false, message = "Công ty này đã được gán cho học kỳ này rồi." });
-
-                return StatusCode(500, new { success = false, message = "Lỗi khi tạo liên kết.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi tạo liên kết.",
+                    error = ex.InnerException?.Message ?? ex.Message
+                });
             }
+
         }
 
         // ================= UPDATE =================

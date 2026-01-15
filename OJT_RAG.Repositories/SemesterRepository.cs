@@ -48,5 +48,10 @@ namespace OJT_RAG.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<bool> ExistsAsync(long id)
+        {
+            return await _context.Semesters.AnyAsync(x => x.SemesterId == id);
+        }
+
     }
 }
