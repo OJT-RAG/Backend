@@ -20,6 +20,9 @@ public partial class JobPosition
     [Column("semester_id")]
     public long? SemesterId { get; set; }
 
+    [Column("semester_company_id")]
+    public long? SemesterCompanyId { get; set; }  // Field mới
+
     [Column("job_title")]
     [StringLength(255)]
     public string? JobTitle { get; set; }
@@ -47,6 +50,7 @@ public partial class JobPosition
     [Column("update_at", TypeName = "timestamp without time zone")]
     public DateTime? UpdateAt { get; set; }
 
+    // Relationships
     [InverseProperty("JobPosition")]
     public virtual ICollection<Finalreport> Finalreports { get; set; } = new List<Finalreport>();
 
@@ -63,4 +67,8 @@ public partial class JobPosition
     [ForeignKey("SemesterId")]
     [InverseProperty("JobPositions")]
     public virtual Semester? Semester { get; set; }
+
+    // MỚI: Relationship với SemesterCompany
+    [ForeignKey("SemesterCompanyId")]
+    public virtual SemesterCompany? SemesterCompany { get; set; }
 }

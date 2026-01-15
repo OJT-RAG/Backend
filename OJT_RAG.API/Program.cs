@@ -1,7 +1,4 @@
-
-﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-
-
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -25,7 +22,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ====================== LẤY BIẾN MÔI TRƯỜNG ======================
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key";
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
+    ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key"; // Thay bằng key mạnh hơn khi production!
 
 // ====================== CẤU HÌNH CONNECTION STRING ======================
 string connectionString;
@@ -37,7 +35,9 @@ else
 {
     var uri = new Uri(databaseUrl);
     var userInfo = uri.UserInfo.Split(':');
-    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};Username={userInfo[0]};Password={userInfo[1]};SSL Mode=Prefer;Trust Server Certificate=true;";
+    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};" +
+                       $"Username={userInfo[0]};Password={userInfo[1]};" +
+                       $"SSL Mode=Prefer;Trust Server Certificate=true;";
 }
 
 // ====================== DATABASE (Npgsql 8.x + ENUM) ======================
@@ -51,7 +51,7 @@ builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(dataSource);
 });
 
-// ====================== CẤU HÌNH JWT AUTHENTICATION + BẮT LỖI LOGIN ======================
+// ====================== CẤU HÌNH JWT AUTHENTICATION ======================
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -68,7 +68,6 @@ builder.Services.AddAuthentication(options =>
         ClockSkew = TimeSpan.Zero
     };
 
-    // Bắt lỗi khi chưa login hoặc token hết hạn
     options.Events = new JwtBearerEvents
     {
         OnChallenge = context =>
@@ -76,12 +75,10 @@ builder.Services.AddAuthentication(options =>
             context.HandleResponse();
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
             context.Response.ContentType = "application/json";
-
             var result = JsonSerializer.Serialize(new
             {
                 message = "Bạn chưa đăng nhập hoặc phiên làm việc đã hết hạn. Vui lòng đăng nhập lại!"
             });
-
             return context.Response.WriteAsync(result);
         }
     };
@@ -92,14 +89,14 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy
-            .WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials();
+        policy.WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 
+// ====================== CONTROLLERS + JSON OPTIONS ======================
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
@@ -127,10 +124,7 @@ builder.Services.AddSwaggerGen(c =>
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
-            new OpenApiSecurityScheme
-            {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" }
-            },
+            new OpenApiSecurityScheme { Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer" } },
             new string[] {}
         }
     });
@@ -180,13 +174,12 @@ builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 // ====================== APP BUILD & MIDDLEWARE ======================
 var app = builder.Build();
 
+// Auto migrate nếu dùng DATABASE_URL (production)
 if (!string.IsNullOrEmpty(databaseUrl))
 {
-    using (var scope = app.Services.CreateScope())
-    {
-        var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
-        db.Database.Migrate();
-    }
+    using var scope = app.Services.CreateScope();
+    var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
+    db.Database.Migrate();
 }
 
 app.UseSwagger();
@@ -196,7 +189,7 @@ app.UseCors("AllowFrontend");
 
 app.UseRouting();
 
-// Thứ tự quan trọng: Authentication TRƯỚC Authorization
+// Thứ tự quan trọng: Authentication trước Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -210,6 +203,7 @@ public class DateOnlyJsonConverter : JsonConverter<DateOnly>
     private const string Format = "yyyy-MM-dd";
     public override DateOnly Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         => DateOnly.ParseExact(reader.GetString()!, Format);
+
     public override void Write(Utf8JsonWriter writer, DateOnly value, JsonSerializerOptions options)
         => writer.WriteStringValue(value.ToString(Format));
 }
@@ -222,6 +216,7 @@ public class NullableDateOnlyJsonConverter : JsonConverter<DateOnly?>
         var value = reader.GetString();
         return string.IsNullOrEmpty(value) ? null : DateOnly.ParseExact(value!, Format);
     }
+
     public override void Write(Utf8JsonWriter writer, DateOnly? value, JsonSerializerOptions options)
     {
         if (value.HasValue) writer.WriteStringValue(value.Value.ToString(Format));
