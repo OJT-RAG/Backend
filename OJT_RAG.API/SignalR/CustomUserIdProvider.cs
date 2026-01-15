@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.SignalR;
 
-public class UserIdProvider : IUserIdProvider
+public class CustomUserIdProvider : IUserIdProvider
 {
-    public string? GetUserId(HubConnectionContext connection)
+    public string GetUserId(HubConnectionContext connection)
     {
         return connection.GetHttpContext()?.Request.Query["userId"];
     }

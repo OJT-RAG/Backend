@@ -10,5 +10,6 @@ namespace OJT_RAG.Repositories.Interfaces
         Task<User> AddAsync(User entity);
         Task<User> UpdateAsync(User entity);
         Task<bool> DeleteAsync(long id);
+        Task<bool> ExistsAsync(long userId);
     }
 }

@@ -53,5 +53,9 @@ namespace OJT_RAG.Repositories
             await _db.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> ExistsAsync(long userId)
+        {
+            return await _db.Users.AnyAsync(u => u.UserId == userId);
+        }
     }
 }

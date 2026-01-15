@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using Npgsql;
@@ -9,10 +8,12 @@ using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Repositories.Repositories;
 using OJT_RAG.Services;
+using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
-using OJT_RAG.Services.Auth;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -112,6 +113,9 @@ builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<GoogleAuthService>();
 builder.Services.AddSingleton<GoogleDriveService>();
 builder.Services.AddScoped<JwtService>();
+builder.Services.AddSignalR();
+builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
+
 
 // ====================== APP CONFIG ======================
 var app = builder.Build();
