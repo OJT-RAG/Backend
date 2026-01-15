@@ -10,9 +10,8 @@ namespace OJT_RAG.Repositories.Entities;
 public partial class SemesterCompany
 {
     [Key]
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     [Column("semester_company_id")]
-
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long SemesterCompanyId { get; set; }
 
     [Column("semester_id")]
@@ -24,14 +23,22 @@ public partial class SemesterCompany
     [Column("approved_at", TypeName = "timestamp without time zone")]
     public DateTime? ApprovedAt { get; set; }
 
+    // ── Relationships ───────────────────────────────────────────────
+
     [ForeignKey("CompanyId")]
     [InverseProperty("SemesterCompanies")]
     public virtual Company? Company { get; set; }
 
-    [InverseProperty("SemesterCompany")]
-    public virtual ICollection<Companydocument> Companydocuments { get; set; } = new List<Companydocument>();
-
     [ForeignKey("SemesterId")]
     [InverseProperty("SemesterCompanies")]
     public virtual Semester? Semester { get; set; }
+
+    [InverseProperty("SemesterCompany")]
+    public virtual ICollection<Companydocument> Companydocuments { get; set; } = new List<Companydocument>();
+
+    // ── MỚI: Relationship 2 chiều với JobPosition ──────────────────
+    // Cho phép SemesterCompany truy cập danh sách tất cả JobPosition
+    // thuộc về công ty này trong kỳ này
+    [InverseProperty("SemesterCompany")]
+    public virtual ICollection<JobPosition> JobPositions { get; set; } = new List<JobPosition>();
 }

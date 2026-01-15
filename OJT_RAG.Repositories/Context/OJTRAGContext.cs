@@ -90,7 +90,14 @@ namespace OJT_RAG.Repositories.Context
                       //.HasColumnType("user_role_enum")
                       .IsRequired(true);
             });
+            modelBuilder.Entity<JobPosition>(entity =>
+            {
+                entity.HasOne(j => j.SemesterCompany)
+                      .WithMany(sc => sc.JobPositions)
+                      .HasForeignKey(j => j.SemesterCompanyId)
+                      .OnDelete(DeleteBehavior.Restrict);   
 
+            });
             OnModelCreatingPartial(modelBuilder);
         }
 
