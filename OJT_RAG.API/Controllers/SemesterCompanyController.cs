@@ -26,7 +26,12 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, message = "Lỗi khi lấy danh sách học kỳ - công ty.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi lấy danh sách",
+                    error = ex.Message
+                });
             }
         }
 
@@ -34,6 +39,9 @@ namespace OJT_RAG.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(long id)
         {
+            if (id <= 0)
+                return BadRequest(new { success = false, message = "ID phải lớn hơn 0" });
+
             try
             {
                 var data = await _service.GetById(id);
@@ -44,7 +52,12 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi lấy dữ liệu",
+                    error = ex.Message
+                });
             }
         }
 
@@ -52,6 +65,9 @@ namespace OJT_RAG.API.Controllers
         [HttpGet("semester/{semesterId}")]
         public async Task<IActionResult> GetBySemester(long semesterId)
         {
+            if (semesterId <= 0)
+                return BadRequest(new { success = false, message = "semesterId phải lớn hơn 0" });
+
             try
             {
                 var data = await _service.GetBySemester(semesterId);
@@ -59,7 +75,12 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi lấy theo học kỳ",
+                    error = ex.Message
+                });
             }
         }
 
@@ -67,6 +88,9 @@ namespace OJT_RAG.API.Controllers
         [HttpGet("company/{companyId}")]
         public async Task<IActionResult> GetByCompany(long companyId)
         {
+            if (companyId <= 0)
+                return BadRequest(new { success = false, message = "companyId phải lớn hơn 0" });
+
             try
             {
                 var data = await _service.GetByCompany(companyId);
@@ -74,7 +98,12 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi lấy theo công ty",
+                    error = ex.Message
+                });
             }
         }
 
@@ -82,44 +111,69 @@ namespace OJT_RAG.API.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateSemesterCompanyDTO dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            if (dto == null)
+                return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ" });
 
             try
             {
                 var result = await _service.Create(dto);
-                return Ok(new { success = true, message = "Tạo mới thành công", data = result });
+                return Ok(new
+                {
+                    success = true,
+                    message = "Tạo mới thành công"
+                });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
             }
             catch (Exception ex)
             {
                 return StatusCode(500, new
                 {
                     success = false,
-                    message = "Lỗi khi tạo liên kết.",
-                    error = ex.InnerException?.Message ?? ex.Message
+                    message = "Lỗi khi tạo liên kết",
+                    error = ex.Message
                 });
             }
-
         }
 
         // ================= UPDATE =================
         [HttpPut("update")]
         public async Task<IActionResult> Update([FromBody] UpdateSemesterCompanyDTO dto)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
+            if (dto == null)
+                return BadRequest(new { success = false, message = "Dữ liệu không hợp lệ" });
 
             try
             {
                 var result = await _service.Update(dto);
-                if (result == null)
-                    return NotFound(new { success = false, message = "Không tìm thấy dữ liệu để cập nhật." });
-
-                return Ok(new { success = true, message = "Cập nhật thành công", data = result });
+                return Ok(new
+                {
+                    success = true,
+                    message = "Cập nhật thành công"
+                });
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(new
+                {
+                    success = false,
+                    message = ex.Message
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, message = "Lỗi khi cập nhật.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi cập nhật",
+                    error = ex.Message
+                });
             }
         }
 
@@ -127,17 +181,25 @@ namespace OJT_RAG.API.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
+            if (id <= 0)
+                return BadRequest(new { success = false, message = "ID phải lớn hơn 0" });
+
             try
             {
                 var isDeleted = await _service.Delete(id);
                 if (!isDeleted)
-                    return NotFound(new { success = false, message = "Xóa thất bại: Không tìm thấy bản ghi." });
+                    return NotFound(new { success = false, message = "Không tìm thấy bản ghi để xóa" });
 
-                return Ok(new { success = true, message = "Đã xóa thành công." });
+                return Ok(new { success = true, message = "Đã xóa thành công" });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { success = false, message = "Lỗi khi xóa bản ghi.", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    success = false,
+                    message = "Lỗi khi xóa",
+                    error = ex.Message
+                });
             }
         }
     }
