@@ -21,7 +21,7 @@ namespace OJT_RAG.Services
             return data.Select(c => new CompanyViewModel
             {
                 Company_ID = c.CompanyId,
-                MajorID = c.MajorId,
+                //MajorID = c.MajorId,
                 Name = c.Name,
                 Tax_Code = c.TaxCode,
                 Address = c.Address,
@@ -41,7 +41,7 @@ namespace OJT_RAG.Services
             return new CompanyViewModel
             {
                 Company_ID = c.CompanyId,
-                MajorID = c.MajorId,
+                //MajorID = c.MajorId,
                 Name = c.Name,
                 Tax_Code = c.TaxCode,
                 Address = c.Address,
@@ -60,7 +60,7 @@ namespace OJT_RAG.Services
             var entity = new Company
             {
                 CompanyId = newId,
-                MajorId = model.MajorID,
+                //MajorId = model.MajorID,
                 Name = model.Name,
                 TaxCode = model.Tax_Code,
                 Address = model.Address,
@@ -79,7 +79,7 @@ namespace OJT_RAG.Services
             return new CompanyViewModel
             {
                 Company_ID = entity.CompanyId,
-                MajorID = entity.MajorId,
+                //MajorID = entity.MajorId,
                 Name = entity.Name,
                 Tax_Code = entity.TaxCode,
                 Address = entity.Address,
@@ -96,7 +96,7 @@ namespace OJT_RAG.Services
             var entity = await _repo.GetById(model.Company_ID);
             if (entity == null) return null;
 
-            entity.MajorId = model.MajorID ?? entity.MajorId;
+            //entity.MajorId = model.MajorID ?? entity.MajorId;
             entity.Name = model.Name ?? entity.Name;
             entity.TaxCode = model.Tax_Code ?? entity.TaxCode;
             entity.Address = model.Address ?? entity.Address;
@@ -113,7 +113,7 @@ namespace OJT_RAG.Services
             return new CompanyViewModel
             {
                 Company_ID = entity.CompanyId,
-                MajorID = entity.MajorId,
+                //MajorID = entity.MajorId,
                 Name = entity.Name,
                 Tax_Code = entity.TaxCode,
                 Address = entity.Address,
