@@ -2,7 +2,6 @@
 {
     public class CompanyCreateModel
     {
-        public long? MajorID { get; set; }
         public string Name { get; set; }
         public string Tax_Code { get; set; }
         public string Address { get; set; }
