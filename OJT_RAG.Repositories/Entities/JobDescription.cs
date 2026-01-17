@@ -11,6 +11,7 @@ public partial class JobDescription
 {
     [Key]
     [Column("job_description_id")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long JobDescriptionId { get; set; }
 
     [Column("job_position_id")]

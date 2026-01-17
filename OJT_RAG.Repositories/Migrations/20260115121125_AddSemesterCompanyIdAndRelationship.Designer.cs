@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using OJT_RAG.Repositories.Context;
@@ -11,9 +12,11 @@ using OJT_RAG.Repositories.Context;
 namespace OJT_RAG.Repositories.Migrations
 {
     [DbContext(typeof(OJTRAGContext))]
-    partial class OJTRAGContextModelSnapshot : ModelSnapshot
+    [Migration("20260115121125_AddSemesterCompanyIdAndRelationship")]
+    partial class AddSemesterCompanyIdAndRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

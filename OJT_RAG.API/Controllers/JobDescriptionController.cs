@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using OJT_RAG.Services.DTOs.JobDescription;
 using OJT_RAG.Services.Interfaces;
 
@@ -42,10 +43,26 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { message = $"Đã xảy ra lỗi khi lấy mô tả công việc với Id = {id}.", error = ex.Message });
             }
         }
-
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateJobDescriptionDTO dto)
         {
+            if (!ModelState.IsValid)
+            {
+                var errors = ModelState
+                    .Where(x => x.Value?.Errors.Count > 0)
+                    .ToDictionary(
+                        kvp => kvp.Key,
+                        kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
+                    );
+
+                return BadRequest(new
+                {
+                    message = "Dữ liệu không hợp lệ",
+                    errors,
+                    receivedDto = dto  // debug: xem DTO thực tế nhận được gì
+                });
+            }
+
             try
             {
                 var result = await _service.CreateAsync(dto);
@@ -53,11 +70,8 @@ namespace OJT_RAG.API.Controllers
             }
             catch (Exception ex)
             {
-                if (ex.InnerException != null && ex.InnerException.Message.Contains("duplicate key"))
-                {
-                    return BadRequest(new { message = "Mô tả công việc đã tồn tại (Id hoặc trường unique bị trùng)." });
-                }
-                return StatusCode(500, new { message = "Đã xảy ra lỗi khi tạo mô tả công việc.", error = ex.Message });
+                // log ex nếu có logger
+                return StatusCode(500, new { message = "Lỗi server nội bộ", error = ex.Message });
             }
         }
 
