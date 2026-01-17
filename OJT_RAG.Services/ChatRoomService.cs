@@ -51,8 +51,8 @@ namespace OJT_RAG.Services
                 UserId = dto.UserId,
                 ChatRoomTitle = dto.ChatRoomTitle,
                 Description = dto.Description,
-                CreateAt = DateTime.UtcNow,
-                UpdateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = DateTime.UtcNow.ToLocalTime()
             };
 
             await _repo.AddAsync(entity);
@@ -67,7 +67,7 @@ namespace OJT_RAG.Services
             entity.UserId = dto.UserId;
             entity.ChatRoomTitle = dto.ChatRoomTitle;
             entity.Description = dto.Description;
-            entity.UpdateAt = DateTime.UtcNow;
+            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
             await _repo.UpdateAsync(entity);
             return true;

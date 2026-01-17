@@ -41,9 +41,9 @@ namespace OJT_RAG.Services
                 UserId = dto.UserId,
                 JobPositionId = dto.JobPositionId,
                 Status = "pending",
-                AppliedAt = DateTime.UtcNow,
-                CreateAt = DateTime.UtcNow,
-                UpdateAt = DateTime.UtcNow,
+                AppliedAt = DateTime.UtcNow.ToLocalTime(),
+                CreateAt = DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = DateTime.UtcNow.ToLocalTime(),
                 IsRandomFallback = false
             };
 
@@ -57,8 +57,8 @@ namespace OJT_RAG.Services
 
             entity.Status = dto.Status;
             entity.RejectedReason = dto.RejectedReason;
-            entity.CompanyDecisionAt = DateTime.UtcNow;
-            entity.UpdateAt = DateTime.UtcNow;
+            entity.CompanyDecisionAt = DateTime.UtcNow.ToLocalTime();
+            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
             return await _repo.Update(entity);
         }

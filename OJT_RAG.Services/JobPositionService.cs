@@ -38,8 +38,8 @@ namespace OJT_RAG.Services
                 Location = x.Location,
                 SalaryRange = x.SalaryRange,
                 IsActive = x.IsActive ?? false,
-                CreateAt = x.CreateAt ?? DateTime.UtcNow,
-                UpdateAt = x.UpdateAt ?? DateTime.UtcNow
+                CreateAt = x.CreateAt ?? DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = x.UpdateAt ?? DateTime.UtcNow.ToLocalTime()
             }).ToList();
         }
 
@@ -60,8 +60,8 @@ namespace OJT_RAG.Services
                 Location = x.Location,
                 SalaryRange = x.SalaryRange,
                 IsActive = x.IsActive ?? false,
-                CreateAt = x.CreateAt ?? DateTime.UtcNow,
-                UpdateAt = x.UpdateAt ?? DateTime.UtcNow
+                CreateAt = x.CreateAt ?? DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = x.UpdateAt ?? DateTime.UtcNow.ToLocalTime()
             };
         }
 
@@ -91,8 +91,8 @@ namespace OJT_RAG.Services
                 Location = dto.Location,
                 SalaryRange = dto.SalaryRange,
                 IsActive = dto.IsActive,  // Không cần ?? vì DTO dùng bool
-                CreateAt = DateTime.UtcNow,  // An toàn với timestamp without time zone
-                UpdateAt = DateTime.UtcNow
+                CreateAt = DateTime.UtcNow.ToLocalTime(),  // An toàn với timestamp without time zone
+                UpdateAt = DateTime.UtcNow.ToLocalTime()
             };
 
             await _jobPositionRepo.AddAsync(entity);
@@ -121,7 +121,7 @@ namespace OJT_RAG.Services
             entity.Location = dto.Location ?? entity.Location;
             entity.SalaryRange = dto.SalaryRange ?? entity.SalaryRange;
             entity.IsActive = dto.IsActive ?? entity.IsActive ?? false;
-            entity.UpdateAt = DateTime.UtcNow;
+            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
             await _jobPositionRepo.UpdateAsync(entity);
             return true;
@@ -154,8 +154,8 @@ namespace OJT_RAG.Services
                 Location = j.Location,
                 SalaryRange = j.SalaryRange,
                 IsActive = j.IsActive ?? false,
-                CreateAt = j.CreateAt ?? DateTime.UtcNow,
-                UpdateAt = j.UpdateAt ?? DateTime.UtcNow
+                CreateAt = j.CreateAt ?? DateTime.UtcNow.ToLocalTime(),
+                UpdateAt = j.UpdateAt ?? DateTime.UtcNow.ToLocalTime()
             }).ToList();
         }
     }

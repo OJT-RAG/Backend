@@ -60,7 +60,7 @@ namespace OJT_RAG.Services
                 IsGeneral = dto.IsGeneral,
                 UploadedBy = dto.UploadedBy,
                 FileUrl = fileUrl,
-                UploadedAt = DateTime.UtcNow
+                UploadedAt = DateTime.UtcNow.ToLocalTime()
             };
 
             await _repo.AddAsync(entity);
