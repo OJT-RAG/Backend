@@ -1,10 +1,19 @@
-﻿namespace OJT_RAG.Services.DTOs.JobDescription
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OJT_RAG.Services.DTOs.JobDescription
 {
     public class CreateJobDescriptionDTO
     {
-        public long? JobPositionId { get; set; }
-        public string? JobDescription { get; set; }
-        public int? HireQuantity { get; set; }
-        public int? AppliedQuantity { get; set; }
+        [Required(ErrorMessage = "jobPositionId là bắt buộc")]
+        public long JobPositionId { get; set; }
+
+        [Required(ErrorMessage = "jobDescription là bắt buộc")]
+        public string JobDescription { get; set; } = null!;
+
+        [Required(ErrorMessage = "hireQuantity là bắt buộc")]
+        public int HireQuantity { get; set; }
+
+        [Required(ErrorMessage = "appliedQuantity là bắt buộc")]
+        public int AppliedQuantity { get; set; }
     }
 }

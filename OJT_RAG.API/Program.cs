@@ -100,8 +100,14 @@ builder.Services.AddCors(options =>
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
+        options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
+
         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
+
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; // Không trả field null
+        options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment(); // Đẹp hơn khi dev
     });
 
 // ====================== SWAGGER CONFIG ======================
