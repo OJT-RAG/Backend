@@ -43,6 +43,7 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { message = $"Đã xảy ra lỗi khi lấy mô tả công việc với Id = {id}.", error = ex.Message });
             }
         }
+
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateJobDescriptionDTO dto)
         {
