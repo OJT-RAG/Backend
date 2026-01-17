@@ -18,6 +18,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
+AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", false);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // ====================== LẤY BIẾN MÔI TRƯỜNG ======================
@@ -169,6 +171,8 @@ builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
+builder.Services.AddScoped<IJobApplicationRepository, JobApplicationRepository>();
+builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<GoogleAuthService>();

@@ -54,7 +54,7 @@ namespace OJT_RAG.Services
                 FromAi = dto.FromAi,
                 Useful = dto.Useful,
                 Sources = dto.Sources,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow.ToLocalTime()
             };
 
             await _repo.AddAsync(entity);

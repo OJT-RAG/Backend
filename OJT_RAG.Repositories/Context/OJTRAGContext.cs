@@ -6,23 +6,23 @@ using OJT_RAG.Repositories.Entities;
 
 namespace OJT_RAG.Repositories.Context
 {
-    public class UnspecifiedDateTimeConverter : ValueConverter<DateTime, DateTime>
-    {
-        public UnspecifiedDateTimeConverter()
-            : base(
-                v => v,  // convert to provider: giữ nguyên
-                v => DateTime.SpecifyKind(v, DateTimeKind.Unspecified)) // convert from provider
-        { }
-    }
+    //public class UnspecifiedDateTimeConverter : ValueConverter<DateTime, DateTime>
+    //{
+    //    public UnspecifiedDateTimeConverter()
+    //        : base(
+    //            v => v,  // convert to provider: giữ nguyên
+    //            v => DateTime.SpecifyKind(v, DateTimeKind.Unspecified)) // convert from provider
+    //    { }
+    //}
 
-    public class UnspecifiedNullableDateTimeConverter : ValueConverter<DateTime?, DateTime?>
-    {
-        public UnspecifiedNullableDateTimeConverter()
-            : base(
-                v => v,
-                v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Unspecified) : v)
-        { }
-    }
+    //public class UnspecifiedNullableDateTimeConverter : ValueConverter<DateTime?, DateTime?>
+    //{
+    //    public UnspecifiedNullableDateTimeConverter()
+    //        : base(
+    //            v => v,
+    //            v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Unspecified) : v)
+    //    { }
+    //}
 
     public partial class OJTRAGContext : DbContext
     {
@@ -52,6 +52,7 @@ namespace OJT_RAG.Repositories.Context
         public virtual DbSet<SemesterCompany> SemesterCompanies { get; set; }
         public virtual DbSet<Companydocumenttag> Companydocumenttags { get; set; }
         public virtual DbSet<Ojtdocumenttag> Ojtdocumenttags { get; set; }
+        public virtual DbSet<JobApplication> JobApplications { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -69,16 +70,16 @@ namespace OJT_RAG.Repositories.Context
             //modelBuilder.HasPostgresEnum<UserRole>("user_role_enum");
 
             // ⭐ Fix DateTime Kind cho toàn project
-            foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            {
-                foreach (var property in entityType.GetProperties())
-                {
-                    if (property.ClrType == typeof(DateTime))
-                        property.SetValueConverter(new UnspecifiedDateTimeConverter());
-                    else if (property.ClrType == typeof(DateTime?))
-                        property.SetValueConverter(new UnspecifiedNullableDateTimeConverter());
-                }
-            }
+            //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
+            //{
+            //    foreach (var property in entityType.GetProperties())
+            //    {
+            //        if (property.ClrType == typeof(DateTime))
+            //            property.SetValueConverter(new UnspecifiedDateTimeConverter());
+            //        else if (property.ClrType == typeof(DateTime?))
+            //            property.SetValueConverter(new UnspecifiedNullableDateTimeConverter());
+            //    }
+            //}
 
             // ⭐ Cấu hình User
             modelBuilder.Entity<User>(entity =>

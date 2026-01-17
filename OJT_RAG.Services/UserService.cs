@@ -63,7 +63,7 @@ namespace OJT_RAG.Services.UserService
                 Phone = dto.Phone,
                 AvatarUrl = avatarUrl,
                 CvUrl = cvUrl,
-                CreateAt = DateTime.Now
+                CreateAt = DateTime.UtcNow.ToLocalTime()
             };
 
             await _repo.AddAsync(user);
@@ -111,7 +111,7 @@ namespace OJT_RAG.Services.UserService
     if (!string.IsNullOrEmpty(dto.Password))
         u.Password = dto.Password;
 
-    u.UpdateAt = DateTime.Now;
+    u.UpdateAt = DateTime.UtcNow.ToLocalTime();
 
     await _repo.UpdateAsync(u);
     return true;

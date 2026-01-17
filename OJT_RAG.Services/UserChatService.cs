@@ -34,7 +34,7 @@ namespace OJT_RAG.Services
                 SenderId = senderId,
                 ReceiverId = receiverId,
                 Content = content,
-                SentAt = DateTime.UtcNow
+                SentAt = DateTime.UtcNow.ToLocalTime()
             };
 
             var saved = await _repo.AddAsync(msg);
