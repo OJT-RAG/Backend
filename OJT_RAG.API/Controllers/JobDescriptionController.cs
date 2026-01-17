@@ -46,32 +46,36 @@ namespace OJT_RAG.API.Controllers
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromBody] CreateJobDescriptionDTO dto)
         {
+            // Debug: Log DTO nhận được
+            Console.WriteLine($"DTO received: JobPositionId={dto.JobPositionId}, JobDescription={(dto.JobDescription ?? "NULL")}, Hire={dto.HireQuantity}, Applied={dto.AppliedQuantity}");
+
+            if (dto == null)
+            {
+                return BadRequest("DTO bị null - binding thất bại");
+            }
+
             if (!ModelState.IsValid)
             {
-                var errors = ModelState
-                    .Where(x => x.Value?.Errors.Count > 0)
-                    .ToDictionary(
-                        kvp => kvp.Key,
-                        kvp => kvp.Value?.Errors.Select(e => e.ErrorMessage).ToArray()
-                    );
-
-                return BadRequest(new
-                {
-                    message = "Dữ liệu không hợp lệ",
-                    errors,
-                    receivedDto = dto  // debug: xem DTO thực tế nhận được gì
-                });
+                var errors = ModelState.ToDictionary(
+                    x => x.Key,
+                    x => x.Value.Errors.Select(e => e.ErrorMessage).ToArray()
+                );
+                return BadRequest(new { message = "Validation fail", errors });
             }
 
             try
             {
                 var result = await _service.CreateAsync(dto);
-                return Ok(new { message = "Tạo mô tả công việc thành công.", data = result });
+                return Ok(new { message = "Tạo thành công", data = result });
+            }
+            catch (DbUpdateException ex)
+            {
+                var inner = ex.InnerException?.Message ?? ex.Message;
+                return StatusCode(500, new { message = "DB error", detail = inner });
             }
             catch (Exception ex)
             {
-                // log ex nếu có logger
-                return StatusCode(500, new { message = "Lỗi server nội bộ", error = ex.Message });
+                return StatusCode(500, new { message = "Server error", detail = ex.Message, stack = ex.StackTrace });
             }
         }
 
