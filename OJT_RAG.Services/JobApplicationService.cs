@@ -55,12 +55,22 @@ namespace OJT_RAG.Services
             var entity = await _repo.GetById(dto.JobApplicationId);
             if (entity == null) return null;
 
+            // ===== EP UTC CHO TOÀN BỘ DateTime =====
+            entity.AppliedAt = DateTime.SpecifyKind(entity.AppliedAt, DateTimeKind.Utc);
+            entity.CreateAt = DateTime.SpecifyKind(entity.CreateAt, DateTimeKind.Utc);
+
+            if (entity.CompanyDecisionAt.HasValue)
+                entity.CompanyDecisionAt = DateTime.SpecifyKind(
+                    entity.CompanyDecisionAt.Value, DateTimeKind.Utc);
+
+            // ===== UPDATE BUSINESS FIELD =====
             entity.Status = dto.Status;
             entity.RejectedReason = dto.RejectedReason;
-            entity.CompanyDecisionAt = DateTime.UtcNow.ToLocalTime();
-            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
+            entity.CompanyDecisionAt = DateTime.UtcNow;
+            entity.UpdateAt = DateTime.UtcNow;
 
             return await _repo.Update(entity);
         }
+
     }
 }
