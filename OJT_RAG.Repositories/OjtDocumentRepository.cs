@@ -38,7 +38,7 @@ namespace OJT_RAG.Repositories
 
         public async Task<Ojtdocument> UpdateAsync(Ojtdocument entity)
         {
-            _db.Ojtdocuments.Update(entity);
+            //_db.Ojtdocuments.Update(entity);
             await _db.SaveChangesAsync();
             return entity;
         }
