@@ -22,25 +22,51 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", false);
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ====================== LẤY BIẾN MÔI TRƯỜNG ======================
-var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
-var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
-    ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key"; // Thay bằng key mạnh hơn khi production!
+// ====================== LẤY BIẾN MÔI TRƯỜNG & CẤU HÌNH DB ======================
+// 1. Lấy chuỗi mặc định từ appsettings.json (Dùng cho Local)
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
 
-// ====================== CẤU HÌNH CONNECTION STRING ======================
-string connectionString;
-if (string.IsNullOrEmpty(databaseUrl))
+// 2. Lấy biến môi trường từ Railway (Dùng cho Production)
+var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+var railwayConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
+
+// Ưu tiên biến môi trường ConnectionStrings__DefaultConnection nếu có (Do ta cấu hình thủ công)
+if (!string.IsNullOrEmpty(railwayConnectionString))
 {
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
+    connectionString = railwayConnectionString;
 }
-else
+// Nếu không, thử check biến DATABASE_URL (Mặc định của Railway)
+else if (!string.IsNullOrEmpty(databaseUrl))
 {
-    var uri = new Uri(databaseUrl);
-    var userInfo = uri.UserInfo.Split(':');
-    connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};" +
-                       $"Username={userInfo[0]};Password={userInfo[1]};" +
-                       $"SSL Mode=Prefer;Trust Server Certificate=true;";
+    // Kiểm tra xem nó là dạng URI (postgres://...) hay dạng Key=Value (Host=...)
+    if (databaseUrl.StartsWith("postgres://"))
+    {
+        try 
+        {
+            var uri = new Uri(databaseUrl);
+            var userInfo = uri.UserInfo.Split(':');
+            connectionString = $"Host={uri.Host};Port={uri.Port};Database={uri.AbsolutePath.TrimStart('/')};" +
+                               $"Username={userInfo[0]};Password={userInfo[1]};" +
+                               $"SSL Mode=Prefer;Trust Server Certificate=true;";
+        }
+        catch 
+        {
+            // Nếu parse lỗi, cứ gán thẳng vào, có thể nó là chuỗi connection string nhưng đặt tên biến nhầm
+            connectionString = databaseUrl;
+        }
+    }
+    else
+    {
+        // Nếu không bắt đầu bằng postgres://, nghĩa là nó đã là dạng Host=... rồi
+        connectionString = databaseUrl;
+    }
 }
+
+Console.WriteLine($"--> Using Connection String: {connectionString}"); // Log ra để debug (sẽ hiện trong log Railway)
+
+// ====================== CẤU HÌNH JWT KEY ======================
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
+    ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key_Phai_Dai_Hon_16_Ky_Tu_Nhe"; 
 
 // ====================== DATABASE (Npgsql 8.x + ENUM) ======================
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
@@ -91,7 +117,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app")
+        policy.WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app") // Thay domain frontend của bạn vào đây
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -108,8 +134,8 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
 
-        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; // Không trả field null
-        options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment(); // Đẹp hơn khi dev
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; 
+        options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment(); 
     });
 
 // ====================== SWAGGER CONFIG ======================
@@ -184,14 +210,6 @@ builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 // ====================== APP BUILD & MIDDLEWARE ======================
 var app = builder.Build();
 
-// Auto migrate nếu dùng DATABASE_URL (production)
-//if (!string.IsNullOrEmpty(databaseUrl))
-//{
-//    using var scope = app.Services.CreateScope();
-//    var db = scope.ServiceProvider.GetRequiredService<OJTRAGContext>();
-//    db.Database.Migrate();
-//}
-
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -205,6 +223,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+// Vì Railway quản lý Port qua biến môi trường PORT, ta để mặc định app.Run()
+// Nó sẽ tự động lắng nghe theo cấu hình trong Dockerfile hoặc biến môi trường
 app.Run();
 
 // ====================== CONVERTERS ======================
