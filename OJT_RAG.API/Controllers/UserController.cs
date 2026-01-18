@@ -123,7 +123,7 @@ namespace OJT_RAG.API.Controllers
                     return Conflict(new { success = false, message = "Dữ liệu cập nhật (Email/SĐT) đã được sử dụng bởi người khác." });
                 }
 
-                return StatusCode(500, new { success = false, message = "Lỗi server khi cập nhật.", error = ex.Message });
+                return StatusCode(500, new { success = false, message = "Lỗi server khi cập nhật.", error = ex.InnerException?.Message ?? ex.Message });
             }
         }
 

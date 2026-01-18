@@ -111,9 +111,22 @@ namespace OJT_RAG.Services.UserService
     if (!string.IsNullOrEmpty(dto.Password))
         u.Password = dto.Password;
 
-    u.UpdateAt = DateTime.UtcNow.ToLocalTime();
+            if (u.CreateAt.HasValue)
+            {
+                u.CreateAt = DateTime.SpecifyKind(
+                    u.CreateAt.Value,
+                    DateTimeKind.Unspecified
+                );
+            }
 
-    await _repo.UpdateAsync(u);
+            u.UpdateAt = DateTime.SpecifyKind(
+                DateTime.UtcNow,
+                DateTimeKind.Unspecified
+            );
+
+
+
+            await _repo.UpdateAsync(u);
     return true;
 }
 
