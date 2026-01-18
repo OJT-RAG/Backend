@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.OjtDocumentDTO;
 using OJT_RAG.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 
 namespace OJT_RAG.Controllers
 {
@@ -108,26 +109,44 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
-        [Authorize]
-        [HttpDelete("delete/{id}")]
-        public async Task<IActionResult> Delete(long id)
+       [Authorize]
+[HttpDelete("delete/{id}")]
+public async Task<IActionResult> Delete(long id)
+{
+    try
+    {
+        var success = await _service.DeleteAsync(id);
+        return success
+            ? Ok(new { message = "Xóa tài liệu OJT thành công." })
+            : NotFound(new { message = "Không tìm thấy tài liệu OJT để xóa." });
+    }
+    catch (DbUpdateException ex)
+    {
+        // 🔴 LỖI FK: document đang gắn tag
+        if (ex.InnerException != null &&
+            ex.InnerException.Message.Contains("foreign key"))
         {
-            try
+            return BadRequest(new
             {
-                var success = await _service.DeleteAsync(id);
-                return success
-                    ? Ok(new { message = "Xóa tài liệu OJT thành công." })
-                    : NotFound(new { message = "Không tìm thấy tài liệu OJT để xóa." });
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, new
-                {
-                    message = $"Đã xảy ra lỗi khi xóa tài liệu OJT có Id = {id}.",
-                    error = ex.Message
-                });
-            }
+                message = "Không thể xóa tài liệu vì đang được gắn với thẻ (OjtDocumentTag)."
+            });
         }
+
+        return StatusCode(500, new
+        {
+            message = "Lỗi database khi xóa tài liệu OJT.",
+            error = ex.InnerException?.Message ?? ex.Message
+        });
+    }
+    catch (Exception ex)
+    {
+        return StatusCode(500, new
+        {
+            message = $"Đã xảy ra lỗi khi xóa tài liệu OJT có Id = {id}.",
+            error = ex.Message
+        });
+    }
+}
 
         [Authorize]
         [HttpGet("download/{id}")]
