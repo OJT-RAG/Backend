@@ -44,10 +44,10 @@ public partial class JobPosition
     [Column("is_active")]
     public bool? IsActive { get; set; }
 
-    [Column("create_at", TypeName = "timestamp without time zone")]
+    [Column("create_at", TypeName = "timestamp with time zone")]
     public DateTime? CreateAt { get; set; }
 
-    [Column("update_at", TypeName = "timestamp without time zone")]
+    [Column("update_at", TypeName = "timestamp with time zone")]
     public DateTime? UpdateAt { get; set; }
 
     // Relationships
