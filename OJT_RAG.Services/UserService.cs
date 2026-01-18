@@ -63,6 +63,7 @@ namespace OJT_RAG.Services.UserService
                 Phone = dto.Phone,
                 AvatarUrl = avatarUrl,
                 CvUrl = cvUrl,
+                Role = "Student",
                 CreateAt = DateTime.UtcNow.ToLocalTime()
             };
 
