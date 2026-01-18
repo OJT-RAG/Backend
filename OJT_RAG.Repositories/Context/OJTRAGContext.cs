@@ -32,7 +32,29 @@ namespace OJT_RAG.Repositories.Context
             : base(options)
         {
         }
+        public override async Task<int> SaveChangesAsync(
+    CancellationToken cancellationToken = default)
+        {
+            foreach (var entry in ChangeTracker.Entries())
+            {
+                foreach (var prop in entry.Properties)
+                {
+                    if (prop.Metadata.ClrType == typeof(DateTime))
+                    {
+                        if (prop.CurrentValue == null) continue;
 
+                        var dt = (DateTime)prop.CurrentValue;
+
+                        if (dt.Kind == DateTimeKind.Local)
+                            prop.CurrentValue = dt.ToUniversalTime();
+                        else if (dt.Kind == DateTimeKind.Unspecified)
+                            prop.CurrentValue = DateTime.SpecifyKind(dt, DateTimeKind.Utc);
+                    }
+                }
+            }
+
+            return await base.SaveChangesAsync(cancellationToken);
+        }
         // ⭐ DBSets
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<ChatRoom> ChatRooms { get; set; }
