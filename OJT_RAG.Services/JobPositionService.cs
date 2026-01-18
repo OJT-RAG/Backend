@@ -91,8 +91,8 @@ namespace OJT_RAG.Services
                 Location = dto.Location,
                 SalaryRange = dto.SalaryRange,
                 IsActive = dto.IsActive,  // Không cần ?? vì DTO dùng bool
-                CreateAt = DateTime.UtcNow.ToLocalTime(),  // An toàn với timestamp without time zone
-                UpdateAt = DateTime.UtcNow.ToLocalTime()
+                CreateAt = DateTime.UtcNow,  // An toàn với timestamp without time zone
+                UpdateAt = DateTime.UtcNow
             };
 
             await _jobPositionRepo.AddAsync(entity);
@@ -121,7 +121,7 @@ namespace OJT_RAG.Services
             entity.Location = dto.Location ?? entity.Location;
             entity.SalaryRange = dto.SalaryRange ?? entity.SalaryRange;
             entity.IsActive = dto.IsActive ?? entity.IsActive ?? false;
-            entity.UpdateAt = DateTime.UtcNow.ToLocalTime();
+            entity.UpdateAt = DateTime.UtcNow;
 
             await _jobPositionRepo.UpdateAsync(entity);
             return true;
