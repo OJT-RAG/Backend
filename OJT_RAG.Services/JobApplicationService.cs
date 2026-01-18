@@ -41,9 +41,9 @@ namespace OJT_RAG.Services
                 UserId = dto.UserId,
                 JobPositionId = dto.JobPositionId,
                 Status = "pending",
-                AppliedAt = DateTime.UtcNow.ToLocalTime(),
-                CreateAt = DateTime.UtcNow.ToLocalTime(),
-                UpdateAt = DateTime.UtcNow.ToLocalTime(),
+                AppliedAt = DateTime.UtcNow,
+                CreateAt = DateTime.UtcNow,
+                UpdateAt = DateTime.UtcNow,
                 IsRandomFallback = false
             };
 
