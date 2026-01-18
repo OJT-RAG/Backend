@@ -71,6 +71,16 @@ namespace OJT_RAG.Services
 
             return await _repo.Update(entity);
         }
+        // ================== DELETE BY ID ==================
+        public async Task<bool> DeleteByIdAsync(long id)
+        {
+            var entity = await _repo.GetById(id);
+            if (entity == null)
+                return false;
+
+            await _repo.Delete(entity);
+            return true;
+        }
 
     }
 }

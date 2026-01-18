@@ -14,5 +14,7 @@ namespace OJT_RAG.Repositories.Interfaces
         Task<JobApplication?> GetByUserAndPosition(long userId, long jobPositionId);
         Task<JobApplication> Add(JobApplication entity);
         Task<JobApplication> Update(JobApplication entity);
+        Task Delete(JobApplication entity);
+
     }
 }

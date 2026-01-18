@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Npgsql;
+using OJT_RAG.Services;
 using OJT_RAG.Services.DTOs.JobApplication;
 using OJT_RAG.Services.Interfaces;
 
@@ -79,5 +80,15 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { message = "Server error", error = ex.Message });
             }
         }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(long id)
+        {
+            var result = await _service.DeleteByIdAsync(id);
+            if (!result)
+                return NotFound();
+
+            return Ok(new { message = "Delete success" });
+        }
+
     }
 }

@@ -55,6 +55,11 @@ namespace OJT_RAG.Repositories
                 throw new Exception(ex.InnerException?.Message ?? ex.Message);
             }
         }
+        public async Task Delete(JobApplication entity)
+        {
+            _context.JobApplications.Remove(entity);
+            await _context.SaveChangesAsync();
+        }
 
     }
 }

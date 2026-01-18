@@ -14,5 +14,6 @@ namespace OJT_RAG.Services.Interfaces
         Task<JobApplication?> GetByIdAsync(long id);
         Task<JobApplication> CreateAsync(CreateJobApplicationDTO dto);
         Task<JobApplication?> UpdateStatusAsync(UpdateJobApplicationStatusDTO dto);
+        Task<bool> DeleteByIdAsync(long id);
     }
 }
