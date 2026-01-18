@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using OJT_RAG.Services.DTOs.JobApplication;
 using OJT_RAG.Services.Interfaces;
 
@@ -35,11 +37,30 @@ namespace OJT_RAG.API.Controllers
             try
             {
                 var result = await _service.CreateAsync(dto);
-                return Ok(new { message = "Ứng tuyển thành công", data = result });
+                return Ok(new
+                {
+                    message = "Ứng tuyển thành công",
+                    data = result
+                });
+            }
+            catch (DbUpdateException ex)
+                when (ex.InnerException is PostgresException pg
+                      && pg.SqlState == "23503")
+            {
+                // Lỗi FOREIGN KEY
+                return BadRequest(new
+                {
+                    message = "Ứng tuyển thất bại",
+                    error = "User hoặc JobPosition không tồn tại trong hệ thống"
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, new { message = "Ứng tuyển thất bại", error = ex.Message });
+                return StatusCode(500, new
+                {
+                    message = "Ứng tuyển thất bại",
+                    error = ex.Message
+                });
             }
         }
 
