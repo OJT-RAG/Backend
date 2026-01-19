@@ -142,6 +142,12 @@ namespace OJT_RAG.Services
             return await _drive.DownloadFileByUrlAsync(doc.FileUrl);
         }
 
+        public async Task<IEnumerable<OjtDocumentModelView>> GetBySemesterAsync(long semesterId)
+        {
+            var docs = await _repo.GetBySemesterAsync(semesterId);
+            return docs.Select(Map);
+        }
+
 
     }
 }

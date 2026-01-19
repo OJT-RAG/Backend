@@ -54,6 +54,7 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
+
         [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CreateOjtDocumentDTO dto)
@@ -109,7 +110,37 @@ namespace OJT_RAG.Controllers
                 });
             }
         }
-       [Authorize]
+
+        [HttpGet("get-by-semester/{semesterId}")]
+        public async Task<IActionResult> GetBySemester(long semesterId)
+        {
+            try
+            {
+                var result = await _service.GetBySemesterAsync(semesterId);
+
+                if (!result.Any())
+                    return NotFound(new
+                    {
+                        message = "Không có tài liệu OJT nào trong học kỳ này."
+                    });
+
+                return Ok(new
+                {
+                    message = "Lấy danh sách tài liệu OJT theo học kỳ thành công.",
+                    data = result
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    message = $"Đã xảy ra lỗi khi lấy tài liệu OJT theo SemesterId = {semesterId}.",
+                    error = ex.Message
+                });
+            }
+        }
+
+        [Authorize]
 [HttpDelete("delete/{id}")]
 public async Task<IActionResult> Delete(long id)
 {
