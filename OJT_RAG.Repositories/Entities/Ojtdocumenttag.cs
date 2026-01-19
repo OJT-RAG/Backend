@@ -12,9 +12,7 @@ namespace OJT_RAG.Repositories.Entities
         [Column("documenttag_id")]
         public long DocumentTagId { get; set; }
 
-
         public virtual Ojtdocument? OjtDocument { get; set; }
-
         public virtual Documenttag? DocumentTag { get; set; }
     }
 }

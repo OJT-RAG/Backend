@@ -31,10 +31,11 @@ namespace OJT_RAG.Repositories
 
         public async Task<Ojtdocument> AddAsync(Ojtdocument entity)
         {
-            await _db.Ojtdocuments.AddAsync(entity);
+            _db.Ojtdocuments.Add(entity);
             await _db.SaveChangesAsync();
             return entity;
         }
+
 
         public async Task<Ojtdocument> UpdateAsync(Ojtdocument entity)
         {

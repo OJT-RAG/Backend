@@ -30,6 +30,12 @@ namespace OJT_RAG.Repositories
 
         public async Task AddAsync(Ojtdocumenttag entity)
         {
+            // 🔥 Bắt EF attach DocumentTag nếu có
+            if (entity.DocumentTag != null)
+            {
+                _db.Attach(entity.DocumentTag);
+            }
+
             await _db.Ojtdocumenttags.AddAsync(entity);
             await _db.SaveChangesAsync();
         }

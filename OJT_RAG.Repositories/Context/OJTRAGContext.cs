@@ -126,6 +126,12 @@ namespace OJT_RAG.Repositories.Context
             {
                 entity.HasKey(e => new { e.OjtDocumentId, e.DocumentTagId });
 
+                entity.Property(e => e.OjtDocumentId)
+                      .ValueGeneratedNever();
+
+                entity.Property(e => e.DocumentTagId)
+                      .ValueGeneratedNever();
+
                 entity.HasOne(e => e.OjtDocument)
                       .WithMany(d => d.OjtDocumentTags)
                       .HasForeignKey(e => e.OjtDocumentId)
@@ -140,6 +146,11 @@ namespace OJT_RAG.Repositories.Context
             modelBuilder.Entity<Companydocumenttag>(entity =>
             {
                 entity.HasKey(e => new { e.CompanyDocumentId, e.DocumentTagId });
+                entity.Property(e => e.CompanyDocumentId)
+                      .ValueGeneratedNever();
+
+                entity.Property(e => e.DocumentTagId)
+                      .ValueGeneratedNever();
 
                 entity.HasOne(e => e.CompanyDocument)
                       .WithMany(d => d.CompanyDocumentTags)
