@@ -161,39 +161,35 @@ namespace OJT_RAG.API.Controllers
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            try
-            {
-                var exists = await _service.GetById(id);
-                if (exists == null)
-                    return NotFound(new
-                    {
-                        success = false,
-                        message = "Không tìm thấy vị trí công việc để xóa."
-                    });
-
-                var success = await _service.Delete(id);
-                if (!success)
-                    return BadRequest(new { success = false, message = "Xóa thất bại." });
-
-                return Ok(new { success = true, message = "Xóa vị trí công việc thành công." });
-            }
-            catch (DbUpdateException ex) when (ex.InnerException?.Message.Contains("REFERENCE constraint") == true)
-            {
-                return BadRequest(new
+            // 1️⃣ Check tồn tại
+            var exists = await _service.GetById(id);
+            if (exists == null)
+                return NotFound(new
                 {
                     success = false,
-                    message = "Không thể xóa vì vị trí này đang có dữ liệu liên quan (báo cáo, bookmark, mô tả công việc...)"
+                    message = "Không tìm thấy vị trí công việc để xóa."
                 });
-            }
-            catch (Exception ex)
+
+            // 2️⃣ Check nghiệp vụ: có JobApplication không?
+            var hasApplication = await _service.HasJobApplication(id);
+            if (hasApplication)
             {
-                return StatusCode(500, new
+                return Conflict(new
                 {
                     success = false,
-                    message = "Lỗi hệ thống khi xóa.",
-                    error = ex.Message
+                    message = "Không thể xóa vị trí công việc vì đang có Job Application."
                 });
             }
+
+            // 3️⃣ Xóa
+            await _service.Delete(id);
+
+            return Ok(new
+            {
+                success = true,
+                message = "Xóa vị trí công việc thành công."
+            });
         }
+
     }
 }

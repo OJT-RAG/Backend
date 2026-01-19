@@ -48,5 +48,11 @@ namespace OJT_RAG.Repositories
             await _db.SaveChangesAsync();
             return true;
         }
+        public async Task<bool> HasJobApplicationAsync(long jobPositionId)
+        {
+            return await _db.JobApplications
+                .AnyAsync(x => x.JobPositionId == jobPositionId);
+        }
+
     }
 }
