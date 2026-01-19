@@ -22,26 +22,21 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", false);
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ====================== LẤY BIẾN MÔI TRƯỜNG & CẤU HÌNH DB ======================
-// 1. Lấy chuỗi mặc định từ appsettings.json (Dùng cho Local)
+// ====================== CONNECTION STRING (Local + Railway) ======================
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
 
-// 2. Lấy biến môi trường từ Railway (Dùng cho Production)
 var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 var railwayConnectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 
-// Ưu tiên biến môi trường ConnectionStrings__DefaultConnection nếu có (Do ta cấu hình thủ công)
 if (!string.IsNullOrEmpty(railwayConnectionString))
 {
     connectionString = railwayConnectionString;
 }
-// Nếu không, thử check biến DATABASE_URL (Mặc định của Railway)
 else if (!string.IsNullOrEmpty(databaseUrl))
 {
-    // Kiểm tra xem nó là dạng URI (postgres://...) hay dạng Key=Value (Host=...)
     if (databaseUrl.StartsWith("postgres://"))
     {
-        try 
+        try
         {
             var uri = new Uri(databaseUrl);
             var userInfo = uri.UserInfo.Split(':');
@@ -49,26 +44,24 @@ else if (!string.IsNullOrEmpty(databaseUrl))
                                $"Username={userInfo[0]};Password={userInfo[1]};" +
                                $"SSL Mode=Prefer;Trust Server Certificate=true;";
         }
-        catch 
+        catch
         {
-            // Nếu parse lỗi, cứ gán thẳng vào, có thể nó là chuỗi connection string nhưng đặt tên biến nhầm
             connectionString = databaseUrl;
         }
     }
     else
     {
-        // Nếu không bắt đầu bằng postgres://, nghĩa là nó đã là dạng Host=... rồi
         connectionString = databaseUrl;
     }
 }
 
-Console.WriteLine($"--> Using Connection String: {connectionString}"); // Log ra để debug (sẽ hiện trong log Railway)
+Console.WriteLine($"--> Using Connection String: {connectionString}");
 
-// ====================== CẤU HÌNH JWT KEY ======================
+// ====================== JWT KEY ======================
 var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
-    ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key_Phai_Dai_Hon_16_Ky_Tu_Nhe"; 
+    ?? "Chuoi_Mac_Dinh_Neu_Khong_Thay_Key_Phai_Dai_Hon_16_Ky_Tu_Nhe";
 
-// ====================== DATABASE (Npgsql 8.x + ENUM) ======================
+// ====================== DATABASE CONFIG (Npgsql + Enum) ======================
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
 dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
 dataSourceBuilder.EnableUnmappedTypes();
@@ -79,7 +72,7 @@ builder.Services.AddDbContext<OJTRAGContext>(options =>
     options.UseNpgsql(dataSource);
 });
 
-// ====================== CẤU HÌNH JWT AUTHENTICATION ======================
+// ====================== JWT AUTHENTICATION ======================
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -117,7 +110,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
     {
-        policy.WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app") // Thay domain frontend của bạn vào đây
+        policy.WithOrigins("http://localhost:3000", "https://frontend-ojt-544c.vercel.app")
               .AllowAnyHeader()
               .AllowAnyMethod()
               .AllowCredentials();
@@ -130,15 +123,13 @@ builder.Services.AddControllers()
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
-
         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
-
-        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull; 
-        options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment(); 
+        options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+        options.JsonSerializerOptions.WriteIndented = builder.Environment.IsDevelopment();
     });
 
-// ====================== SWAGGER CONFIG ======================
+// ====================== SWAGGER ======================
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -165,47 +156,51 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // ====================== DEPENDENCY INJECTION ======================
+// Repositories
 builder.Services.AddScoped<ICompanyRepository, CompanyRepository>();
-builder.Services.AddScoped<ICompanyService, CompanyService>();
 builder.Services.AddScoped<IJobPositionRepository, JobPositionRepository>();
-builder.Services.AddScoped<IJobPositionService, JobPositionService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISemesterRepository, SemesterRepository>();
-builder.Services.AddScoped<ISemesterService, SemesterService>();
 builder.Services.AddScoped<IMajorRepository, MajorRepository>();
-builder.Services.AddScoped<IMajorService, MajorService>();
 builder.Services.AddScoped<IJobDescriptionRepository, JobDescriptionRepository>();
-builder.Services.AddScoped<IJobDescriptionService, JobDescriptionService>();
 builder.Services.AddScoped<IJobTitleOverviewRepository, JobTitleOverviewRepository>();
-builder.Services.AddScoped<IJobTitleOverviewService, JobTitleOverviewService>();
 builder.Services.AddScoped<IJobBookmarkRepository, JobBookmarkRepository>();
-builder.Services.AddScoped<IJobBookmarkService, JobBookmarkService>();
 builder.Services.AddScoped<IFinalreportRepository, FinalreportRepository>();
-builder.Services.AddScoped<IFinalreportService, FinalreportService>();
 builder.Services.AddScoped<IChatRoomRepository, ChatRoomRepository>();
-builder.Services.AddScoped<IChatRoomService, ChatRoomService>();
 builder.Services.AddScoped<IMessageRepository, MessageRepository>();
-builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<ISemesterCompanyRepository, SemesterCompanyRepository>();
-builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
-
 builder.Services.AddScoped<IDocumentTagRepository, DocumentTagRepository>();
 builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
 builder.Services.AddScoped<IOjtDocumentRepository, OjtDocumentRepository>();
-builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
-builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
 builder.Services.AddScoped<IJobApplicationRepository, JobApplicationRepository>();
+builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
+
+// Services
+builder.Services.AddScoped<ICompanyService, CompanyService>();
+builder.Services.AddScoped<IJobPositionService, JobPositionService>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISemesterService, SemesterService>();
+builder.Services.AddScoped<IMajorService, MajorService>();
+builder.Services.AddScoped<IJobDescriptionService, JobDescriptionService>();
+builder.Services.AddScoped<IJobTitleOverviewService, JobTitleOverviewService>();
+builder.Services.AddScoped<IJobBookmarkService, JobBookmarkService>();
+builder.Services.AddScoped<IFinalreportService, FinalreportService>();
+builder.Services.AddScoped<IChatRoomService, ChatRoomService>();
+builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
+builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
+builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
 builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
 builder.Services.AddScoped<IOjtDocumentTagService, OjtDocumentTagService>();
 builder.Services.AddScoped<UserChatService>();
-builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<GoogleAuthService>();
 builder.Services.AddSingleton<GoogleDriveService>();
 builder.Services.AddScoped<JwtService>();
+
+// SignalR
 builder.Services.AddSignalR();
 builder.Services.AddSingleton<IUserIdProvider, CustomUserIdProvider>();
 
@@ -216,20 +211,16 @@ app.UseSwagger();
 app.UseSwaggerUI();
 
 app.UseCors("AllowFrontend");
-
 app.UseRouting();
 
-// Thứ tự quan trọng: Authentication trước Authorization
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
 
-// Vì Railway quản lý Port qua biến môi trường PORT, ta để mặc định app.Run()
-// Nó sẽ tự động lắng nghe theo cấu hình trong Dockerfile hoặc biến môi trường
 app.Run();
 
-// ====================== CONVERTERS ======================
+// ====================== JSON CONVERTERS ======================
 public class DateOnlyJsonConverter : JsonConverter<DateOnly>
 {
     private const string Format = "yyyy-MM-dd";
@@ -251,7 +242,9 @@ public class NullableDateOnlyJsonConverter : JsonConverter<DateOnly?>
 
     public override void Write(Utf8JsonWriter writer, DateOnly? value, JsonSerializerOptions options)
     {
-        if (value.HasValue) writer.WriteStringValue(value.Value.ToString(Format));
-        else writer.WriteNullValue();
+        if (value.HasValue)
+            writer.WriteStringValue(value.Value.ToString(Format));
+        else
+            writer.WriteNullValue();
     }
 }
