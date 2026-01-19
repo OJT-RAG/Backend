@@ -70,8 +70,8 @@ namespace OJT_RAG.Services
                 LogoUrl = model.Logo_URL,
                 IsVerified = model.Is_Verified,
 
-                CreatedAt = DateTime.UtcNow.ToLocalTime(),
-                UpdatedAt = DateTime.UtcNow.ToLocalTime()
+                CreatedAt = DateTime.UtcNow,
+                UpdatedAt = DateTime.UtcNow
             };
 
             await _repo.Add(entity);
@@ -106,7 +106,7 @@ namespace OJT_RAG.Services
             entity.LogoUrl = model.Logo_URL ?? entity.LogoUrl;
             entity.IsVerified = model.Is_Verified;
 
-            entity.UpdatedAt = DateTime.UtcNow.ToLocalTime();
+            entity.UpdatedAt = DateTime.UtcNow;
 
             await _repo.Update(entity);
 
