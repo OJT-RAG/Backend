@@ -158,5 +158,10 @@ namespace OJT_RAG.Services
                 UpdateAt = j.UpdateAt ?? DateTime.UtcNow.ToLocalTime()
             }).ToList();
         }
+        public async Task<bool> HasJobApplication(long jobPositionId)
+        {
+            return await _jobPositionRepo.HasJobApplicationAsync(jobPositionId);
+        }
+
     }
 }

@@ -10,5 +10,7 @@ namespace OJT_RAG.Services.Interfaces
         Task<bool> Create(CreateJobPositionDTO dto);
         Task<bool> Update(UpdateJobPositionDTO dto);
         Task<bool> Delete(long id);
+        Task<bool> HasJobApplication(long jobPositionId);
+
     }
 }

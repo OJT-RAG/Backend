@@ -9,5 +9,7 @@ namespace OJT_RAG.Repositories.Interfaces
         Task<JobPosition> AddAsync(JobPosition entity);
         Task<JobPosition> UpdateAsync(JobPosition entity);
         Task<bool> DeleteAsync(long id);
+        Task<bool> HasJobApplicationAsync(long jobPositionId);
+
     }
 }
