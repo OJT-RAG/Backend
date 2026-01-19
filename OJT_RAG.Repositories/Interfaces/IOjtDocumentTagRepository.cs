@@ -4,10 +4,10 @@ namespace OJT_RAG.Repositories.Interfaces
 {
     public interface IOjtDocumentTagRepository
     {
-        Task<bool> ExistsAsync(long ojtDocumentId, long documentTagId);
-        Task<IEnumerable<Documenttag>> GetTagsByDocumentId(long ojtDocumentId);
         Task AddAsync(Ojtdocumenttag entity);
-        Task RemoveAsync(long ojtDocumentId, long documentTagId);
-
+        Task RemoveAsync(long documentId, long tagId);
+        Task<bool> ExistsAsync(long documentId, long tagId);
+        Task<IEnumerable<Documenttag>> GetTagsByDocumentId(long documentId);
     }
+
 }

@@ -157,15 +157,19 @@ namespace OJT_RAG.Services
 
         public async Task AddTag(long documentId, long tagId)
         {
-            if (!await _tagRepo.ExistsAsync(documentId, tagId))
+            if (await _tagRepo.ExistsAsync(documentId, tagId))
+                return;
+
+            var entity = new Ojtdocumenttag
             {
-                await _tagRepo.AddAsync(new Ojtdocumenttag
-                {
-                    OjtDocumentId = documentId,
-                    DocumentTagId = tagId
-                });
-            }
+                OjtDocumentId = documentId,
+                DocumentTagId = tagId
+            };
+
+            await _tagRepo.AddAsync(entity);
         }
+
+
 
         public async Task RemoveTag(long documentId, long tagId)
         {
