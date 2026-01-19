@@ -194,5 +194,27 @@ public async Task<IActionResult> Delete(long id)
             );
         }
 
+        [HttpGet("{id}/tags")]
+        public async Task<IActionResult> GetTags(long id)
+        {
+            var tags = await _service.GetTags(id);
+            return Ok(tags);
+        }
+
+        [HttpPost("{id}/tags")]
+        public async Task<IActionResult> AddTag(long id, [FromBody] long tagId)
+        {
+            await _service.AddTag(id, tagId);
+            return Ok();
+        }
+
+        [HttpDelete("{id}/tags/{tagId}")]
+        public async Task<IActionResult> RemoveTag(long id, long tagId)
+        {
+            await _service.RemoveTag(id, tagId);
+            return NoContent();
+        }
+
+
     }
 }

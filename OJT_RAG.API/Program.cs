@@ -189,14 +189,15 @@ builder.Services.AddScoped<IMessageRepository, MessageRepository>();
 builder.Services.AddScoped<IMessageService, MessageService>();
 builder.Services.AddScoped<ISemesterCompanyRepository, SemesterCompanyRepository>();
 builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
+
 builder.Services.AddScoped<IDocumentTagRepository, DocumentTagRepository>();
 builder.Services.AddScoped<IDocumentTagService, DocumentTagService>();
+builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
 builder.Services.AddScoped<IOjtDocumentRepository, OjtDocumentRepository>();
 builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentRepository, CompanyDocumentRepository>();
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepository>();
-builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
 builder.Services.AddScoped<IJobApplicationRepository, JobApplicationRepository>();
 builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
 builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();

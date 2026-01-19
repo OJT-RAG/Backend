@@ -1,5 +1,6 @@
 ﻿using OJT_RAG.DTOs.OjtDocumentDTO;
 using OJT_RAG.ModelView.OjtDocumentModelView;
+using OJT_RAG.Repositories;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
@@ -10,9 +11,11 @@ namespace OJT_RAG.Services
     {
         private readonly IOjtDocumentRepository _repo;
         private readonly GoogleDriveService _drive;
+        private readonly IOjtDocumentTagRepository _tagRepo;
 
-        public OjtDocumentService(IOjtDocumentRepository repo, GoogleDriveService drive)
+        public OjtDocumentService(IOjtDocumentRepository repo, GoogleDriveService drive, IOjtDocumentTagRepository tagRepo)
         {
+            _tagRepo = tagRepo;
             _repo = repo;
             _drive = drive;
         }
@@ -147,7 +150,26 @@ namespace OJT_RAG.Services
             var docs = await _repo.GetBySemesterAsync(semesterId);
             return docs.Select(Map);
         }
+        public async Task<IEnumerable<Documenttag>> GetTags(long ojtDocumentId)
+        {
+            return await _tagRepo.GetTagsByDocumentId(ojtDocumentId);
+        }
 
+        public async Task AddTag(long documentId, long tagId)
+        {
+            if (!await _tagRepo.ExistsAsync(documentId, tagId))
+            {
+                await _tagRepo.AddAsync(new Ojtdocumenttag
+                {
+                    OjtDocumentId = documentId,
+                    DocumentTagId = tagId
+                });
+            }
+        }
 
+        public async Task RemoveTag(long documentId, long tagId)
+        {
+            await _tagRepo.RemoveAsync(documentId, tagId);
+        }
     }
 }
