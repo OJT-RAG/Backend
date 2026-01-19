@@ -199,6 +199,8 @@ builder.Services.AddScoped<ICompanyDocumentTagRepository, CompanyDocumentTagRepo
 builder.Services.AddScoped<ICompanyDocumentTagService, CompanyDocumentTagService>();
 builder.Services.AddScoped<IJobApplicationRepository, JobApplicationRepository>();
 builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
+builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
+builder.Services.AddScoped<IOjtDocumentTagService, OjtDocumentTagService>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddScoped<IUserChatRepository, UserChatRepository>();
 builder.Services.AddScoped<GoogleAuthService>();
