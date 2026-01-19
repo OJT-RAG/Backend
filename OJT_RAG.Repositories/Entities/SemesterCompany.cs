@@ -20,7 +20,7 @@ public partial class SemesterCompany
     [Column("company_id")]
     public long? CompanyId { get; set; }
 
-    [Column("approved_at", TypeName = "timestamp without time zone")]
+    [Column("approved_at", TypeName = "timestamp with time zone")]
     public DateTime? ApprovedAt { get; set; }
 
     // ── Relationships ───────────────────────────────────────────────
