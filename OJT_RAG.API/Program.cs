@@ -191,7 +191,6 @@ builder.Services.AddScoped<ISemesterCompanyRepository, SemesterCompanyRepository
 builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
 
 builder.Services.AddScoped<IDocumentTagRepository, DocumentTagRepository>();
-//builder.Services.AddScoped<IDocumentTagService, DocumentTagService>();
 builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
 builder.Services.AddScoped<IOjtDocumentRepository, OjtDocumentRepository>();
 builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
