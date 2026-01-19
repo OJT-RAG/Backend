@@ -11,5 +11,6 @@ namespace OJT_RAG.Services.Interfaces
         Task<OjtDocumentModelView> UpdateAsync(UpdateOjtDocumentDTO dto);
         Task<bool> DeleteAsync(long id);
         Task<(byte[] fileBytes, string fileName, string contentType)?> DownloadAsync(long id);
+        Task<IEnumerable<OjtDocumentModelView>> GetBySemesterAsync(long semesterId);
     }
 }
