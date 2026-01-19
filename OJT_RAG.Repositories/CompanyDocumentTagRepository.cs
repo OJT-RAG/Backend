@@ -13,19 +13,18 @@ namespace OJT_RAG.Repositories
         {
             _db = db;
         }
-
-        public async Task<IEnumerable<Companydocumenttag>> GetAllAsync()
+        public async Task<bool> ExistsAsync(long docId, long tagId)
         {
             return await _db.Companydocumenttags
-                .Include(x => x.CompanyDocument)
-                .Include(x => x.DocumentTag)
-                .ToListAsync();
+                .AnyAsync(x => x.CompanyDocumentId == docId && x.DocumentTagId == tagId);
         }
-
-        public async Task<Companydocumenttag?> GetByIdAsync(long id)
+        public async Task<IEnumerable<Documenttag>> GetTagsByDocumentId(long companyDocumentId)
         {
             return await _db.Companydocumenttags
-                .FirstOrDefaultAsync(x => x.CompanyDocumentTagId == id);
+                .Where(x => x.CompanyDocumentId == companyDocumentId)
+                .Include(x => x.DocumentTag)
+                .Select(x => x.DocumentTag!)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Companydocumenttag entity)
@@ -34,20 +33,16 @@ namespace OJT_RAG.Repositories
             await _db.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Companydocumenttag entity)
+        public async Task RemoveAsync(long docId, long tagId)
         {
-            _db.Companydocumenttags.Update(entity);
-            await _db.SaveChangesAsync();
-        }
+            var entity = await _db.Companydocumenttags
+                .FirstOrDefaultAsync(x => x.CompanyDocumentId == docId && x.DocumentTagId == tagId);
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            var x = await _db.Companydocumenttags.FindAsync(id);
-            if (x == null) return false;
-
-            _db.Companydocumenttags.Remove(x);
-            await _db.SaveChangesAsync();
-            return true;
+            if (entity != null)
+            {
+                _db.Companydocumenttags.Remove(entity);
+                await _db.SaveChangesAsync();
+            }
         }
     }
 }

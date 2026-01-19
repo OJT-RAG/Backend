@@ -1,20 +1,22 @@
+using System.Net.Http;
 using OJT_RAG.DTOs.CompanyDocumentDTO;
 using OJT_RAG.ModelViews.CompanyDocument;
+using OJT_RAG.Repositories;
 using OJT_RAG.Repositories.Entities;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Services.Interfaces;
-using System.Net.Http;
 namespace OJT_RAG.Services
 {
     public class CompanyDocumentService : ICompanyDocumentService
     {
         private readonly ICompanyDocumentRepository _repo;
         private readonly GoogleDriveService _drive;
-
-        public CompanyDocumentService(ICompanyDocumentRepository repo, GoogleDriveService drive)
+        private readonly ICompanyDocumentTagRepository _tagRepo;
+        public CompanyDocumentService(ICompanyDocumentRepository repo, GoogleDriveService drive, ICompanyDocumentTagRepository tagRepo)
         {
             _repo = repo;
             _drive = drive;
+            _tagRepo = tagRepo;
         }
 
         private CompanyDocumentModelView Map(Companydocument x)
@@ -151,6 +153,26 @@ namespace OJT_RAG.Services
 
             return await _drive.DownloadFileByUrlAsync(doc.FileUrl);
         }
+        public async Task<IEnumerable<Documenttag>> GetTags(long companyDocumentId)
+        {
+            return await _tagRepo.GetTagsByDocumentId(companyDocumentId);
+        }
 
+        public async Task AddTag(long documentId, long tagId)
+        {
+            if (!await _tagRepo.ExistsAsync(documentId, tagId))
+            {
+                await _tagRepo.AddAsync(new Companydocumenttag
+                {
+                    CompanyDocumentId = documentId,
+                    DocumentTagId = tagId
+                });
+            }
+        }
+
+        public async Task RemoveTag(long documentId, long tagId)
+        {
+            await _tagRepo.RemoveAsync(documentId, tagId);
+        }
     }
 }

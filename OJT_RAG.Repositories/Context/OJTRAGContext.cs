@@ -121,6 +121,37 @@ namespace OJT_RAG.Repositories.Context
                       .OnDelete(DeleteBehavior.Restrict);   
 
             });
+
+            modelBuilder.Entity<Ojtdocumenttag>(entity =>
+            {
+                entity.HasKey(e => new { e.OjtDocumentId, e.DocumentTagId });
+
+                entity.HasOne(e => e.OjtDocument)
+                      .WithMany(d => d.OjtDocumentTags)
+                      .HasForeignKey(e => e.OjtDocumentId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(e => e.DocumentTag)
+                      .WithMany(t => t.OjtDocumentTags)
+                      .HasForeignKey(e => e.DocumentTagId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
+            modelBuilder.Entity<Companydocumenttag>(entity =>
+            {
+                entity.HasKey(e => new { e.CompanyDocumentId, e.DocumentTagId });
+
+                entity.HasOne(e => e.CompanyDocument)
+                      .WithMany(d => d.CompanyDocumentTags)
+                      .HasForeignKey(e => e.CompanyDocumentId)
+                      .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(e => e.DocumentTag)
+                      .WithMany(t => t.CompanyDocumentTags)
+                      .HasForeignKey(e => e.DocumentTagId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 

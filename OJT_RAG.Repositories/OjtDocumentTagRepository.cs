@@ -14,18 +14,18 @@ namespace OJT_RAG.Repositories
             _db = db;
         }
 
-        public async Task<IEnumerable<Ojtdocumenttag>> GetAllAsync()
+        public async Task<bool> ExistsAsync(long docId, long tagId)
         {
             return await _db.Ojtdocumenttags
-                .Include(x => x.OjtDocument)
-                .Include(x => x.DocumentTag)
-                .ToListAsync();
+                .AnyAsync(x => x.OjtDocumentId == docId && x.DocumentTagId == tagId);
         }
-
-        public async Task<Ojtdocumenttag?> GetByIdAsync(long id)
+        public async Task<IEnumerable<Documenttag>> GetTagsByDocumentId(long ojtDocumentId)
         {
             return await _db.Ojtdocumenttags
-                .FirstOrDefaultAsync(x => x.OjtDocumentTagId == id);
+                .Where(x => x.OjtDocumentId == ojtDocumentId)
+                .Include(x => x.DocumentTag)
+                .Select(x => x.DocumentTag!)
+                .ToListAsync();
         }
 
         public async Task AddAsync(Ojtdocumenttag entity)
@@ -34,20 +34,16 @@ namespace OJT_RAG.Repositories
             await _db.SaveChangesAsync();
         }
 
-        public async Task UpdateAsync(Ojtdocumenttag entity)
+        public async Task RemoveAsync(long docId, long tagId)
         {
-            _db.Ojtdocumenttags.Update(entity);
-            await _db.SaveChangesAsync();
-        }
+            var entity = await _db.Ojtdocumenttags
+                .FirstOrDefaultAsync(x => x.OjtDocumentId == docId && x.DocumentTagId == tagId);
 
-        public async Task<bool> DeleteAsync(long id)
-        {
-            var x = await _db.Ojtdocumenttags.FindAsync(id);
-            if (x == null) return false;
-
-            _db.Ojtdocumenttags.Remove(x);
-            await _db.SaveChangesAsync();
-            return true;
+            if (entity != null)
+            {
+                _db.Ojtdocumenttags.Remove(entity);
+                await _db.SaveChangesAsync();
+            }
         }
     }
 }
