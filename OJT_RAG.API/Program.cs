@@ -193,8 +193,8 @@ builder.Services.AddScoped<ISemesterCompanyService, SemesterCompanyService>();
 builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
-
-// Others
+builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
+builder.Services.AddScoped<IOjtDocumentTagService, OjtDocumentTagService>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddScoped<GoogleAuthService>();
 builder.Services.AddSingleton<GoogleDriveService>();
