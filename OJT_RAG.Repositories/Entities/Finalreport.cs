@@ -11,6 +11,7 @@ public partial class Finalreport
 {
     [Key]
     [Column("finalreport_id")]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public long FinalreportId { get; set; }
 
     [Column("user_id")]
