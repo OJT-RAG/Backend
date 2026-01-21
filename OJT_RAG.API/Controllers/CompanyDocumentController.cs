@@ -195,7 +195,11 @@ namespace OJT_RAG.API.Controllers
         public async Task<IActionResult> GetTags(long id)
         {
             var tags = await _service.GetTags(id);
-            return Ok(tags);
+            return Ok(new
+            {
+                CompanydocumentId = id,
+                tags = tags
+            });
         }
 
         [HttpPost("{id}/tags")]
