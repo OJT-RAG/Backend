@@ -29,13 +29,20 @@ namespace OJT_RAG.Repositories
             return await _db.Ojtdocuments.Where(x => x.SemesterId == semesterId).ToListAsync();
         }
 
+        public async Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type)
+        {
+            return await _db.Ojtdocuments
+                .Where(d => d.OjtDocumentTags
+                    .Any(dt => dt.DocumentTag.Type == type))
+                .ToListAsync();
+        }
+
         public async Task<Ojtdocument> AddAsync(Ojtdocument entity)
         {
             _db.Ojtdocuments.Add(entity);
             await _db.SaveChangesAsync();
             return entity;
         }
-
 
         public async Task<Ojtdocument> UpdateAsync(Ojtdocument entity)
         {

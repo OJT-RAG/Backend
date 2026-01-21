@@ -7,6 +7,7 @@ namespace OJT_RAG.Repositories.Interfaces
         Task<IEnumerable<Ojtdocument>> GetAllAsync();
         Task<Ojtdocument?> GetByIdAsync(long id);
         Task<IEnumerable<Ojtdocument>> GetBySemesterAsync(long semesterId);
+        Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type);
 
         Task<Ojtdocument> AddAsync(Ojtdocument entity);
         Task<Ojtdocument> UpdateAsync(Ojtdocument entity);

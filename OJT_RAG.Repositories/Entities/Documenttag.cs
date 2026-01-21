@@ -15,6 +15,8 @@ namespace OJT_RAG.Repositories.Entities
         [StringLength(255)]
         public string? Name { get; set; }
 
+        [Column("type")]
+        public string? Type { get; set; }
         // Companydocumenttag (N-N qua trung gian)
         [InverseProperty("DocumentTag")]
         public virtual ICollection<Companydocumenttag> CompanyDocumentTags { get; set; }

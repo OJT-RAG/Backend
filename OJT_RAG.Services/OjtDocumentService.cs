@@ -40,6 +40,11 @@ namespace OJT_RAG.Services
         public async Task<OjtDocumentModelView?> GetByIdAsync(long id)
             => (await _repo.GetByIdAsync(id)) is Ojtdocument x ? Map(x) : null;
 
+        public async Task<IEnumerable<OjtDocumentModelView>> GetByTagTypeAsync(string type)
+        {
+            var docs = await _repo.GetByTagTypeAsync(type);
+            return docs.Select(Map);
+        }
 
         public async Task<OjtDocumentModelView> CreateAsync(CreateOjtDocumentDTO dto)
         {
