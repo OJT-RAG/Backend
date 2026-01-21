@@ -1,8 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 using OJT_RAG.Repositories.Interfaces;
-using System;
 
 namespace OJT_RAG.Repositories
 {
@@ -42,6 +44,30 @@ namespace OJT_RAG.Repositories
             _db.Users.Update(entity);
             await _db.SaveChangesAsync();
             return entity;
+        }
+        public async Task<bool> UpdateAccountStatusAsync(
+     long userId,
+     AccountStatusEnum status)
+        {
+            const string sql = """
+        UPDATE "User"
+        SET account_status = @status::account_status_enum,
+            update_at = @updateAt
+        WHERE user_id = @userId
+    """;
+
+            var statusParam = new NpgsqlParameter("status", status.ToString()); // 🔥 STRING
+            var userIdParam = new NpgsqlParameter("userId", userId);
+            var updateAtParam = new NpgsqlParameter("updateAt", DateTime.UtcNow);
+
+            var rows = await _db.Database.ExecuteSqlRawAsync(
+                sql,
+                statusParam,
+                updateAtParam,
+                userIdParam
+            );
+
+            return rows > 0;
         }
 
         public async Task<bool> DeleteAsync(long id)

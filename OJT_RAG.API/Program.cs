@@ -1,3 +1,6 @@
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
@@ -7,6 +10,7 @@ using Npgsql;
 using OJT_RAG.Repositories;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 using OJT_RAG.Repositories.Interfaces;
 using OJT_RAG.Repositories.Repositories;
 using OJT_RAG.Services;
@@ -14,9 +18,6 @@ using OJT_RAG.Services.Auth;
 using OJT_RAG.Services.Implementations;
 using OJT_RAG.Services.Interfaces;
 using OJT_RAG.Services.UserService;
-using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", false);
 
@@ -63,8 +64,10 @@ var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
 
 // ====================== DATABASE CONFIG (Npgsql + Enum) ======================
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
-dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
-dataSourceBuilder.EnableUnmappedTypes();
+
+dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
+//dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
+
 var dataSource = dataSourceBuilder.Build();
 
 builder.Services.AddDbContext<OJTRAGContext>(options =>
@@ -122,6 +125,8 @@ builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+        options.JsonSerializerOptions.Converters.Add(
+          new JsonStringEnumConverter(JsonNamingPolicy.CamelCase));
         options.JsonSerializerOptions.PropertyNameCaseInsensitive = true;
         options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
         options.JsonSerializerOptions.Converters.Add(new NullableDateOnlyJsonConverter());
@@ -194,7 +199,7 @@ builder.Services.AddScoped<IOjtDocumentService, OjtDocumentService>();
 builder.Services.AddScoped<ICompanyDocumentService, CompanyDocumentService>();
 builder.Services.AddScoped<IJobApplicationService, JobApplicationService>();
 builder.Services.AddScoped<IOjtDocumentTagRepository, OjtDocumentTagRepository>();
-builder.Services.AddScoped<IOjtDocumentTagService, OjtDocumentTagService>();
+//builder.Services.AddScoped<IOjtDocumentTagService, OjtDocumentTagService>();
 builder.Services.AddScoped<UserChatService>();
 builder.Services.AddScoped<GoogleAuthService>();
 builder.Services.AddSingleton<GoogleDriveService>();

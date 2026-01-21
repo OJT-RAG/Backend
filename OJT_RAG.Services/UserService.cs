@@ -1,7 +1,9 @@
 ﻿using OJT_RAG.DTOs.UserDTO;
 using OJT_RAG.ModelView.UserModelView;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 using OJT_RAG.Repositories.Interfaces;
+using OJT_RAG.Services.DTOs.User;
 using OJT_RAG.Services.Interfaces;
 
 namespace OJT_RAG.Services.UserService
@@ -131,6 +133,14 @@ namespace OJT_RAG.Services.UserService
     return true;
 }
 
+        public async Task<bool> UpdateStatus(UpdateUserStatusDTO dto)
+        {
+            return await _repo.UpdateAccountStatusAsync(
+                dto.UserId,
+                dto.AccountStatus
+            );
+        }
+
 
         // ================= DELETE =================
         public async Task<bool> Delete(long id)
@@ -140,12 +150,22 @@ namespace OJT_RAG.Services.UserService
         }
 
         // ================= LOGIN =================
-        public async Task<UserModelView?> Login(string email, string password)
+        public async Task<UserModelView> Login(string email, string password)
         {
-            var u = await _repo.GetByEmailAsync(email);
-            if (u == null || u.Password != password) return null;
+            var u = await _repo.GetByEmailAsync(email)
+                ?? throw new UnauthorizedAccessException("Email or password is incorrect");
+
+            if (u.AccountStatus == AccountStatusEnum.inactive)
+                throw new UnauthorizedAccessException("Account is inactive");
+
+            if (u.Password != password)
+                throw new UnauthorizedAccessException("Email or password is incorrect");
+
             return Map(u);
         }
+
+
+
 
         private static UserModelView Map(User u)
         {
