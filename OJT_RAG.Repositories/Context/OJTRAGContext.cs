@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.Repositories.Context
 {
@@ -88,31 +89,23 @@ namespace OJT_RAG.Repositories.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //// ⭐ Đăng ký PostgreSQL enum cho EF Core
-            //modelBuilder.HasPostgresEnum<UserRole>("user_role_enum");
-
-            // ⭐ Fix DateTime Kind cho toàn project
-            //foreach (var entityType in modelBuilder.Model.GetEntityTypes())
-            //{
-            //    foreach (var property in entityType.GetProperties())
-            //    {
-            //        if (property.ClrType == typeof(DateTime))
-            //            property.SetValueConverter(new UnspecifiedDateTimeConverter());
-            //        else if (property.ClrType == typeof(DateTime?))
-            //            property.SetValueConverter(new UnspecifiedNullableDateTimeConverter());
-            //    }
-            //}
-
-            // ⭐ Cấu hình User
+            modelBuilder.HasPostgresEnum<AccountStatusEnum>("account_status_enum");
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
 
+                entity.Property(e => e.AccountStatus)
+                      .HasColumnType("account_status_enum") // 🔥 BẮT BUỘC
+                     .HasConversion(
+                          v => v.ToString(),                  // enum → string
+                          v => Enum.Parse<AccountStatusEnum>(v) // string → enum
+                      )
+                      .IsRequired();
+
                 entity.Property(e => e.Role)
-                      .HasColumnName("role")
-                      //.HasColumnType("user_role_enum")
-                      .IsRequired(true);
+                      .HasMaxLength(20);
             });
+
             modelBuilder.Entity<JobPosition>(entity =>
             {
                 entity.HasOne(j => j.SemesterCompany)

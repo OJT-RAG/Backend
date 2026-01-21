@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
+using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.Repositories.Entities;
 
@@ -32,6 +33,9 @@ public partial class User
     [StringLength(20)]
     public string? Role { get; set; }
 
+    [Column("account_status")]
+    public AccountStatusEnum AccountStatus { get; set; }
+
     [Column("fullname")]
     [StringLength(255)]
     public string? Fullname { get; set; }
@@ -55,10 +59,10 @@ public partial class User
     [StringLength(255)]
     public string? CvUrl { get; set; }
 
-    [Column("create_at", TypeName = "timestamp without time zone")]
+    [Column("create_at", TypeName = "timestamp with time zone")]
     public DateTime? CreateAt { get; set; }
 
-    [Column("update_at", TypeName = "timestamp without time zone")]
+    [Column("update_at", TypeName = "timestamp with time zone")]
     public DateTime? UpdateAt { get; set; }
 
     [InverseProperty("User")]

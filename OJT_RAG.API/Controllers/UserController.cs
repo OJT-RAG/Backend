@@ -1,7 +1,9 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OJT_RAG.DTOs.UserDTO;
 using OJT_RAG.Services.Auth;
+using OJT_RAG.Services.DTOs.User;
 using OJT_RAG.Services.Interfaces;
 
 namespace OJT_RAG.API.Controllers
@@ -12,7 +14,12 @@ namespace OJT_RAG.API.Controllers
     {
         private readonly IUserService _service;
         private readonly JwtService _jwt;
-
+        private long GetCurrentUserId()
+        {
+            return long.Parse(
+                User.FindFirstValue(ClaimTypes.NameIdentifier)!
+            );
+        }
         public UserController(IUserService service, JwtService jwt)
         {
             _service = service;
@@ -127,6 +134,37 @@ namespace OJT_RAG.API.Controllers
             }
         }
 
+        [HttpPut("update-status")]
+        // [Authorize(Roles = "Admin")] // bật nếu cần
+        public async Task<IActionResult> UpdateStatus([FromBody] UpdateUserStatusDTO dto)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var currentUserId = GetCurrentUserId();
+
+            // 🚫 KHÔNG cho tự update status bản thân
+            if (dto.UserId == currentUserId)
+            {
+                return BadRequest(new
+                {
+                    success = false,
+                    message = "Không được cập nhật trạng thái tài khoản của chính mình."
+                });
+            }
+
+            var updated = await _service.UpdateStatus(dto);
+
+            if (!updated)
+                return NotFound(new { success = false, message = "Không tìm thấy người dùng." });
+
+            return Ok(new
+            {
+                success = true,
+                message = $"Cập nhật trạng thái thành '{dto.AccountStatus}' thành công."
+            });
+        }
+
         // ================= DELETE =================
         [HttpDelete("delete/{id}")]
         public async Task<IActionResult> Delete(long id)
@@ -145,5 +183,6 @@ namespace OJT_RAG.API.Controllers
                 return StatusCode(500, new { success = false, message = "Lỗi khi xóa người dùng.", error = ex.Message });
             }
         }
+
     }
 }
