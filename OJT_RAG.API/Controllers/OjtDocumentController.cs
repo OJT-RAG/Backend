@@ -205,8 +205,10 @@ public async Task<IActionResult> Delete(long id)
             });
         }
 
-        [HttpPost("{id}/tags")]
-        public async Task<IActionResult> AddTag(long id, [FromBody] long tagId)
+        [HttpPost("tags")]
+        public async Task<IActionResult> AddTag(
+    [FromQuery] long id,
+    [FromQuery] long tagId)
         {
             await _service.AddTag(id, tagId);
             return Ok();
