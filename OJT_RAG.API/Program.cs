@@ -23,6 +23,7 @@ AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", false);
 
 var builder = WebApplication.CreateBuilder(args);
 
+
 // ====================== CONNECTION STRING (Local + Railway) ======================
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "";
 
@@ -64,15 +65,19 @@ var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
 
 // ====================== DATABASE CONFIG (Npgsql + Enum) ======================
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
-
 dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
-//dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
+dataSourceBuilder.MapEnum<DocumentTagType>("document_tag_type_enum");
+
+dataSourceBuilder.EnableUnmappedTypes();
 
 var dataSource = dataSourceBuilder.Build();
 
 builder.Services.AddDbContext<OJTRAGContext>(options =>
 {
-    options.UseNpgsql(dataSource);
+    options.UseNpgsql(dataSource)
+           .EnableSensitiveDataLogging()       // Cho phép log giá trị parameter thật (rất quan trọng để xem enum bind thành gì)
+           .EnableDetailedErrors()             // Lỗi EF chi tiết hơn
+           .LogTo(Console.WriteLine, LogLevel.Debug);
 });
 
 // ====================== JWT AUTHENTICATION ======================

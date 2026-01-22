@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 using OJT_RAG.Repositories.Interfaces;
 
 namespace OJT_RAG.Repositories
@@ -29,12 +31,37 @@ namespace OJT_RAG.Repositories
             return await _db.Ojtdocuments.Where(x => x.SemesterId == semesterId).ToListAsync();
         }
 
-        public async Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type)
+        //public async Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type)
+        //{
+        //    if (!Enum.TryParse<DocumentTagType>(type, true, out var enumType))
+        //        throw new ArgumentException("Invalid tag type");
+
+        //    return await _db.Ojtdocuments
+        //        .Where(o => o.OjtDocumentTags
+        //            .Any(odt => odt.DocumentTag.Type == enumType))
+        //        .ToListAsync();
+        //}
+        // Repository
+        public async Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type, bool includeRelated = true)
         {
-            return await _db.Ojtdocuments
-                .Where(d => d.OjtDocumentTags
-                    .Any(dt => dt.DocumentTag.Type == type))
-                .ToListAsync();
+            // ... (phần kiểm tra validValues giữ nguyên)
+
+            var query = _db.Ojtdocuments.AsQueryable();
+
+            // Sửa phần Where này:
+            // Chuyển đổi Enum về string ngay trong LINQ để EF/Npgsql xử lý ép kiểu
+            query = query.Where(o => o.OjtDocumentTags
+                .Any(odt => ((string)(object)odt.DocumentTag.Type).ToLower() == type));
+
+            if (includeRelated)
+            {
+                query = query
+                    .Include(o => o.OjtDocumentTags)
+                        .ThenInclude(odt => odt.DocumentTag)
+                    .Include(o => o.UploadedByNavigation);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<Ojtdocument> AddAsync(Ojtdocument entity)

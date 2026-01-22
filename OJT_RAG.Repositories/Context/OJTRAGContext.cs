@@ -7,27 +7,18 @@ using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.Repositories.Context
 {
-    //public class UnspecifiedDateTimeConverter : ValueConverter<DateTime, DateTime>
-    //{
-    //    public UnspecifiedDateTimeConverter()
-    //        : base(
-    //            v => v,  // convert to provider: giữ nguyên
-    //            v => DateTime.SpecifyKind(v, DateTimeKind.Unspecified)) // convert from provider
-    //    { }
-    //}
-
-    //public class UnspecifiedNullableDateTimeConverter : ValueConverter<DateTime?, DateTime?>
-    //{
-    //    public UnspecifiedNullableDateTimeConverter()
-    //        : base(
-    //            v => v,
-    //            v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Unspecified) : v)
-    //    { }
-    //}
 
     public partial class OJTRAGContext : DbContext
     {
-        public OJTRAGContext() { }
+        static OJTRAGContext()
+        {
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<DocumentTagType>("document_tag_type_enum");
+            NpgsqlConnection.GlobalTypeMapper.MapEnum<AccountStatusEnum>("account_status_enum");
+            NpgsqlConnection.GlobalTypeMapper.EnableUnmappedTypes();
+        }
+        public OJTRAGContext() {
+        
+        }
 
         public OJTRAGContext(DbContextOptions<OJTRAGContext> options)
             : base(options)
@@ -79,17 +70,20 @@ namespace OJT_RAG.Repositories.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
-            //if (!optionsBuilder.IsConfigured)
-            //{
-            //    // Chuỗi này CHỈ dùng cho Migration ở máy Local
-            //    optionsBuilder.UseNpgsql("Host=localhost;Database=ojt_rag;Username=postgres;Password=12345");
-            //}
+            var envConnection = Environment.GetEnvironmentVariable("DATABASE_URL");
+            if (!optionsBuilder.IsConfigured)
+            {
+                // Chuỗi này CHỈ dùng cho Migration ở máy Local
+                optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=ojt_rag;Username=postgres;Password=12345");
+            }
+
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<AccountStatusEnum>("account_status_enum");
+            modelBuilder.HasPostgresEnum<DocumentTagType>("document_tag_type_enum");
+            
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
@@ -114,6 +108,21 @@ namespace OJT_RAG.Repositories.Context
                       .OnDelete(DeleteBehavior.Restrict);   
 
             });
+
+            modelBuilder.Entity<Documenttag>(entity =>
+            {
+                entity.HasMany(d => d.OjtDocumentTags)
+            .WithOne(odt => odt.DocumentTag)
+            .HasForeignKey(odt => odt.DocumentTagId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasMany(d => d.CompanyDocumentTags)
+                      .WithOne(cdt => cdt.DocumentTag)
+                      .HasForeignKey(cdt => cdt.DocumentTagId)
+                      .OnDelete(DeleteBehavior.Cascade);
+            });
+
+
 
             modelBuilder.Entity<Ojtdocumenttag>(entity =>
             {

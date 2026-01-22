@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.Repositories.Entities
 {
@@ -16,13 +16,14 @@ namespace OJT_RAG.Repositories.Entities
         public string? Name { get; set; }
 
         [Column("type")]
-        public string? Type { get; set; }
-        // Companydocumenttag (N-N qua trung gian)
+        public DocumentTagType Type { get; set; }
+
+        // Quan hệ nhiều-nhiều với CompanyDocument qua bảng trung gian
         [InverseProperty("DocumentTag")]
         public virtual ICollection<Companydocumenttag> CompanyDocumentTags { get; set; }
             = new List<Companydocumenttag>();
 
-        // Ojtdocumenttag (N-N qua trung gian)
+        // Quan hệ nhiều-nhiều với OJTDocument qua bảng trung gian
         [InverseProperty("DocumentTag")]
         public virtual ICollection<Ojtdocumenttag> OjtDocumentTags { get; set; }
             = new List<Ojtdocumenttag>();
