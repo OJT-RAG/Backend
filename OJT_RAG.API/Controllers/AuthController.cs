@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Google.Apis.Auth;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using OJT_RAG.DTOs.Auth;
 using OJT_RAG.Services.Auth;
@@ -15,28 +16,33 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("google-login")]
-    public async Task<IActionResult> GoogleLogin(
-        [FromBody] GoogleLoginRequestDTO dto)
+    public async Task<IActionResult> GoogleLogin([FromBody] GoogleLoginRequestDTO dto)
     {
         try
         {
-            var token = await _googleAuth.LoginWithGoogleAsync(dto.IdToken);
+            // Gọi service và nhận về cả Token lẫn UserInfo
+            var (token, userInfo) = await _googleAuth.LoginWithGoogleAsync(dto.IdToken);
 
             return Ok(new
             {
                 message = "Google login thành công",
-                accessToken = token
+                accessToken = token,
+                user = userInfo
             });
+        }
+        catch (InvalidJwtException ex)
+        {
+            return BadRequest(new { message = "Google Token không hợp lệ", detail = ex.Message });
         }
         catch (DbUpdateException ex)
         {
-            var detail = ex.InnerException?.Message;
-            return BadRequest(new
-            {
-                message = "DB ERROR",
-                detail
-            });
+            return BadRequest(new { message = "Lỗi lưu dữ liệu database", detail = ex.InnerException?.Message });
         }
-
+        catch (Exception ex)
+        {
+            return StatusCode(500, new { message = "Đã có lỗi xảy ra", detail = ex.Message });
+        }
     }
+
 }
+
