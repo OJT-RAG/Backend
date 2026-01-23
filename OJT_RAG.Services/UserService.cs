@@ -66,7 +66,8 @@ namespace OJT_RAG.Services.UserService
                 AvatarUrl = avatarUrl,
                 CvUrl = cvUrl,
                 Role = "Student",
-                CreateAt = DateTime.UtcNow.ToLocalTime()
+                CreateAt = DateTime.UtcNow
+                                          //.ToLocalTime()
             };
 
             await _repo.AddAsync(user);
@@ -114,18 +115,19 @@ namespace OJT_RAG.Services.UserService
     if (!string.IsNullOrEmpty(dto.Password))
         u.Password = dto.Password;
 
-            if (u.CreateAt.HasValue)
-            {
-                u.CreateAt = DateTime.SpecifyKind(
-                    u.CreateAt.Value,
-                    DateTimeKind.Unspecified
-                );
-            }
+            //if (u.CreateAt.HasValue)
+            //{
+            //    u.CreateAt = DateTime.SpecifyKind(
+            //        u.CreateAt.Value,
+            //        DateTimeKind.Unspecified
+            //    );
+            //}
 
-            u.UpdateAt = DateTime.SpecifyKind(
-                DateTime.UtcNow,
-                DateTimeKind.Unspecified
-            );
+            //u.UpdateAt = DateTime.SpecifyKind(
+            //    DateTime.UtcNow,
+            //    DateTimeKind.Unspecified
+            //);
+            u.UpdateAt = DateTime.UtcNow;
 
 
 
