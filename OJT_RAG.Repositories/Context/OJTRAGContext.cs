@@ -13,7 +13,7 @@ namespace OJT_RAG.Repositories.Context
         static OJTRAGContext()
         {
             NpgsqlConnection.GlobalTypeMapper.MapEnum<DocumentTagType>("document_tag_type_enum");
-            NpgsqlConnection.GlobalTypeMapper.MapEnum<AccountStatusEnum>("account_status_enum");
+            //NpgsqlConnection.GlobalTypeMapper.MapEnum<AccountStatusEnum>("account_status_enum");
             NpgsqlConnection.GlobalTypeMapper.EnableUnmappedTypes();
         }
         public OJTRAGContext() {
