@@ -66,7 +66,7 @@ namespace OJT_RAG.Services.UserService
                 AvatarUrl = avatarUrl,
                 CvUrl = cvUrl,
                 Role = "Student",
-                CreateAt = DateTime.UtcNow.ToLocalTime()
+                CreateAt = DateTime.UtcNow
             };
 
             await _repo.AddAsync(user);
@@ -75,63 +75,65 @@ namespace OJT_RAG.Services.UserService
 
         // ================= UPDATE =================
         public async Task<bool> Update(UpdateUserDTO dto)
-{
-    var u = await _repo.GetByIdAsync(dto.UserId);
-    if (u == null) return false;
+        {
+            var u = await _repo.GetByIdAsync(dto.UserId);
+            if (u == null) return false;
 
-    var root = await _drive.GetOrCreateFolderAsync("OJT_RAG");
+            var root = await _drive.GetOrCreateFolderAsync("OJT_RAG");
 
-    if (dto.AvatarUrl != null)
-    {
-        var avatarFolder = await _drive.GetOrCreateFolderAsync("USER_AVATAR", root);
-        u.AvatarUrl = await _drive.UploadFileAsync(dto.AvatarUrl, avatarFolder);
-    }
-
-    if (dto.CvUrl != null)
-    {
-        var cvFolder = await _drive.GetOrCreateFolderAsync("USER_CV", root);
-        u.CvUrl = await _drive.UploadFileAsync(dto.CvUrl, cvFolder);
-    }
-
-    if (dto.MajorId.HasValue)
-        u.MajorId = dto.MajorId.Value;
-
-    if (dto.CompanyId.HasValue)
-        u.CompanyId = dto.CompanyId.Value;
-
-    if (!string.IsNullOrEmpty(dto.Fullname))
-        u.Fullname = dto.Fullname;
-
-    if (!string.IsNullOrEmpty(dto.StudentCode))
-        u.StudentCode = dto.StudentCode;
-
-    if (dto.Dob.HasValue)
-        u.Dob = dto.Dob.Value;
-
-    if (!string.IsNullOrEmpty(dto.Phone))
-        u.Phone = dto.Phone;
-
-    if (!string.IsNullOrEmpty(dto.Password))
-        u.Password = dto.Password;
-
-            if (u.CreateAt.HasValue)
+            // --- Xử lý Upload file ---
+            if (dto.AvatarUrl != null)
             {
-                u.CreateAt = DateTime.SpecifyKind(
-                    u.CreateAt.Value,
-                    DateTimeKind.Unspecified
-                );
+                var avatarFolder = await _drive.GetOrCreateFolderAsync("USER_AVATAR", root);
+                u.AvatarUrl = await _drive.UploadFileAsync(dto.AvatarUrl, avatarFolder);
             }
 
-            u.UpdateAt = DateTime.SpecifyKind(
-                DateTime.UtcNow,
-                DateTimeKind.Unspecified
-            );
+            if (dto.CvUrl != null)
+            {
+                var cvFolder = await _drive.GetOrCreateFolderAsync("USER_CV", root);
+                u.CvUrl = await _drive.UploadFileAsync(dto.CvUrl, cvFolder);
+            }
 
+            // --- Cập nhật thông tin cơ bản ---
+            if (dto.MajorId.HasValue)
+                u.MajorId = dto.MajorId.Value;
 
+            if (dto.CompanyId.HasValue)
+                u.CompanyId = dto.CompanyId.Value;
+
+            if (!string.IsNullOrEmpty(dto.Fullname))
+                u.Fullname = dto.Fullname;
+
+            if (!string.IsNullOrEmpty(dto.StudentCode))
+                u.StudentCode = dto.StudentCode;
+
+            // FIX 1: Xử lý ngày sinh (Dob) - PostgreSQL yêu cầu UTC nếu cột là timestamptz
+            if (dto.Dob.HasValue)
+            {
+                u.Dob = dto.Dob.Value;
+            }
+
+            if (!string.IsNullOrEmpty(dto.Phone))
+                u.Phone = dto.Phone;
+
+            if (!string.IsNullOrEmpty(dto.Password))
+                u.Password = dto.Password;
+
+            // --- FIX 2: Xử lý các trường thời gian hệ thống ---
+
+            // Đảm bảo CreateAt hiện có (nếu có) được coi là UTC
+            if (u.CreateAt.HasValue)
+            {
+                u.CreateAt = DateTime.SpecifyKind(u.CreateAt.Value, DateTimeKind.Utc);
+            }
+
+            // Gán UpdateAt là thời điểm hiện tại chuẩn UTC
+            u.UpdateAt = DateTime.UtcNow;
 
             await _repo.UpdateAsync(u);
-    return true;
-}
+            return true;
+        }
+
 
         public async Task<bool> UpdateStatus(UpdateUserStatusDTO dto)
         {
