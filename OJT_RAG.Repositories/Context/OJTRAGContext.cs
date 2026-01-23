@@ -94,13 +94,13 @@ namespace OJT_RAG.Repositories.Context
             {
                 entity.HasKey(e => e.UserId);
 
-                entity.Property(e => e.AccountStatus).HasColumnType("account_status_enum");
-                // Ép kiểu cột ở mức EF Core là string để tránh lỗi Read/Write Int32
-                //.HasColumnType("text")
-                //.HasConversion(
-                //    v => v.ToString(), // Khi lưu: Enum -> "active"
-                //    v => (AccountStatusEnum)Enum.Parse(typeof(AccountStatusEnum), v, true) // Khi đọc: "active" -> Enum
-                //);
+                // THAY ĐỔI Ở ĐÂY:
+                entity.Property(e => e.AccountStatus)
+                      .HasColumnType("text") // Đối xử với cột này như Text ở mức Provider
+                      .HasConversion(
+                          v => v.ToString(), // Khi lưu: Enum -> String
+                          v => (AccountStatusEnum)Enum.Parse(typeof(AccountStatusEnum), v ?? "active", true) // Khi đọc: String -> Enum
+                      );
 
                 entity.Property(e => e.Role).HasMaxLength(20);
             });
