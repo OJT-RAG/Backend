@@ -22,6 +22,7 @@ namespace OJT_RAG.Services
 
         private OjtDocumentModelView Map(Ojtdocument x)
         {
+            if (x == null) return null;
             return new OjtDocumentModelView
             {
                 OjtdocumentId = x.OjtdocumentId,
@@ -30,7 +31,14 @@ namespace OJT_RAG.Services
                 SemesterId = x.SemesterId,
                 IsGeneral = x.IsGeneral,
                 UploadedBy = x.UploadedBy,
-                UploadedAt = x.UploadedAt
+                UploadedAt = x.UploadedAt,
+                // Lấy tên người đăng từ Navigation property
+                UploaderName = x.UploadedByNavigation?.Fullname,
+                // Duyệt qua bảng trung gian để lấy danh sách tên Tag
+                Tags = x.OjtDocumentTags?
+                          .Select(odt => odt.DocumentTag?.Name)
+                          .Where(name => name != null)
+                          .ToList() ?? new List<string>()
             };
         }
 
@@ -40,6 +48,14 @@ namespace OJT_RAG.Services
         public async Task<OjtDocumentModelView?> GetByIdAsync(long id)
             => (await _repo.GetByIdAsync(id)) is Ojtdocument x ? Map(x) : null;
 
+        public async Task<IEnumerable<OjtDocumentModelView>> GetByTagTypeAsync(string type)
+        {
+            // Repository trả về danh sách Ojtdocument (Entity)
+            var docs = await _repo.GetByTagTypeAsync(type);
+
+            // Ánh xạ sang danh sách OjtDocumentModelView
+            return docs.Select(Map);
+        }
 
         public async Task<OjtDocumentModelView> CreateAsync(CreateOjtDocumentDTO dto)
         {
@@ -175,5 +191,7 @@ namespace OJT_RAG.Services
         {
             await _tagRepo.RemoveAsync(documentId, tagId);
         }
+
+       
     }
 }

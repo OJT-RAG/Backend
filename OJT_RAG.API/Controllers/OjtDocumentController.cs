@@ -55,6 +55,19 @@ namespace OJT_RAG.Controllers
             }
         }
 
+        [HttpGet("by-tag-type/{type}")]
+        public async Task<IActionResult> GetByTagType(string type)
+        {
+            var allowedTypes = new[] { "company", "university", "system" };
+            if (!allowedTypes.Contains(type.ToLower()))
+            {
+                return BadRequest(new { message = "Type không hợp lệ. Chỉ chấp nhận: company, university, system" });
+            }
+
+            var data = await _service.GetByTagTypeAsync(type);
+            return Ok(new { message = $"Lấy tài liệu theo loại {type} thành công", data });
+        }
+
         [Authorize]
         [HttpPost("create")]
         public async Task<IActionResult> Create([FromForm] CreateOjtDocumentDTO dto)

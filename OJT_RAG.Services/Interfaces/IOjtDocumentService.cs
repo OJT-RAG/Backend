@@ -8,6 +8,7 @@ namespace OJT_RAG.Services.Interfaces
     {
         Task<IEnumerable<OjtDocumentModelView>> GetAllAsync();
         Task<OjtDocumentModelView?> GetByIdAsync(long id);
+        Task<IEnumerable<OjtDocumentModelView>> GetByTagTypeAsync(string type);
         Task<OjtDocumentModelView> CreateAsync(CreateOjtDocumentDTO dto);
         Task<OjtDocumentModelView> UpdateAsync(UpdateOjtDocumentDTO dto);
         Task<bool> DeleteAsync(long id);

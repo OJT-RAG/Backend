@@ -68,14 +68,14 @@ var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
 dataSourceBuilder.EnableUnmappedTypes();
 
 dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
+
+dataSourceBuilder.MapEnum<DocumentTagType>("document_tag_type_enum");
+
 //dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
 
 var dataSource = dataSourceBuilder.Build();
 
-builder.Services.AddDbContext<OJTRAGContext>(options =>
-{
-    options.UseNpgsql(dataSource);
-});
+builder.Services.AddDbContext<OJTRAGContext>(options => options.UseNpgsql(dataSource));
 
 // ====================== JWT AUTHENTICATION ======================
 builder.Services.AddAuthentication(options =>

@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using OJT_RAG.Repositories.Context;
 using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 using OJT_RAG.Repositories.Interfaces;
 
 namespace OJT_RAG.Repositories
@@ -27,6 +28,29 @@ namespace OJT_RAG.Repositories
         public async Task<IEnumerable<Ojtdocument>> GetBySemesterAsync(long semesterId)
         {
             return await _db.Ojtdocuments.Where(x => x.SemesterId == semesterId).ToListAsync();
+        }
+
+        public async Task<IEnumerable<Ojtdocument>> GetByTagTypeAsync(string type, bool includeRelated = true)
+        {
+            // Chuyển về lowercase để so sánh chính xác với DB
+            string searchType = type.ToLower();
+
+            var query = _db.Ojtdocuments.AsQueryable();
+
+            // Thay vì so sánh Enum object, ta ép kiểu Type về string để so sánh
+            // EF Core sẽ dịch cái này sang SQL dùng toán tử ép kiểu của Postgres
+            query = query.Where(o => o.OjtDocumentTags
+                         .Any(odt => (string)(object)odt.DocumentTag.Type == searchType));
+
+            if (includeRelated)
+            {
+                query = query
+                    .Include(o => o.UploadedByNavigation)
+                    .Include(o => o.OjtDocumentTags)
+                        .ThenInclude(odt => odt.DocumentTag);
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<Ojtdocument> AddAsync(Ojtdocument entity)
