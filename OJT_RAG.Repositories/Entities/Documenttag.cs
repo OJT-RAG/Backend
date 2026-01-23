@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.Repositories.Entities
 {
@@ -14,6 +15,9 @@ namespace OJT_RAG.Repositories.Entities
         [Column("name")]
         [StringLength(255)]
         public string? Name { get; set; }
+
+        [Column("type")]
+        public DocumentTagType Type { get; set; }
 
         // Companydocumenttag (N-N qua trung gian)
         [InverseProperty("DocumentTag")]

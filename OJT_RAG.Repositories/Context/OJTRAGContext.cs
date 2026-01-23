@@ -90,6 +90,9 @@ namespace OJT_RAG.Repositories.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasPostgresEnum<AccountStatusEnum>("account_status_enum");
+
+            modelBuilder.HasPostgresEnum<DocumentTagType>("document_tag_type_enum");
+
             modelBuilder.Entity<User>(entity =>
             {
                 entity.HasKey(e => e.UserId);
@@ -113,6 +116,15 @@ namespace OJT_RAG.Repositories.Context
                       .HasForeignKey(j => j.SemesterCompanyId)
                       .OnDelete(DeleteBehavior.Restrict);   
 
+            });
+
+            modelBuilder.Entity<Documenttag>(entity => {
+                entity.Property(e => e.Type)
+                      .HasColumnType("document_tag_type_enum")
+                      .HasConversion(
+                          v => v.ToString().ToLower(), // Lưu: Enum -> "company"
+                          v => (DocumentTagType)Enum.Parse(typeof(DocumentTagType), v ?? "system", true) // Đọc: "company" -> Enum
+                      );
             });
 
             modelBuilder.Entity<Ojtdocumenttag>(entity =>
