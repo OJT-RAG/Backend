@@ -67,7 +67,7 @@ var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
 
 dataSourceBuilder.EnableUnmappedTypes();
 
-dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
+//dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
 //dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
 
 var dataSource = dataSourceBuilder.Build();
