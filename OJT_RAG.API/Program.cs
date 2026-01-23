@@ -65,6 +65,8 @@ var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
 // ====================== DATABASE CONFIG (Npgsql + Enum) ======================
 var dataSourceBuilder = new NpgsqlDataSourceBuilder(connectionString);
 
+dataSourceBuilder.EnableUnmappedTypes();
+
 dataSourceBuilder.MapEnum<AccountStatusEnum>("account_status_enum");
 //dataSourceBuilder.MapEnum<UserRole>("user_role_enum");
 
