@@ -102,8 +102,7 @@ namespace OJT_RAG.Repositories.Context
                      // )
                      // .IsRequired();
 
-                entity.Property(e => e.Role)
-                      .HasMaxLength(20);
+                entity.Property(e => e.Role).HasMaxLength(20);
             });
 
             modelBuilder.Entity<JobPosition>(entity =>
