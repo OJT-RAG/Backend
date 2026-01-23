@@ -94,12 +94,13 @@ namespace OJT_RAG.Repositories.Context
             {
                 entity.HasKey(e => e.UserId);
 
-                // THAY ĐỔI Ở ĐÂY:
                 entity.Property(e => e.AccountStatus)
-                      .HasColumnType("text") // Đối xử với cột này như Text ở mức Provider
+                      // 1. Trả về đúng kiểu Enum của Postgres
+                      .HasColumnType("account_status_enum")
+                      // 2. Chuyển đổi để Driver gửi dữ liệu dạng string (Postgres sẽ tự cast nếu ta thêm bước 2 bên dưới)
                       .HasConversion(
-                          v => v.ToString(), // Khi lưu: Enum -> String
-                          v => (AccountStatusEnum)Enum.Parse(typeof(AccountStatusEnum), v ?? "active", true) // Khi đọc: String -> Enum
+                          v => v.ToString().ToLower(),
+                          v => (AccountStatusEnum)Enum.Parse(typeof(AccountStatusEnum), v ?? "active", true)
                       );
 
                 entity.Property(e => e.Role).HasMaxLength(20);
