@@ -90,10 +90,10 @@ namespace OJT_RAG.Repositories.Context
 
                 entity.Property(e => e.AccountStatus)
                       .HasColumnType("account_status_enum") // 🔥 BẮT BUỘC
-                     .HasConversion(
-                          v => v.ToString(),                  // enum → string
-                          v => Enum.Parse<AccountStatusEnum>(v) // string → enum
-                      )
+                     //.HasConversion(
+                     //     v => v.ToString(),                  // enum → string
+                     //     v => Enum.Parse<AccountStatusEnum>(v) // string → enum
+                     // )
                       .IsRequired();
 
                 entity.Property(e => e.Role)
