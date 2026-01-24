@@ -107,7 +107,11 @@ namespace OJT_RAG.Services.UserService
             if (!string.IsNullOrEmpty(dto.StudentCode))
                 u.StudentCode = dto.StudentCode;
 
-            // FIX 1: Xử lý ngày sinh (Dob) - PostgreSQL yêu cầu UTC nếu cột là timestamptz
+            // --- CẬP NHẬT ROLE TẠI ĐÂY ---
+            if (!string.IsNullOrEmpty(dto.Role))
+                u.Role = dto.Role;
+
+            // FIX 1: Xử lý ngày sinh (Dob)
             if (dto.Dob.HasValue)
             {
                 u.Dob = dto.Dob.Value;
@@ -120,14 +124,11 @@ namespace OJT_RAG.Services.UserService
                 u.Password = dto.Password;
 
             // --- FIX 2: Xử lý các trường thời gian hệ thống ---
-
-            // Đảm bảo CreateAt hiện có (nếu có) được coi là UTC
             if (u.CreateAt.HasValue)
             {
                 u.CreateAt = DateTime.SpecifyKind(u.CreateAt.Value, DateTimeKind.Utc);
             }
 
-            // Gán UpdateAt là thời điểm hiện tại chuẩn UTC
             u.UpdateAt = DateTime.UtcNow;
 
             await _repo.UpdateAsync(u);

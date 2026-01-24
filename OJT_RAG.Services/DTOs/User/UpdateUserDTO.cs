@@ -14,5 +14,6 @@ namespace OJT_RAG.DTOs.UserDTO
         public IFormFile? AvatarUrl { get; set; }
         public IFormFile? CvUrl { get; set; }
         public string? Password { get; set; }
+        public string? Role { get; set; }
     }
 }
