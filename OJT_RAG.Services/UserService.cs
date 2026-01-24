@@ -185,7 +185,8 @@ namespace OJT_RAG.Services.UserService
                 Phone = u.Phone,
                 AvatarUrl = u.AvatarUrl,
                 CvUrl = u.CvUrl,
-                CreateAt = u.CreateAt
+                CreateAt = u.CreateAt,
+                AccountStatus = u.AccountStatus
             };
         }
     }

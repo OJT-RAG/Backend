@@ -1,4 +1,5 @@
 ﻿using OJT_RAG.Repositories.Entities;
+using OJT_RAG.Repositories.Enums;
 
 namespace OJT_RAG.ModelView.UserModelView
 {
@@ -16,5 +17,6 @@ namespace OJT_RAG.ModelView.UserModelView
         public string? AvatarUrl { get; set; }
         public string? CvUrl { get; set; }
         public DateTime? CreateAt { get; set; }
+        public AccountStatusEnum AccountStatus { get; set; }
     }
 }
