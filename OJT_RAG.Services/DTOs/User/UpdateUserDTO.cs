@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
 namespace OJT_RAG.DTOs.UserDTO
 {
@@ -14,6 +15,9 @@ namespace OJT_RAG.DTOs.UserDTO
         public IFormFile? AvatarUrl { get; set; }
         public IFormFile? CvUrl { get; set; }
         public string? Password { get; set; }
+
+        [RegularExpression("^(student|cro_staff|company|admin)$",
+         ErrorMessage = "Role must be one of the following: student, cro_staff, company, admin")]
         public string? Role { get; set; }
     }
 }
