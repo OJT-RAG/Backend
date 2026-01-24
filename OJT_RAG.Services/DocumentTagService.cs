@@ -20,7 +20,8 @@ namespace OJT_RAG.Services
             return new DocumentTagModelView
             {
                 DocumenttagId = x.DocumenttagId,
-                Name = x.Name
+                Name = x.Name,
+                Type = x.Type.ToString()
             };
         }
 
@@ -39,7 +40,8 @@ namespace OJT_RAG.Services
         {
             var entity = new Documenttag
             {
-                Name = dto.Name
+                Name = dto.Name,
+                Type = dto.Type
             };
 
             await _repo.AddAsync(entity);
@@ -51,7 +53,11 @@ namespace OJT_RAG.Services
             var entity = await _repo.GetByIdAsync(dto.DocumenttagId);
             if (entity == null) return false;
 
-            entity.Name = dto.Name;
+            if (!string.IsNullOrEmpty(dto.Name))
+                entity.Name = dto.Name;
+
+            if (dto.Type.HasValue) // Kiểm tra nếu có cập nhật Type
+                entity.Type = dto.Type.Value;
 
             await _repo.UpdateAsync(entity);
             return true;
@@ -61,5 +67,7 @@ namespace OJT_RAG.Services
         {
             return await _repo.DeleteAsync(id);
         }
+
+
     }
 }
